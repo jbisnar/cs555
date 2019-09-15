@@ -1,0 +1,30 @@
+Table of All Individuals
+
+           ID |                  NAME | GENDER |   BIRTHDAY | ALIVE |      DEATH |        CHILD | SPOUSE
+
+        @I10@ |      Aspe /Fritschie/ |      F | 1968-11-26 |  True |        N/A |          N/A | {'@F4@'}
+        @I11@ |     Fabbie /Goldiger/ |      F | 1965-01-04 |  True |        N/A |          N/A | {'@F5@'}
+        @I12@ |       Mark /D'Angelo/ |      M | 1992-05-23 |  True |        N/A |         @F5@ |
+        @I13@ | Alexandria /D'Angelo/ |      F | 2002-06-10 |  True |        N/A |         @F4@ |
+        @I14@ |    Caroline /Andrews/ |      F | 1935-09-16 |  True |        N/A |          N/A | {'@F3@'}
+         @I1@ |      Matthew /Monaco/ |      M | 1998-10-13 |  True |        N/A |         @F1@ |
+         @I2@ |        Mario /Monaco/ |      M | 1958-02-23 |  True |        N/A |          N/A | {'@F1@'}
+         @I3@ |      Debra /D'Angelo/ |      F | 1964-12-25 |  True |        N/A |         @F2@ | {'@F1@'}
+         @I4@ |      Anthony /Monaco/ |      M | 1994-05-09 |  True |        N/A |         @F1@ |
+         @I5@ |      Vincent /Monaco/ |      M | 1995-09-12 |  True |        N/A |         @F1@ |
+         @I6@ |       John /D'Angelo/ |      M | 1930-04-12 |  True |        N/A |          N/A | {'@F2@'} {'@F3@'}
+         @I7@ |   Concetta /Iacovino/ |      F | 1924-05-18 | False | 2008-04-13 |          N/A | {'@F2@'}
+         @I8@ |     Laurie /D'Angelo/ |      F | 1963-08-07 |  True |        N/A |         @F2@ |
+         @I9@ |       John /D'Angelo/ |      M | 1959-03-17 |  True |        N/A |         @F2@ | {'@F4@'} {'@F5@'}
+
+
+
+Table of All Families
+
+           ID |    MARRIED |   DIVORCED |   HUSBAND ID |          HUSBAND NAME |      WIFE ID |             WIFE NAME | Children
+
+         @F1@ | 1991-10-26 |        N/A |         @I2@ |        Mario /Monaco/ |         @I3@ |      Debra /D'Angelo/ | {'@I1@'} {'@I4@'} {'@I5@'}
+         @F2@ | 1957-07-01 |        N/A |         @I6@ |       John /D'Angelo/ |         @I7@ |   Concetta /Iacovino/ | {'@I3@'} {'@I8@'} {'@I9@'}
+         @F3@ | 2014-11-15 |        N/A |         @I6@ |       John /D'Angelo/ |        @I14@ |    Caroline /Andrews/ |
+         @F4@ | 1999-03-09 |        N/A |         @I9@ |       John /D'Angelo/ |        @I10@ |      Aspe /Fritschie/ | {'@I13@'}
+         @F5@ | 1989-02-10 | 1993-12-28 |         @I9@ |       John /D'Angelo/ |        @I11@ |     Fabbie /Goldiger/ | {'@I12@'}
