@@ -1,48 +1,40 @@
-/* Matthew Monaco
- * I pledge my honor that I have abided by the Stevens Honor System.*/
+/* parser.cpp                                                                                    *
+ * Contains the parser that breaks up each line of the gedcom file and correctly stores the data *
+ * I pledge my honor that I have abided by the Stevens Honor System                              */
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <stdio.h>
-#include <string.h>
 #include <array>
-#include <unordered_map>
-#include <list>
-#include <iterator>
+#include <fstream>
 #include <iomanip>
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <stdio.h>
+#include <string>
+#include <string.h>
+#include <unordered_map>
+
+#include "globals.h"
+#include "monaco.h"
+#include "bisnar.h"
+#include "dytioco.h"
 
 using namespace std;
 
-struct individual{
-    string name;
-    char gender;
-    string birthday;
-    bool alive;
-    string death;
-    list<string> SID;
-    string CID;
-}
-curIndi = {"", '\0', "N/A", true, "N/A", {}, "N/A"};
+individual curIndi = {"", '\0', "N/A", true, "N/A", {}, "N/A"};
 
-struct family{
-    string married;
-    string divorced;
-    string husbandID;
-    string wifeID;
-    list<string> children;
-}
-curFam = {"", "N/A", "N/A", "N/A", {}};
+family curFam = {"", "N/A", "N/A", "N/A", {}};
 
 string curIDFam;
 string curIDInd;
 string curTag;
+
 unordered_map<string, individual> indiMap;
 unordered_map<string, family> famMap;
 
 int maxIDLength = 12;
 int maxNameLength = 4;
 
+/* Turn the date from the gedcom file into all numbers */
 string improveDate(string inputDate){
 
     string day = inputDate.substr(0, inputDate.find_first_of(" "));
@@ -83,6 +75,7 @@ string improveDate(string inputDate){
     return inputDate + "-" + month + "-" + day;
 }
 
+/* Given an unordered list of individuals, this returns a list of the ids in alphabetical order */
 list<string> sortIndividuals(unordered_map<string, individual> inputMap){
     
     unordered_map<string, individual> outputMap;
@@ -97,6 +90,7 @@ list<string> sortIndividuals(unordered_map<string, individual> inputMap){
     return ids;
 }
 
+/* Given an unordered list of families, this returns a list of the ids in alphabetical order */
 list<string> sortFamilies(unordered_map<string, family> inputMap){
     
     unordered_map<string, family> outputMap;
@@ -121,7 +115,7 @@ void printFamilies(list<string> idList){
         << setw(maxIDLength+1) << "HUSBAND ID" << " |"
         << setw(maxNameLength+1) << "HUSBAND NAME" << " |"
         << setw(maxIDLength+1) << "WIFE ID" << " |"
-        << setw(maxNameLength+1) << "WIFE NAME" << " | Children"
+        << setw(maxNameLength+1) << "WIFE NAME" << " | CHILDREN"
         << endl;
     cout << endl;
     
@@ -288,28 +282,4 @@ void parse(string nextLine){
     }
 
     return;
-}
-
-int main(int argc, char** argv) {
-    
-    string nextLine;
-    ifstream gedcomFile;
-    gedcomFile.open(argv[1]);
-    
-    while(getline(gedcomFile, nextLine)){
-        parse(nextLine);
-    }
-    finalStore();
-    
-    cout << "Table of All Individuals" << endl;
-    cout << endl;
-    printIndividuals(sortIndividuals(indiMap));
-    cout << endl;
-    cout << endl;
-    cout << endl;
-    cout << "Table of All Families" << endl;
-    cout << endl;
-    printFamilies(sortFamilies(famMap));
-
-    return 0;
 }
