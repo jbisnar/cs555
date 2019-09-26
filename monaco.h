@@ -7,4 +7,7 @@
 
 using namespace std;
 
+bool uniqueID(string key, unordered_map<string, individual> indis);
+
+
 #endif

@@ -35,6 +35,10 @@ extern unordered_map<string, family> famMap;
 /* Map of all individuals */
 extern unordered_map<string, individual> indiMap;
 
+/* Current line number is GEDCOM file */
 extern int lineNumber;
+
+/* List of error statements */
+extern list <string> errorStatements;
 
 #endif

@@ -200,6 +200,7 @@ void store(string level, string tag, string args){
         }
         individual temp = {"N/A", '\0', "N/A", true, "N/A", {}, "N/A"};
         curIndi = temp;
+        uniqueID(args, indiMap);
         curIDInd = args;
         if(args.length() > maxIDLength){
             maxIDLength =  args.length();
