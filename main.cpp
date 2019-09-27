@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
     ifstream gedcomFile;
     gedcomFile.open(argv[1]);
     
-    lineNumber = 0;
+    lineNumber = 1;
     while(getline(gedcomFile, nextLine)){
         parse(nextLine);
         lineNumber++;
