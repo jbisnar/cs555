@@ -26,11 +26,12 @@ int main(int argc, char** argv) {
         lineNumber++;
     }
     finalStore();
-
+    
+    printf("\n");
     printIndividuals(sortIndividuals(indiMap));
     cout << endl;
     printFamilies(sortFamilies(famMap));
-
+    printf("\n");
     list <string> :: iterator it;
     for(it = errorStatements.begin(); it !=errorStatements.end(); ++it){
         cout << *it << endl;

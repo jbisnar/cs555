@@ -119,7 +119,7 @@ void printFamilies(list<string> idList){
         << endl;
     cout << endl;
     
-    list<string>:: iterator nextID; 
+    list<string>:: iterator nextID;
     for (nextID = idList.begin(); nextID != idList.end(); nextID++){
         family itr = famMap.at(*nextID); 
         cout << setw(maxIDLength+1) << *nextID << " |" 
@@ -227,6 +227,7 @@ void store(string level, string tag, string args){
         }
         family ftemp = {"N/A", "N/A", "N/A", "N/A", {}};
         curFam = ftemp;
+        uniqueFamID(args, famMap);
         curIDFam = args;
         if(args.length() > maxIDLength){
             maxIDLength =  args.length();
