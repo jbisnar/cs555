@@ -211,7 +211,7 @@
 1 DIV
 2 DATE 28 DEC 1993
 1 _CURRENT N
-0 Note ***************US02***************
+0 Note ***************US03***************
 0 US03_1 INDI
 1 NAME Miss Carriage
 2 GIVN Miss
@@ -244,5 +244,64 @@
 2 DATE 10 SEP 1989
 1 DEAT Y
 2 DATE 20 JAN 1989
-0 Note *************End US02*************
+0 Note *************End US03*************
+0 Note ***************US02***************
+0 US02_1 INDI
+1 NAME Notborne Yet
+2 GIVN Notborne
+2 SURN Yet
+1 BIRT
+2 DATE 1 JUN 1993
+1 FAMS US02_F1
+0 US02_2 INDI
+1 NAME Super Pedophile
+2 GIVN Super
+2 SURN Pedophile
+1 BIRT
+2 DATE 3 AUG 1967
+1 FAMS US02_F1
+0 US02_F1 FAM
+1 HUSB US02_2
+1 WIFE US02_1
+1 MARR
+2 DATE 22 APR 1993
+0 US02_3 INDI
+1 NAME Child Marriage
+2 GIVN Child
+2 SURN Marriage
+1 BIRT
+2 DATE 1 JUN 1993
+1 FAMS US02_F2
+0 US02_4 INDI
+1 NAME Normal Pedo
+2 GIVN Normal
+2 SURN Pedo
+1 BIRT
+2 DATE 3 AUG 1967
+1 FAMS US02_F2
+0 US02_F2 FAM
+1 HUSB US02_3
+1 WIFE US02_4
+1 MARR
+2 DATE 22 APR 1994
+0 US02_5 INDI
+1 NAME Time Traveler
+2 GIVN Time
+2 SURN Traveler
+1 BIRT
+2 DATE 1 JUN 1993
+1 FAMS US02_F1
+0 US02_6 INDI
+1 NAME Ambiguous Legality
+2 GIVN Ambiguous
+2 SURN Legality
+1 BIRT
+2 DATE 3 AUG 1967
+1 FAMS US02_F1
+0 US02_F3 FAM
+1 HUSB US02_5
+1 WIFE US02_6
+1 MARR
+2 DATE 22 APR 1993
+0 Note *************End US03*************
 0 TRLR

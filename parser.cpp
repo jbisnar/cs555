@@ -37,6 +37,7 @@ int maxNameLength = 4;
 // Variables for user stories
 int birthline = 0;
 int deathline = 0;
+int marryline = 0;
 
 /* Turn the date from the gedcom file into all numbers */
 string improveDate(string inputDate){
@@ -190,6 +191,7 @@ void finalStore(){
         indiMap[curIDInd.c_str()] = curIndi;
     }
     if(strcmp(curFam.married.c_str(), "") != 0){
+    	BirthB4Marriage(curFam, marryline);
         famMap[curIDFam.c_str()] = curFam;
     }
     
@@ -229,6 +231,7 @@ void store(string level, string tag, string args){
         curIndi.SID.push_back(args);
     }else if(strcmp(tag.c_str(), "FAM") == 0){
         if(strcmp(curFam.married.c_str(), "") != 0){
+        	BirthB4Marriage(curFam, marryline);
             famMap[curIDFam.c_str()] = curFam;
         }
         family ftemp = {"N/A", "N/A", "N/A", "N/A", {}};
@@ -239,6 +242,7 @@ void store(string level, string tag, string args){
             maxIDLength =  args.length();
         }
     }else if(strcmp(tag.c_str(), "MARR") == 0){
+    	marryline = lineNumber;
         curTag = tag.c_str();
     }else if(strcmp(tag.c_str(), "HUSB") == 0){
         curFam.husbandID = args.c_str(); 

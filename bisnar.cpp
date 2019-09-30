@@ -40,6 +40,26 @@ bool BirthB4Death (individual person, int birthline, int deathline) {
 	return true;
 }
 
-bool BirthB4Marriage (time_t marrydate, time_t currentdate) {
-	return false;
+bool BirthB4Marriage (family fam, int marryline) {
+	printf ("BB4M Checkpoint 0\n");
+	printf ("Family marryline is %d\n", marryline);
+	printf ("Husband exists with husbandID %s\n",fam.husbandID.c_str());
+	printf ("Wife exists with wifeID %s\n",fam.wifeID.c_str());
+	//printf ("Ordered pair exists %s\n",indiMap.find(fam.husbandID).c_str());
+	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
+		printf ("BB4M Checkpoint 1\n");
+	
+		if ( strcmp(indiMap.find(fam.husbandID)->second.birthday.c_str(), fam.married.c_str()) > 0
+		|| strcmp(indiMap.find(fam.wifeID)->second.birthday.c_str(), fam.married.c_str()) > 0) {
+			printf ("BB4M Checkpoint 1\n");
+			errorStatements.push_back("ERROR: FAMILY: US02: line "
+			+ to_string(marryline) +": "
+			+ "Marry date is before someone's birthday"); 
+			return false;
+			return false;
+			printf ("BB4M Checkpoint 2\n");
+		}
+	}
+	printf ("BB4M Checkpoint 3\n");
+	return true;
 }

@@ -9,6 +9,6 @@ using namespace std;
 
 bool BirthB4Death (individual person, int birthline, int deathline);
 
-//bool BirthB4Marriage (time_t marrydate, time_t currentdate);
+bool BirthB4Marriage (family fam, int marryline);
 
 #endif
