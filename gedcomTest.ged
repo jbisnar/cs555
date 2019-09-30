@@ -211,4 +211,38 @@
 1 DIV
 2 DATE 28 DEC 1993
 1 _CURRENT N
+0 Note ***************US02***************
+0 US03_1 INDI
+1 NAME Miss Carriage
+2 GIVN Miss
+2 SURN Carriage
+1 BIRT
+2 DATE 1 MAY 1989
+1 DEAT Y
+2 DATE 13 JAN 1989
+0 US03_2 INDI
+1 NAME Valid Birth
+2 GIVN Valid
+2 SURN Birth
+1 BIRT
+2 DATE 1 MAY 1989
+1 DEAT Y
+2 DATE 2 MAY 1989
+0 US03_3 INDI
+1 NAME Short Lived
+2 GIVN Short
+2 SURN Lived
+1 BIRT
+2 DATE 1 MAY 1989
+1 DEAT Y
+2 DATE 1 MAY 1989
+0 US03_4 INDI
+1 NAME Abe Bortion
+2 GIVN Abraham
+2 SURN Bortion
+1 BIRT
+2 DATE 10 SEP 1989
+1 DEAT Y
+2 DATE 20 JAN 1989
+0 Note *************End US02*************
 0 TRLR

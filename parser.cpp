@@ -34,6 +34,10 @@ unordered_map<string, family> famMap;
 int maxIDLength = 12;
 int maxNameLength = 4;
 
+// Variables for user stories
+int birthline = 0;
+int deathline = 0;
+
 /* Turn the date from the gedcom file into all numbers */
 string improveDate(string inputDate){
 
@@ -182,6 +186,7 @@ void printIndividuals(list<string> idList){
 void finalStore(){
     
     if(strcmp(curIndi.name.c_str(), "") != 0){
+    	BirthB4Death(curIndi, birthline, deathline);
         indiMap[curIDInd.c_str()] = curIndi;
     }
     if(strcmp(curFam.married.c_str(), "") != 0){
@@ -196,6 +201,7 @@ void store(string level, string tag, string args){
     
     if(strcmp(tag.c_str(), "INDI") == 0){
         if(strcmp(curIndi.name.c_str(), "") != 0){
+        	BirthB4Death(curIndi, birthline, deathline);
             indiMap[curIDInd.c_str()] = curIndi;
         }
         individual temp = {"N/A", '\0', "N/A", true, "N/A", {}, "N/A"};
@@ -245,8 +251,10 @@ void store(string level, string tag, string args){
     }else if(strcmp(tag.c_str(), "DATE") == 0){
         if(strcmp(curTag.c_str(), "BIRT") == 0){
             curIndi.birthday = improveDate(args.c_str());
+            birthline = lineNumber;
         }else if(strcmp(curTag.c_str(), "DEAT") == 0){
             curIndi.death = improveDate(args.c_str());
+            deathline = lineNumber;
         }else if(strcmp(curTag.c_str(), "DIV") == 0){
             curFam.divorced = improveDate(args.c_str());
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
