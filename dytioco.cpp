@@ -126,10 +126,11 @@ bool marriageAfter14(individual person, int birthline, int marryline){
 bool notOlderThan150(individual person, int birthline){
 	struct tm birth = String2Date(person.birthday);
 	struct tm currentTimeStruct;
+	struct tm* tmPointer = &currentTimeStruct;
 	time_t currentTime;
 	time(&currentTime); // sets currentTime to the current time
 	
-	currentTimeStruct = localtime(&currentTime); // sets the current time to a tm struct
+	tmPointer = gmtime(&currentTime); // tm* tmPointer now has the tm values of time_t currentTime
 	
 	int deltaDay = currentTime.tm_mday - birth.tm_mday;
 	int deltaMonth = currentTime.tm_mon - birth.tm_mon;
