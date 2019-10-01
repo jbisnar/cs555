@@ -31,6 +31,10 @@ time_t String2Date (string sdate) {
 */
 
 bool BirthB4Death (individual person, int birthline, int deathline) {
+	if (strcmp(person.death.c_str(), "") == 0) {
+		//printf ("This mf still alive");
+		return true;
+	}
 	if ( strcmp(person.birthday.c_str(), person.death.c_str()) > 0) {
 		errorStatements.push_back("ERROR: INDIVIDUAL: US03: lines "
 		+ to_string(birthline) + " and " + to_string(deathline) + ": "

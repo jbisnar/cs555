@@ -7,6 +7,7 @@
 
 #include "globals.h"
 #include "monaco.h"
+#include "bisnar.h"
 #include "parser.h"
 
 int failed = 0;
@@ -65,9 +66,106 @@ printf(errorStatements.front().c_str());
     return;
 }
 
+void US03_01() {
+	printf("Starting Test US03-01: ");
+	individual born;
+	born.birthday = "2012-04-29";
+	born.death = "2049-07-22";
+	if (BirthB4Death(born, 0, 0)) {
+		printf("PASSED\n");
+	} else {
+		failed++;
+        printf("FAILED\n");
+	}
+}
+
+void US03_02() {
+	printf("Starting Test US03-02: ");
+	individual unborn;
+	unborn.birthday = "2012-04-29";
+	unborn.death = "2010-07-22";
+	if (BirthB4Death(unborn, 0, 0)) {
+		failed++;
+        printf("FAILED\n");
+	} else {
+		printf("PASSED\n");
+	}
+}
+
+void US03_03() {
+	printf("Starting Test US03-03: ");
+	individual alive;
+	alive.birthday = "2012-04-29";
+	//printf("birthday string: %s\n", alive.birthday.c_str());
+	//printf("death string: %s\n", alive.death.c_str());
+	if (BirthB4Death(alive, 0, 0)) {
+		printf("PASSED\n");
+	} else {
+		failed++;
+        printf("FAILED\n");
+	}
+}
+
+void US03_04() {
+	printf("Starting Test US03-04: ");
+	individual stillborn;
+	stillborn.birthday = "2012-04-29";
+	stillborn.death = "2012-04-29";
+	if (BirthB4Death(stillborn, 0, 0)) {
+		printf("PASSED\n");
+	} else {
+		failed++;
+        printf("FAILED\n");
+	}
+}
+
+void US02_01() {
+	printf("Starting Test US02-01: ");
+	individual fetus;
+	fetus.birthday = "2000-06-09";
+	individual pedo;
+	indiMap.insert({"TEST02-c", fetus});
+	indiMap.insert({"TEST02-a", pedo});
+	family illegal;
+	illegal.married = "1999-09-09";
+	illegal.husbandID = "TEST02-a";
+	illegal.wifeID = "TEST02-c";
+	if (BirthB4Marriage(illegal, 0)) {
+		failed++;
+        printf("FAILED\n");
+    } else {
+    	printf("PASSED\n");
+	}
+}
+
+void US02_02() {
+	printf("Starting Test US02-02: ");
+	individual born;
+	born.birthday = "2000-06-09";
+	individual pedo;
+	indiMap.insert({"TEST02-c", born});
+	indiMap.insert({"TEST02-a", pedo});
+	family illegal;
+	illegal.married = "20099-09-09";
+	illegal.husbandID = "TEST02-a";
+	illegal.wifeID = "TEST02-c";
+	if (BirthB4Marriage(illegal, 0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
+
 int main(int argc, char** argv) {
     US2201();
     US2202();
     US4001();
+    US03_01();
+    US03_02();
+    US03_03();
+    US03_04();
+    US02_01();
+    US02_02();
     printf("%i Tests Failed\n", failed);
 }
