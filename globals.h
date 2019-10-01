@@ -14,9 +14,12 @@ using namespace std;
 struct individual{
     string name;
     char gender;
-    string birthday;
     bool alive;
+	string birthday;
     string death;
+	bool married;		// added for US07
+	string marriage;
+	string divorced;
     list<string> SID;
     string CID;
 };

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <string.h>
+#include <string>
 
 #include "globals.h"
 #include "monaco.h"
@@ -45,6 +46,7 @@ void US2202(){
     return;
 }
 
+
 void US4001(){
     printf("Starting Test US40-01: ");
 
@@ -65,6 +67,8 @@ printf(errorStatements.front().c_str());
     indiMap.clear();
     return;
 }
+
+
 
 void US03_01() {
 	printf("Starting Test US03-01: ");
@@ -157,6 +161,30 @@ void US02_02() {
 	}
 }
 
+/* US07: Less than 150 years old */
+void US0701()){
+	unordered_map<string, individual> indiList;
+    indiList["US0701"] = {"", '\0', "N/A", true, "N/A", {}, "N/A"};
+    string key = "US0701";
+
+    if(notOlderThan150(/*invid, birthline*/) != true){ // in dytioco.cpp, return false is when there's an error.
+        failed++;
+        printf("FAIL: US0701\n");
+    }
+}
+
+/* US10: Marriage after 14 years old */
+void US1001()){
+	unordered_map<string, individual> indiList;
+    indiList["US1001"] = {"", '\0', "N/A", true, "N/A", {}, "N/A"};
+    string key = "US1001";
+
+    if(marriageAfter14(/*indiv, birthline, marriageline*/) != true){
+        failed++;
+        printf("FAIL: US1001\n");
+    }
+}
+
 int main(int argc, char** argv) {
     US2201();
     US2202();
@@ -167,5 +195,7 @@ int main(int argc, char** argv) {
     US03_04();
     US02_01();
     US02_02();
+	US0701();
+	US1001();
     printf("%i Tests Failed\n", failed);
 }
