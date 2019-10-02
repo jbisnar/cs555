@@ -9,6 +9,7 @@
 #include "globals.h"
 #include "monaco.h"
 #include "bisnar.h"
+#include "dytioco.h"
 #include "parser.h"
 
 int failed = 0;
@@ -162,27 +163,42 @@ void US02_02() {
 }
 
 /* US07: Less than 150 years old */
-void US0701()){
-	unordered_map<string, individual> indiList;
-    indiList["US0701"] = {"", '\0', "N/A", true, "N/A", {}, "N/A"};
-    string key = "US0701";
-
-    if(notOlderThan150(/*invid, birthline*/) != true){ // in dytioco.cpp, return false is when there's an error.
+void US0701(){
+	printf("Starting Test US07-01: ");
+	individual tooOld;
+	tooOld.birthday = "1850-10-05";
+	
+	int testLine = 0;
+	
+    if(notOlderThan150(tooOld, testLine) != true){ // in dytioco.cpp, return false is when there's an error.
         failed++;
-        printf("FAIL: US0701\n");
+        printf("FAILED\n");
     }
+	else
+		printf("PASS\n");
 }
 
 /* US10: Marriage after 14 years old */
-void US1001()){
-	unordered_map<string, individual> indiList;
-    indiList["US1001"] = {"", '\0', "N/A", true, "N/A", {}, "N/A"};
-    string key = "US1001";
+void US1001(){
+	printf("Starting Test US10-01: ");
+	individual tooYoung;
+	tooYoung.birthday = "2000-02-03";
+	individual everyoneIsAPedo;
+	everyoneIsAPedo.birthday = "1970-01-01";
+	
+	family alsoQuiteIllegal;
+	alsoQuiteIllegal.married = "2012-09-09";
+	alsoQuiteIllegal.wifeID = "TEST02-a";
+	alsoQuiteIllegal.husbandID = "TEST02-b";
+	
+	int testLine = 0;
 
-    if(marriageAfter14(/*indiv, birthline, marriageline*/) != true){
+    if(marriageAfter14(tooYoung, alsoQuiteIllegal, testLine) != true){
         failed++;
-        printf("FAIL: US1001\n");
+        printf("FAILED\n");
     }
+	else
+		printf("PASS\n");
 }
 
 int main(int argc, char** argv) {
