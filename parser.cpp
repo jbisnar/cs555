@@ -34,6 +34,11 @@ unordered_map<string, family> famMap;
 int maxIDLength = 12;
 int maxNameLength = 4;
 
+// Variables for user stories
+int birthline = 0;
+int deathline = 0;
+int marryline = 0;
+
 /* Turn the date from the gedcom file into all numbers */
 string improveDate(string inputDate){
 
@@ -119,7 +124,7 @@ void printFamilies(list<string> idList){
         << endl;
     cout << endl;
     
-    list<string>:: iterator nextID; 
+    list<string>:: iterator nextID;
     for (nextID = idList.begin(); nextID != idList.end(); nextID++){
         family itr = famMap.at(*nextID); 
         cout << setw(maxIDLength+1) << *nextID << " |" 
@@ -182,9 +187,11 @@ void printIndividuals(list<string> idList){
 void finalStore(){
     
     if(strcmp(curIndi.name.c_str(), "") != 0){
+    	BirthB4Death(curIndi, birthline, deathline);
         indiMap[curIDInd.c_str()] = curIndi;
     }
     if(strcmp(curFam.married.c_str(), "") != 0){
+    	BirthB4Marriage(curFam, marryline);
         famMap[curIDFam.c_str()] = curFam;
     }
     
@@ -196,6 +203,7 @@ void store(string level, string tag, string args){
     
     if(strcmp(tag.c_str(), "INDI") == 0){
         if(strcmp(curIndi.name.c_str(), "") != 0){
+        	BirthB4Death(curIndi, birthline, deathline);
             indiMap[curIDInd.c_str()] = curIndi;
         }
         individual temp = {"N/A", '\0', "N/A", true, "N/A", {}, "N/A"};
@@ -223,15 +231,18 @@ void store(string level, string tag, string args){
         curIndi.SID.push_back(args);
     }else if(strcmp(tag.c_str(), "FAM") == 0){
         if(strcmp(curFam.married.c_str(), "") != 0){
+        	BirthB4Marriage(curFam, marryline);
             famMap[curIDFam.c_str()] = curFam;
         }
         family ftemp = {"N/A", "N/A", "N/A", "N/A", {}};
         curFam = ftemp;
+        uniqueFamID(args, famMap);
         curIDFam = args;
         if(args.length() > maxIDLength){
             maxIDLength =  args.length();
         }
     }else if(strcmp(tag.c_str(), "MARR") == 0){
+    	marryline = lineNumber;
         curTag = tag.c_str();
     }else if(strcmp(tag.c_str(), "HUSB") == 0){
         curFam.husbandID = args.c_str(); 
@@ -244,8 +255,10 @@ void store(string level, string tag, string args){
     }else if(strcmp(tag.c_str(), "DATE") == 0){
         if(strcmp(curTag.c_str(), "BIRT") == 0){
             curIndi.birthday = improveDate(args.c_str());
+            birthline = lineNumber;
         }else if(strcmp(curTag.c_str(), "DEAT") == 0){
             curIndi.death = improveDate(args.c_str());
+            deathline = lineNumber;
         }else if(strcmp(curTag.c_str(), "DIV") == 0){
             curFam.divorced = improveDate(args.c_str());
         }else if(strcmp(curTag.c_str(), "MARR") == 0){

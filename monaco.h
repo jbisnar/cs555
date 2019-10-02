@@ -7,7 +7,9 @@
 
 using namespace std;
 
+
 bool uniqueID(string key, unordered_map<string, individual> indis);
 
+bool uniqueFamID(string key, unordered_map<string, family> indis);
 
 #endif
