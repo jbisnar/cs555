@@ -4,10 +4,12 @@
 #include <iostream>
 #include <list>
 #include <string.h>
+#include <string>
 
 #include "globals.h"
 #include "monaco.h"
 #include "bisnar.h"
+#include "dytioco.h"
 #include "parser.h"
 
 int failed = 0;
@@ -45,6 +47,7 @@ void US2202(){
     return;
 }
 
+
 void US4001(){
     printf("Starting Test US40-01: ");
 
@@ -65,6 +68,8 @@ printf(errorStatements.front().c_str());
     indiMap.clear();
     return;
 }
+
+
 
 void US03_01() {
 	printf("Starting Test US03-01: ");
@@ -157,6 +162,45 @@ void US02_02() {
 	}
 }
 
+/* US07: Less than 150 years old */
+void US0701(){
+	printf("Starting Test US07-01: ");
+	individual tooOld;
+	tooOld.birthday = "1950-10-05";
+	
+	int testLine = 0;
+	
+    if(notOlderThan150(tooOld, testLine) != true){ // in dytioco.cpp, return false is when there's an error.
+        failed++;
+        printf("FAILED\n");
+    }
+	else
+		printf("PASSED\n");
+}
+
+/* US10: Marriage after 14 years old */
+void US1001(){
+	printf("Starting Test US10-01: ");
+	individual tooYoung;
+	tooYoung.birthday = "2000-02-03";
+	individual everyoneIsAPedo;
+	everyoneIsAPedo.birthday = "1970-01-01";
+	
+	family alsoQuiteIllegal;
+	alsoQuiteIllegal.married = "2014-02-03";
+	alsoQuiteIllegal.wifeID = "TEST02-a";
+	alsoQuiteIllegal.husbandID = "TEST02-b";
+	
+	int testLine = 0;
+
+    if(marriageAfter14(tooYoung, alsoQuiteIllegal, testLine) != true){
+        failed++;
+        printf("FAILED\n");
+    }
+	else
+		printf("PASSED\n");
+}
+
 int main(int argc, char** argv) {
     US2201();
     US2202();
@@ -167,5 +211,7 @@ int main(int argc, char** argv) {
     US03_04();
     US02_01();
     US02_02();
+	US0701();
+	US1001();
     printf("%i Tests Failed\n", failed);
 }

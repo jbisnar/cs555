@@ -7,8 +7,8 @@
 
 using namespace std;
 
-bool marriageAfter14(individual person, int birthline, int deathline);
-bool notOlderThan150(individual person, int birthline, int deathline);
+bool marriageAfter14(individual person, family fam, int marryline);
+bool notOlderThan150(individual person, int birthline);
 
 
 #endif
