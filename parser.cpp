@@ -260,10 +260,8 @@ void store(string level, string tag, string args){
             curIndi.death = improveDate(args.c_str());
             deathline = lineNumber;
         }else if(strcmp(curTag.c_str(), "DIV") == 0){
-			curIndi.divorced = improveDate(args.c_str());
             curFam.divorced = improveDate(args.c_str());
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
-			curIndi.married = improveDate(args.c_str());
             curFam.married = improveDate(args.c_str());
 			marryline = lineNumber;
         }
