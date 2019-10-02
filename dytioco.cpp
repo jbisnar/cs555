@@ -15,49 +15,6 @@
 
 using namespace std;
 
-/* Turn the date from the gedcom file into a string of numbers and dashes */
-// input:	23 FEB 1958
-// return:	1958-02-23
-string improveDate(string inputDate){
-
-    string day = inputDate.substr(0, inputDate.find_first_of(" "));
-    inputDate = inputDate.substr(inputDate.find_first_of(" ") + 1);
-    
-    string month = inputDate.substr(0, inputDate.find_first_of(" "));
-    inputDate = inputDate.substr(inputDate.find_first_of(" ") + 1);
-
-    if(day.length() == 1){
-        day = "0" + day;
-    }
-    
-    if(strcmp(month.c_str(), "JAN") == 0){
-        month = "01";
-    }else if(strcmp(month.c_str(), "FEB") == 0){
-        month = "02";
-    }else if(strcmp(month.c_str(), "MAR") == 0){
-        month = "03";
-    }else if(strcmp(month.c_str(), "APR") == 0){
-        month = "04";
-    }else if(strcmp(month.c_str(), "MAY") == 0){
-        month = "05";
-    }else if(strcmp(month.c_str(), "JUN") == 0){
-        month = "06";
-    }else if(strcmp(month.c_str(), "JUL") == 0){
-        month = "07";
-    }else if(strcmp(month.c_str(), "AUG") == 0){
-        month = "08";
-    }else if(strcmp(month.c_str(), "SEP") == 0){
-        month = "09";
-    }else if(strcmp(month.c_str(), "OCT") == 0){
-        month = "10";
-    }else if(strcmp(month.c_str(), "NOV") == 0){
-        month = "11";
-    }else if(strcmp(month.c_str(), "DEC") == 0){
-        month = "12";
-    }
-    return inputDate + "-" + month + "-" + day;
-}
-
 // developed by Jared Bisnar and Ethan DyTioco
 // input: 1958-02-23
 // return: struct tm
@@ -98,17 +55,14 @@ struct tm String2Date (string sdate) {
 	return givendate;
 }
 
-bool marriageAfter14(individual person, int birthline, int marryline){
+bool marriageAfter14(individual person, family fam, int marryline){
 	struct tm birth = String2Date(person.birthday);
-	struct tm marriage = String2Date(person.marriage);
+	struct tm marriage = String2Date(fam.married);
 	
 	int deltaDay = marriage.tm_mday - birth.tm_mday;
 	int deltaMonth = marriage.tm_mon - birth.tm_mon;
 	int deltaYear = marriage.tm_year - birth.tm_year;
 	
-	
-	// test for birth: Feb 12, 2000
-	//			marriage: Feb 11, 2014 << that's like, 13.99 years
 	if (deltaDay < 0)
 		deltaMonth--;
 	if (deltaMonth < 0)
@@ -116,8 +70,8 @@ bool marriageAfter14(individual person, int birthline, int marryline){
 		
 	
     if (deltaYear < 14){
-        errorStatements.push_back("ERROR: INDIVIDUAL: US07: " + to_string(marryline) + ": " + key.c_str() + 
-                ": The person is married before 14 years of age, which is illegal in the US."); 
+        errorStatements.push_back("ERROR: INDIVIDUAL: US07: line " + to_string(marryline) + ": this marriage line means that " +  person.name + 
+                " is married before 14 years of age, which is illegal in the US."); 
         return false;
     }
     return true;
@@ -125,27 +79,27 @@ bool marriageAfter14(individual person, int birthline, int marryline){
 
 bool notOlderThan150(individual person, int birthline){
 	struct tm birth = String2Date(person.birthday);
-	struct tm currentTimeStruct;
-	struct tm* tmPointer = &currentTimeStruct;
-	time_t currentTime;
-	time(&currentTime); // sets currentTime to the current time
 	
-	tmPointer = gmtime(&currentTime); // tm* tmPointer now has the tm values of time_t currentTime
+	time_t rawTime;
+	struct tm rawTimeStruct;
+	struct tm* tmPointer = &rawTimeStruct;
 	
-	int deltaDay = currentTime.tm_mday - birth.tm_mday;
-	int deltaMonth = currentTime.tm_mon - birth.tm_mon;
-	int deltaYear = currentTime.tm_year - birth.tm_year;
 	
+	time(&rawTime); // sets rawTime to the current time when this compiles
+	
+	tmPointer = localtime(&rawTime); // tm* tmPointer now has the tm values of time_t currentTime
+	
+	int deltaDay = tmPointer->tm_mday - birth.tm_mday;
+	int deltaMonth = tmPointer->tm_mon - birth.tm_mon + 1;
+	int deltaYear = tmPointer->tm_year - birth.tm_year + 1900;
 	
 	if (deltaDay < 0)
 		deltaMonth--;
 	if (deltaMonth < 0)
 		deltaYear--;
-	
-	
     if (deltaYear > 150){
-        errorStatements.push_back("ERROR: INDIVIDUAL: US10: " + to_string(birthline) + ": " + key.c_str() + 
-                ": The person is listed as being older than 150 years old, which today is highly improbable."); 
+        errorStatements.push_back("ERROR: INDIVIDUAL: US10: " + to_string(birthline) + ": " +  person.name + 
+                " is listed as being older than 150 years old, which today is highly improbable."); 
         return false;
     }
     return true;
