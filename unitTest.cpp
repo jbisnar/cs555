@@ -166,7 +166,7 @@ void US02_02() {
 void US0701(){
 	printf("Starting Test US07-01: ");
 	individual tooOld;
-	tooOld.birthday = "1850-10-05";
+	tooOld.birthday = "1950-10-05";
 	
 	int testLine = 0;
 	
@@ -175,7 +175,7 @@ void US0701(){
         printf("FAILED\n");
     }
 	else
-		printf("PASS\n");
+		printf("PASSED\n");
 }
 
 /* US10: Marriage after 14 years old */
@@ -187,7 +187,7 @@ void US1001(){
 	everyoneIsAPedo.birthday = "1970-01-01";
 	
 	family alsoQuiteIllegal;
-	alsoQuiteIllegal.married = "2012-09-09";
+	alsoQuiteIllegal.married = "2014-02-03";
 	alsoQuiteIllegal.wifeID = "TEST02-a";
 	alsoQuiteIllegal.husbandID = "TEST02-b";
 	
@@ -198,7 +198,7 @@ void US1001(){
         printf("FAILED\n");
     }
 	else
-		printf("PASS\n");
+		printf("PASSED\n");
 }
 
 int main(int argc, char** argv) {
