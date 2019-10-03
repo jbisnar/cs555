@@ -36,8 +36,8 @@ bool BirthB4Death (individual person, int birthline, int deathline) {
 		return true;
 	}
 	if ( strcmp(person.birthday.c_str(), person.death.c_str()) > 0) {
-		errorStatements.push_back("ERROR: INDIVIDUAL: US03: lines "
-		+ to_string(birthline) + " and " + to_string(deathline) + ": "
+		errorStatements.push_back("ERROR: INDIVIDUAL: US03: "
+		+ to_string(birthline) + ", " + to_string(deathline) + ": "
 		+ person.name + "'s death date is before their birth date"); 
 		return false;
 	}
@@ -57,7 +57,7 @@ bool BirthB4Marriage (family fam, int marryline) {
 		if ( strcmp(indiMap.find(fam.husbandID)->second.birthday.c_str(), fam.married.c_str()) > 0
 		|| strcmp(indiMap.find(fam.wifeID)->second.birthday.c_str(), fam.married.c_str()) > 0) {
 			//printf ("BB4M Checkpoint 1\n");
-			errorStatements.push_back("ERROR: FAMILY: US02: line "
+			errorStatements.push_back("ERROR: FAMILY:     US02: "
 			+ to_string(marryline) +": "
 			+ "Marry date is before someone's birthday"); 
 			return false;

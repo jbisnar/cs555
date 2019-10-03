@@ -47,7 +47,7 @@ void US2202(){
     return;
 }
 
-
+/* US40: Print Line Numbers */
 void US4001(){
     printf("Starting Test US40-01: ");
 
@@ -57,8 +57,9 @@ void US4001(){
     parse("0 US-40-01 INDI");
     lineNumber = 3;
     if(strcmp(errorStatements.front().c_str(), 
-            "ERROR: INDIVIDUAL: US22: 3: US-40-01: ID already exists. May effect later results") != 0){
-printf(errorStatements.front().c_str());
+            "ERROR: INDIVIDUAL: US22: 3: US-40-01: ID already exists. May effect later results") 
+            != 0){
+        printf(errorStatements.front().c_str());
         failed++;
         printf("FAILED\n");
     }else{
@@ -68,8 +69,6 @@ printf(errorStatements.front().c_str());
     indiMap.clear();
     return;
 }
-
-
 
 void US03_01() {
 	printf("Starting Test US03-01: ");

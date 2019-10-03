@@ -70,7 +70,7 @@ bool marriageAfter14(individual person, family fam, int marryline){
 		
 	
     if (deltaYear < 14){
-        errorStatements.push_back("ERROR: INDIVIDUAL: US07: line " + to_string(marryline) + ": this marriage line means that " +  person.name + 
+        errorStatements.push_back("ERROR: INDIVIDUAL: US07: " + to_string(marryline) + ": this marriage line means that " +  person.name + 
                 " is married before 14 years of age, which is illegal in the US."); 
         return false;
     }

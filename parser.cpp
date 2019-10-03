@@ -256,7 +256,7 @@ void store(string level, string tag, string args){
         if(strcmp(curTag.c_str(), "BIRT") == 0){
             curIndi.birthday = improveDate(args.c_str());
             birthline = lineNumber;
-			notOlderThan150(curIndi, birthline);
+	    notOlderThan150(curIndi, birthline);
         }else if(strcmp(curTag.c_str(), "DEAT") == 0){
             curIndi.death = improveDate(args.c_str());
             deathline = lineNumber;
@@ -264,8 +264,8 @@ void store(string level, string tag, string args){
             curFam.divorced = improveDate(args.c_str());
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
             curFam.married = improveDate(args.c_str());
-			marryline = lineNumber;
-			marriageAfter14(curIndi, curFam, marryline);
+	    marryline = lineNumber;
+	    marriageAfter14(curIndi, curFam, marryline);
         }
     }
     
