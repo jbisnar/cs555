@@ -1,47 +1,52 @@
-           ID |                NAME | GENDER |   BIRTHDAY | ALIVE |      DEATH |        CHILD | SPOUSE
+           ID |                         NAME | GENDER |   BIRTHDAY | ALIVE |      DEATH |        CHILD | SPOUSE
 
-      I-22-01 |       Monica Geller |      F | 1964-06-15 |  True |        N/A |          N/A | {'F-22-01'}
-      I-22-02 |       Chandler Bing |      M | 1969-08-19 |  True |        N/A |          N/A | {'F-22-01'}
-          I01 |      Matthew Monaco |      M | 1998-10-13 |  True |        N/A |           F1 |
-          I02 |        Mario Monaco |      M | 1958-02-23 |  True |        N/A |          N/A | {'F1'}
-          I03 |      Debra D'Angelo |      F | 1964-12-25 |  True |        N/A |           F2 | {'F1'}
-          I04 |      Anthony Monaco |      M | 1994-05-09 |  True |        N/A |           F1 |
-          I05 |      Vincent Monaco |      M | 1995-09-12 |  True |        N/A |           F1 |
-          I06 |       John D'Angelo |      M | 1930-04-12 |  True |        N/A |          N/A | {'F2'} {'F3'}
-          I07 |   Concetta Iacovino |      F | 1924-05-18 | False | 2008-04-13 |          N/A | {'F2'}
-          I08 |     Laurie D'Angelo |      F | 1963-08-07 |  True |        N/A |           F2 |
-          I09 |       John D'Angelo |      M | 1959-03-17 |  True |        N/A |           F2 | {'F4'} {'F5'}
-          I10 |      Aspe Fritschie |      F | 1968-11-26 |  True |        N/A |          N/A | {'F4'}
-          I11 |     Fabbie Goldiger |      F | 1965-01-04 |  True |        N/A |          N/A | {'F5'}
-          I12 |       Mark D'Angelo |      M | 1992-05-23 |  True |        N/A |           F5 |
-          I13 | Alexandria D'Angelo |      F | 2002-06-10 |  True |        N/A |           F4 |
-          I14 |    Caroline Andrews |      F | 1935-09-16 |  True |        N/A |          N/A | {'F3'}
-       US02_1 |        Notborne Yet |       | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
-       US02_2 |     Super Pedophile |       | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
-       US02_3 |      Child Marriage |       | 1993-06-01 |  True |        N/A |          N/A | {'US02_F2'}
-       US02_4 |         Normal Pedo |       | 1967-08-03 |  True |        N/A |          N/A | {'US02_F2'}
-       US02_5 |       Time Traveler |       | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
-       US02_6 |  Ambiguous Legality |       | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
-       US03_1 |       Miss Carriage |       | 1989-05-01 | False | 1989-01-13 |          N/A |
-       US03_2 |         Valid Birth |       | 1989-05-01 | False | 1989-05-02 |          N/A |
-       US03_3 |         Short Lived |       | 1989-05-01 | False | 1989-05-01 |          N/A |
-       US03_4 |         Abe Bortion |       | 1989-09-10 | False | 1989-01-20 |          N/A |
+      I-22-01 |                Monica Geller |      F | 1964-06-15 |  True |        N/A |          N/A | {'F-22-01'}
+      I-22-02 |                Chandler Bing |      M | 1969-08-19 |  True |        N/A |          N/A | {'F-22-01'}
+          I01 |               Matthew Monaco |      M | 1998-10-13 |  True |        N/A |           F1 |
+          I02 |                 Mario Monaco |      M | 1958-02-23 |  True |        N/A |          N/A | {'F1'}
+          I03 |               Debra D'Angelo |      F | 1964-12-25 |  True |        N/A |           F2 | {'F1'}
+          I04 |               Anthony Monaco |      M | 1994-05-09 |  True |        N/A |           F1 |
+          I05 |               Vincent Monaco |      M | 1995-09-12 |  True |        N/A |           F1 |
+          I06 |                John D'Angelo |      M | 1930-04-12 |  True |        N/A |          N/A | {'F2'} {'F3'}
+          I07 |            Concetta Iacovino |      F | 1924-05-18 | False | 2008-04-13 |          N/A | {'F2'}
+          I08 |              Laurie D'Angelo |      F | 1963-08-07 |  True |        N/A |           F2 |
+          I09 |                John D'Angelo |      M | 1959-03-17 |  True |        N/A |           F2 | {'F4'} {'F5'}
+          I10 |               Aspe Fritschie |      F | 1968-11-26 |  True |        N/A |          N/A | {'F4'}
+          I11 |              Fabbie Goldiger |      F | 1965-01-04 |  True |        N/A |          N/A | {'F5'}
+          I12 |                Mark D'Angelo |      M | 1992-05-23 |  True |        N/A |           F5 |
+          I13 |          Alexandria D'Angelo |      F | 2002-06-10 |  True |        N/A |           F4 |
+          I14 |             Caroline Andrews |      F | 1935-09-16 |  True |        N/A |          N/A | {'F3'}
+       US02_1 |                 Notborne Yet |       | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_2 |              Super Pedophile |       | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_3 |               Child Marriage |       | 1993-06-01 |  True |        N/A |          N/A | {'US02_F2'}
+       US02_4 |                  Normal Pedo |       | 1967-08-03 |  True |        N/A |          N/A | {'US02_F2'}
+       US02_5 |                Time Traveler |       | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_6 |           Ambiguous Legality |       | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
+       US03_1 |                Miss Carriage |       | 1989-05-01 | False | 1989-01-13 |          N/A |
+       US03_2 |                  Valid Birth |       | 1989-05-01 | False | 1989-05-02 |          N/A |
+       US03_3 |                  Short Lived |       | 1989-05-01 | False | 1989-05-01 |          N/A |
+       US03_4 |                  Abe Bortion |       | 1989-09-10 | False | 1989-01-20 |          N/A |
+     US_07_01 | IHaveSurpassed OneFittyYears |       | 1859-10-01 |  True |        N/A |          N/A |
+     US_10_01 |          IMarried AtFourteen |       | 2000-02-05 |  True |        N/A |          N/A | {'US10_F1'}
+     US_10_02 |             EveryoneIs APedo |       | 1980-02-05 |  True |        N/A |          N/A | {'US10_F1'}
 
-           ID |    MARRIED |   DIVORCED |   HUSBAND ID |        HUSBAND NAME |      WIFE ID |           WIFE NAME | CHILDREN
+           ID |    MARRIED |   DIVORCED |   HUSBAND ID |                 HUSBAND NAME |      WIFE ID |                    WIFE NAME | CHILDREN
 
-      F-22-01 |        N/A |        N/A |      I-22-02 |       Chandler Bing |      I-22-01 |       Monica Geller |
-           F1 | 1991-10-26 |        N/A |          I02 |        Mario Monaco |          I03 |      Debra D'Angelo | {'I01'} {'I04'} {'I05'}
-           F2 | 1957-07-01 |        N/A |          I06 |       John D'Angelo |          I07 |   Concetta Iacovino | {'I03'} {'I08'} {'I09'}
-           F3 | 2014-11-15 |        N/A |          I06 |       John D'Angelo |          I14 |    Caroline Andrews |
-           F4 | 1999-03-09 |        N/A |          I09 |       John D'Angelo |          I10 |      Aspe Fritschie | {'I13'}
-           F5 | 1989-02-10 | 1993-12-28 |          I09 |       John D'Angelo |          I11 |     Fabbie Goldiger | {'I12'}
-      US02_F1 | 1993-04-22 |        N/A |       US02_2 |     Super Pedophile |       US02_1 |        Notborne Yet |
-      US02_F2 | 1994-04-22 |        N/A |       US02_3 |      Child Marriage |       US02_4 |         Normal Pedo |
-      US02_F3 | 1993-04-22 |        N/A |       US02_5 |       Time Traveler |       US02_6 |  Ambiguous Legality |
+      F-22-01 |        N/A |        N/A |      I-22-02 |                Chandler Bing |      I-22-01 |                Monica Geller |
+           F1 | 1991-10-26 |        N/A |          I02 |                 Mario Monaco |          I03 |               Debra D'Angelo | {'I01'} {'I04'} {'I05'}
+           F2 | 1957-07-01 |        N/A |          I06 |                John D'Angelo |          I07 |            Concetta Iacovino | {'I03'} {'I08'} {'I09'}
+           F3 | 2014-11-15 |        N/A |          I06 |                John D'Angelo |          I14 |             Caroline Andrews |
+           F4 | 1999-03-09 |        N/A |          I09 |                John D'Angelo |          I10 |               Aspe Fritschie | {'I13'}
+           F5 | 1989-02-10 | 1993-12-28 |          I09 |                John D'Angelo |          I11 |              Fabbie Goldiger | {'I12'}
+      US02_F1 | 1993-04-22 |        N/A |       US02_2 |              Super Pedophile |       US02_1 |                 Notborne Yet |
+      US02_F2 | 1994-04-22 |        N/A |       US02_3 |               Child Marriage |       US02_4 |                  Normal Pedo |
+      US02_F3 | 2014-02-03 |        N/A |       US02_5 |                Time Traveler |       US02_6 |           Ambiguous Legality |
+      US10_F1 | 2014-02-03 |        N/A |     US_10_02 |             EveryoneIs APedo |     US_10_01 |          IMarried AtFourteen |
 
 ERROR: INDIVIDUAL: US22: 21: I-22-01: ID already exists. May effect later results
 ERROR: FAMILY:     US22: 36: F-22-01: ID already exists. May effect later results
 ERROR: INDIVIDUAL: US03: lines 220 and 222: Miss Carriage's death date is before their birth date
 ERROR: INDIVIDUAL: US03: lines 244 and 246: Abe Bortion's death date is before their birth date
-ERROR: FAMILY: US02: line 266: Marry date is before someone's birthday
-ERROR: FAMILY: US02: line 304: Marry date is before someone's birthday
+ERROR: FAMILY: US02: line 267: Marry date is before someone's birthday
+ERROR: INDIVIDUAL: US10: 313: IHaveSurpassed OneFittyYears is listed as being older than 150 years old, which today is highly improbable.
+ERROR: INDIVIDUAL: US07: line 323: this marriage line means that IMarried AtFourteen is married before 14 years of age, which is illegal in the US.
