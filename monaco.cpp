@@ -50,3 +50,23 @@ list<string> getLivingMarried(unordered_map<string, family> fams,
 
     return livingMarried;
 }
+
+void correctGender(unordered_map<string, individual> indis, unordered_map<string, family> fams) {
+
+    unordered_map<string, family>:: iterator itr;
+    
+    for(itr = fams.begin(); itr != fams.end(); itr++){
+        if(indis.at(itr->second.husbandID).gender == 'F'){
+            errorStatements.push_back("ERROR: FAMILY:     US21: " + 
+                    to_string(itr->second.lineNumbers[2]) + ": " + itr->first.c_str() + 
+                    ": Husband is a female");
+        }
+        if(indis.at(itr->second.wifeID).gender == 'M'){
+            errorStatements.push_back("ERROR: FAMILY:     US21: " + 
+                    to_string(itr->second.lineNumbers[3]) + ": " + itr->first.c_str() + 
+                    ": Wife is a male");
+        }
+    }
+
+    return;
+}

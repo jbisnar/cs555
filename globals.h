@@ -19,6 +19,7 @@ struct individual{
     string death;
     list<string> SID;
     string CID;
+    int lineNumbers[6];
 };
 
 struct family{
@@ -27,6 +28,7 @@ struct family{
     string husbandID;
     string wifeID;
     list<string> children;
+    int lineNumbers[4];
 };
 
 /* Map of all families */

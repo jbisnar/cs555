@@ -14,19 +14,19 @@
 0 Note ***************US22***************
 0 I-22-01 INDI
 1 NAME Courtney Cox
-1 SEX F
+1 SEX M
 1 BIRT
 2 DATE 15 JUN 1963
 1 FAMS F-22-01
 0 I-22-01 INDI
 1 NAME Monica Geller
-1 SEX F
+1 SEX M
 1 BIRT
 2 DATE 15 JUN 1964
 1 FAMS F-22-01
 0 I-22-02 INDI
 1 NAME Chandler Bing
-1 SEX M
+1 SEX F
 1 BIRT
 2 DATE 19 AUG 1969
 1 FAMS F-22-01
@@ -216,6 +216,7 @@
 1 NAME Miss Carriage
 2 GIVN Miss
 2 SURN Carriage
+1 SEX F
 1 BIRT
 2 DATE 1 MAY 1989
 1 DEAT Y
@@ -224,6 +225,7 @@
 1 NAME Valid Birth
 2 GIVN Valid
 2 SURN Birth
+1 SEX M
 1 BIRT
 2 DATE 1 MAY 1989
 1 DEAT Y
@@ -232,6 +234,7 @@
 1 NAME Short Lived
 2 GIVN Short
 2 SURN Lived
+1 SEX F
 1 BIRT
 2 DATE 1 MAY 1989
 1 DEAT Y
@@ -240,6 +243,7 @@
 1 NAME Abe Bortion
 2 GIVN Abraham
 2 SURN Bortion
+1 SEX M
 1 BIRT
 2 DATE 10 SEP 1989
 1 DEAT Y
@@ -250,6 +254,7 @@
 1 NAME Notborne Yet
 2 GIVN Notborne
 2 SURN Yet
+1 SEX F
 1 BIRT
 2 DATE 1 JUN 1993
 1 FAMS US02_F1
@@ -257,6 +262,7 @@
 1 NAME Super Pedophile
 2 GIVN Super
 2 SURN Pedophile
+1 SEX M
 1 BIRT
 2 DATE 3 AUG 1967
 1 FAMS US02_F1
@@ -269,6 +275,7 @@
 1 NAME Child Marriage
 2 GIVN Child
 2 SURN Marriage
+1 SEX M
 1 BIRT
 2 DATE 1 JUN 1993
 1 FAMS US02_F2
@@ -276,6 +283,7 @@
 1 NAME Normal Pedo
 2 GIVN Normal
 2 SURN Pedo
+1 SEX F
 1 BIRT
 2 DATE 3 AUG 1967
 1 FAMS US02_F2
@@ -288,6 +296,7 @@
 1 NAME Time Traveler
 2 GIVN Time
 2 SURN Traveler
+1 SEX M
 1 BIRT
 2 DATE 1 JUN 1993
 1 FAMS US02_F1
@@ -295,6 +304,7 @@
 1 NAME Ambiguous Legality
 2 GIVN Ambiguous
 2 SURN Legality
+1 SEX F
 1 BIRT
 2 DATE 3 AUG 1967
 1 FAMS US02_F1
@@ -309,6 +319,7 @@
 1 NAME IHaveSurpassed OneFittyYears
 2 GIVN IHaveSurpassed
 2 SURN OneFittyYears
+1 SEX M
 1 BIRT
 2 DATE 1 OCT 1859
 0 Note *************End US07*************
@@ -317,6 +328,7 @@
 1 NAME IMarried AtFourteen
 2 GIVN IMarried
 2 SURN AtFourteen
+1 SEX F
 1 BIRT
 2 DATE 5 FEB 2000
 1 MARR
@@ -326,6 +338,7 @@
 1 NAME EveryoneIs APedo
 2 GIVN EveryoneIs
 2 SURN APedo
+1 SEX M
 1 BIRT
 2 DATE 5 FEB 1980
 1 MARR

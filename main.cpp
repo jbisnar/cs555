@@ -27,7 +27,9 @@ int main(int argc, char** argv) {
         lineNumber++;
     }
     finalStore();
-    
+   
+    correctGender(indiMap, famMap);
+
     printf("LIST OF ALL INDIVIDUALS:\n");
     printIndividuals(sortIndividuals(indiMap));
     printf("\n");

@@ -20,7 +20,7 @@ list <string> errorStatements;
 void US2201(){
     printf("Starting Test US22-01: ");
     unordered_map<string, individual> indiList;
-    indiList["US2201"] = {"", '\0', "N/A", true, "N/A", {}, "N/A"};
+    indiList["US2201"] = {"", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
     string key = "US2201";
 
     if(uniqueID(key, indiList) == true){
@@ -35,11 +35,11 @@ void US2201(){
 void US2202() {
     
     printf("Starting Test US22-02: ");
-    unordered_map<string, family> indiList;
-    indiList["US2201"] = {"", "N/A", "N/A", "N/A", {}};
+    unordered_map<string, family> fList;
+    fList["US2201"] = {"", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
     string key = "US2201";
 
-    if(uniqueFamID(key, indiList) == true){
+    if(uniqueFamID(key, fList) == true){
         failed++;
         printf("FAILED\n");
     }else{
@@ -73,15 +73,15 @@ void US4001() {
     return;
 }
 
+/* Print all Living Married Individuals */
 void US3001() {
 
     printf("Starting Test US30-01: ");
     unordered_map<string, family> famList;
-    famList["Test Family"] = {};
     unordered_map<string, individual> indiList;
-    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A"};
-    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A"};
-    famList["Family"] = {"", "N/A", "Husband", "Wife", {}};
+    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    famList["Family"] = {"", "N/A", "Husband", "Wife", {}, {0,0,0,0}};
     list<string> ids = getLivingMarried(famList, indiList);
     
     if(strcmp(ids.front().c_str(), "Husband") != 0){
@@ -107,14 +107,61 @@ void US3002() {
 
     printf("Starting Test US30-02: ");
     unordered_map<string, family> famList;
-    famList["Test Family"] = {};
     unordered_map<string, individual> indiList;
-    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A"};
-    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A"};
-    famList["Family"] = {"", "2000-01-01", "Husband", "Wife", {}};
+    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    famList["Family"] = {"", "2000-01-01", "Husband", "Wife", {}, {0,0,0,0}};
     list<string> ids = getLivingMarried(famList, indiList);
 
     if (!ids.empty()){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+
+}
+
+/* Every spouse is the correct gender */
+void US2101() {
+    printf("Starting Test US21-01: ");
+    errorStatements.clear();
+
+    unordered_map<string, family> famList;
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", 'F', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", 'F', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    famList["Family"] = {"", "2000-01-01", "Husband", "Wife", {}, {0,0,0,0}};
+    correctGender(indiList, famList);
+
+    if(strcmp(errorStatements.front().c_str(), 
+            "ERROR: FAMILY:     US21: 0: Family: Husband is a female") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+    
+    return;
+
+}
+
+void US2102() {
+
+    printf("Starting Test US21-02: ");
+    errorStatements.clear();
+
+    unordered_map<string, family> famList;
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", 'M', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", 'M', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    famList["Family"] = {"", "2000-01-01", "Husband", "Wife", {}, {0,0,0,0}};
+    correctGender(indiList, famList);
+
+    if(strcmp(errorStatements.front().c_str(), 
+            "ERROR: FAMILY:     US21: 0: Family: Wife is a male") != 0){
         failed++;
         printf("FAILED\n");
         return;
@@ -265,6 +312,8 @@ int main(int argc, char** argv) {
     US03_04();
     US0701();
     US1001();
+    US2101();
+    US2102();
     US2201();
     US2202();
     US3001();
