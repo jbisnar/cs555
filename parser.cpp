@@ -38,6 +38,7 @@ int maxNameLength = 4;
 int birthline = 0;
 int deathline = 0;
 int marryline = 0;
+int divorceline = 0;
 
 /* Turn the date from the gedcom file into all numbers */
 string improveDate(string inputDate){
@@ -192,6 +193,7 @@ void finalStore(){
     }
     if(strcmp(curFam.married.c_str(), "") != 0){
     	BirthB4Marriage(curFam, marryline);
+    	MarriageB4Death(curFam, marryline);
         famMap[curIDFam.c_str()] = curFam;
     }
     
@@ -232,6 +234,7 @@ void store(string level, string tag, string args){
     }else if(strcmp(tag.c_str(), "FAM") == 0){
         if(strcmp(curFam.married.c_str(), "") != 0){
         	BirthB4Marriage(curFam, marryline);
+        	MarriageB4Death(curFam, marryline);
             famMap[curIDFam.c_str()] = curFam;
         }
         family ftemp = {"N/A", "N/A", "N/A", "N/A", {}};
@@ -252,6 +255,7 @@ void store(string level, string tag, string args){
         curFam.children.push_back(args);
     }else if(strcmp(tag.c_str(), "DIV") == 0){
         curTag = tag.c_str();
+        divorceline = lineNumber;
     }else if(strcmp(tag.c_str(), "DATE") == 0){
         if(strcmp(curTag.c_str(), "BIRT") == 0){
             curIndi.birthday = improveDate(args.c_str());
