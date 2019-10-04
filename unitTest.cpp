@@ -32,7 +32,8 @@ void US2201(){
     return;
 }
 
-void US2202(){
+void US2202() {
+    
     printf("Starting Test US22-02: ");
     unordered_map<string, family> indiList;
     indiList["US2201"] = {"", "N/A", "N/A", "N/A", {}};
@@ -44,13 +45,14 @@ void US2202(){
     }else{
         printf("PASSED\n");
     }
+    
     return;
 }
 
 /* US40: Print Line Numbers */
-void US4001(){
+void US4001() {
+    
     printf("Starting Test US40-01: ");
-
     errorStatements.clear();
     parse("0 US-40-01 INDI");
     parse("1 NAME Matthew Monaco");
@@ -67,8 +69,62 @@ void US4001(){
     }
     lineNumber = 0;
     indiMap.clear();
+    
     return;
 }
+
+void US3001() {
+
+    printf("Starting Test US30-01: ");
+    unordered_map<string, family> famList;
+    famList["Test Family"] = {};
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A"};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A"};
+    famList["Family"] = {"", "N/A", "Husband", "Wife", {}};
+    list<string> ids = getLivingMarried(famList, indiList);
+    
+    if(strcmp(ids.front().c_str(), "Husband") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    } else if (strcmp(ids.back().c_str(), "Wife") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    } else if (ids.size() != 2){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+
+}
+
+void US3002() {
+
+    printf("Starting Test US30-02: ");
+    unordered_map<string, family> famList;
+    famList["Test Family"] = {};
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A"};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A"};
+    famList["Family"] = {"", "2000-01-01", "Husband", "Wife", {}};
+    list<string> ids = getLivingMarried(famList, indiList);
+
+    if (!ids.empty()){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+
+}
+
 
 void US03_01() {
 	printf("Starting Test US03-01: ");
@@ -201,16 +257,18 @@ void US1001(){
 }
 
 int main(int argc, char** argv) {
-    US2201();
-    US2202();
-    US4001();
+    US02_01();
+    US02_02();
     US03_01();
     US03_02();
     US03_03();
     US03_04();
-    US02_01();
-    US02_02();
-	US0701();
-	US1001();
+    US0701();
+    US1001();
+    US2201();
+    US2202();
+    US3001();
+    US3002();
+    US4001();
     printf("%i Tests Failed\n", failed);
 }
