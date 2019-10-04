@@ -7,6 +7,7 @@
 #include <list>
 
 #include "globals.h"
+#include "monaco.h"
 #include "parser.h"
 
 using namespace std;
@@ -27,11 +28,16 @@ int main(int argc, char** argv) {
     }
     finalStore();
     
-    printf("\n");
+    printf("LIST OF ALL INDIVIDUALS:\n");
     printIndividuals(sortIndividuals(indiMap));
-    cout << endl;
+    printf("\n");
+    printf("LIST OF ALL FAMILIES:\n");
     printFamilies(sortFamilies(famMap));
     printf("\n");
+    printf("LIST OF ALL LIVING MARRIED INDIVIDUALS:\n");
+    printIndividuals(getLivingMarried(famMap, indiMap));
+    printf("\n");
+    printf("LIST OF ALL KNOWN ERRORS:\n");
     list <string> :: iterator it;
     for(it = errorStatements.begin(); it !=errorStatements.end(); ++it){
         cout << *it << endl;
