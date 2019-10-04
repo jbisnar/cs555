@@ -61,10 +61,37 @@ bool BirthB4Marriage (family fam, int marryline) {
 			+ to_string(marryline) +": "
 			+ "Marry date is before someone's birthday"); 
 			return false;
-			return false;
 			//printf ("BB4M Checkpoint 2\n");
 		}
 	}
 	//printf ("BB4M Checkpoint 3\n");
+	return true;
+}
+
+bool MarriageB4Death (family fam, int marryline) {
+	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
+		string hdeath = indiMap.find(fam.husbandID)->second.death;
+		string wdeath = indiMap.find(fam.wifeID)->second.death;
+		if ( ((strcmp(hdeath.c_str(), fam.married.c_str()) < 0 && (strcmp(hdeath.c_str(), "") != 0))
+		|| ( (strcmp(wdeath.c_str(), fam.married.c_str())) < 0 && (strcmp(wdeath.c_str(), "") != 0)))) {
+			errorStatements.push_back("ERROR: FAMILY:     US05: "
+			+ to_string(marryline) +": "
+			+ "Marry date is after someone died"); 
+			return false;
+		}
+	}
+	return true;
+}
+
+bool DivorceB4Death (family fam, int divorceline) {
+	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
+		if ( strcmp(indiMap.find(fam.husbandID)->second.death.c_str(), fam.married.c_str()) < 0
+		|| strcmp(indiMap.find(fam.wifeID)->second.death.c_str(), fam.married.c_str()) < 0) {
+			errorStatements.push_back("ERROR: FAMILY:     US02: "
+			+ to_string(divorceline) +": "
+			+ "Marry date is after someone died"); 
+			return false;
+		}
+	}
 	return true;
 }
