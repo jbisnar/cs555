@@ -70,7 +70,7 @@ bool marriageAfter14(individual person, family fam, int marryline){
 		
 	
     if (deltaYear < 14){
-        errorStatements.push_back("ERROR: INDIVIDUAL: US07: " + to_string(marryline) + ": this marriage line means that " +  person.name + 
+        errorStatements.push_back("ERROR: INDIVIDUAL: US07: line " + to_string(marryline) + ": this marriage line means that " +  person.name + 
                 " is married before 14 years of age, which is illegal in the US."); 
         return false;
     }
@@ -104,57 +104,3 @@ bool notOlderThan150(individual person, int birthline){
     }
     return true;
 }
-
-// https://en.wikipedia.org/wiki/Leap_year#Algorithm for leap year algorithm
-bool legalDate(string sdate, int dateline){
-	// Feb has 28 days
-	// leap year: Feb has 29 days
-	// "0th" year of the century: Feb has 28 days, except for the 400th year. that leap century, Feb has 29 days.
-	
-	struct tm date = String2Date(sdate);
-	struct tm* pointer = &date;
-	
-	int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-	int givenDay = pointer->tm_mday;
-	int givenMonth = pointer->tm_mon - 1; // sets January to month 0.
-	int givenYear = pointer->tm_year;
-	
-	bool isLeap = false;
-	
-	
-	if (givenMonth >= 0 && givenMonth < 12){ // checks correct month
-	
-		if (givenMonth == 1){ // SPECIAL CASE: February
-			if((givenYear % 4) != 0)			{ isLeap = false; }	// common year
-			else if ((givenYear % 100) != 0)	{ isLeap = true; }	// leap year
-			else if ((givenYear % 400) != 0)	{ isLeap = false;}	// common year
-			else								{ isLeap = true; }	// leap year
-				
-			if (isLeap){
-				if ((givenDay > 0) && (givenDay <= days[givenMonth] + 1))
-					return true;
-				else{
-					errorStatements.push_back("ERROR: INDIVIDUAL: US42: " + to_string(dateline) + ": February can't have the day number specified according to the Gregorian calendar.");
-					return false;
-				}
-			}
-				
-				return ((givenDay > 0) && (givenDay <= days[givenMonth])); // not a leap year, so treat Feb like a regular month.
-		}
-		
-		else if ((givenDay > 0) && (givenDay <= days[givenMonth])){ // all other months
-				return true;
-		}
-		else{
-			errorStatements.push_back("ERROR: INDIVIDUAL: US42: " + to_string(dateline) + ": There is an illegal day according to the Gregorian calendar.");
-			return false;
-		}
-	}
-	else{
-		errorStatements.push_back("ERROR: INDIVIDUAL: US42: " + to_string(dateline) + ": There is an illegal month according to the Gregorian calendar."); 
-		return false;
-	}
-}
-
-
-
