@@ -400,4 +400,13 @@
 1 MARR
 2 DATE 3 FEB 2014
 0 Note *************End US10*************
+0 Note ***************US42***************
+0 US_10_01 INDI
+1 NAME Robert House
+2 GIVN Robert
+2 SURN House
+1 SEX M
+1 BIRT
+2 DATE 30 FEB 2020
+0 Note *************End US42*************
 0 TRLR
