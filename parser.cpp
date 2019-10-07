@@ -267,19 +267,23 @@ void store(string level, string tag, string args){
             curIndi.birthday = improveDate(args.c_str());
             curIndi.lineNumbers[2] = lineNumber;
             birthline = lineNumber;
-	    notOlderThan150(curIndi, birthline);
+			notOlderThan150(curIndi, birthline);
+			legalDate(curIndi.birthday, birthline);
         }else if(strcmp(curTag.c_str(), "DEAT") == 0){
             curIndi.death = improveDate(args.c_str());
             curIndi.lineNumbers[4] = lineNumber;
             deathline = lineNumber;
+			legalDate(curIndi.death, deathline);
         }else if(strcmp(curTag.c_str(), "DIV") == 0){
             curFam.lineNumbers[1] = lineNumber;
             curFam.divorced = improveDate(args.c_str());
+			legalDate(curFam.divorced, lineNumber);
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
             curFam.lineNumbers[0] = lineNumber;
             curFam.married = improveDate(args.c_str());
-	    marryline = lineNumber;
-	    marriageAfter14(curIndi, curFam, marryline);
+			marryline = lineNumber;
+			marriageAfter14(curIndi, curFam, marryline);
+			legalDate(curFam.married, lineNumber);
         }
     }
     
