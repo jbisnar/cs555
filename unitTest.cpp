@@ -303,6 +303,20 @@ void US1001(){
 		printf("PASSED\n");
 }
 
+/* US42: checks to see if the date is valid (eg, no Feb 29's if it's not a leap year)*/
+void US4201(){
+	printf("Starting Test US42-01: ");
+	string date = "2020-02-29";
+	int testline = 5;
+	
+	if (legalDate(date, testline) == true)
+		printf("PASSED\n");
+	else {
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
 int main(int argc, char** argv) {
     US02_01();
     US02_02();
@@ -319,5 +333,6 @@ int main(int argc, char** argv) {
     US3001();
     US3002();
     US4001();
+	US4201();
     printf("%i Tests Failed\n", failed);
 }
