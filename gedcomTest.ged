@@ -401,12 +401,24 @@
 2 DATE 3 FEB 2014
 0 Note *************End US10*************
 0 Note ***************US42***************
-0 US_10_01 INDI
+0 US_42_01 INDI
 1 NAME Robert House
 2 GIVN Robert
 2 SURN House
 1 SEX M
 1 BIRT
-2 DATE 30 FEB 2020
+2 DATE 30 FEB 1960
+0 US_42_02 INDI
+1 NAME Missus House
+2 GIVN Missus
+2 SURN House
+1 SEX F
+1 BIRT
+2 DATE 30 FEB 1960
+0 US42_F1 FAM
+1 HUSB US_42_01
+1 WIFE US_42_02
+1 MARR
+2 DATE 32 JAN 1990
 0 Note *************End US42*************
 0 TRLR
