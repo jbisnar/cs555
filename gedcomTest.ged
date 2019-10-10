@@ -361,6 +361,29 @@
 1 WIFE US05_4
 1 MARR
 2 DATE 22 APR 1993
+0 US05_5 INDI
+1 NAME Graveyard Smash
+2 GIVN Graveyard
+2 SURN Smash
+1 SEX M
+1 BIRT
+2 DATE 3 AUG 1967
+1 DEAT Y
+2 DATE 1 MAY 1989
+0 US05_6 INDI
+1 NAME Monster Mash
+2 GIVN Monster
+2 SURN Mash
+1 SEX F
+1 BIRT
+2 DATE 3 AUG 1967
+1 DEAT Y
+2 DATE 1 MAY 1989
+0 US05_F3 FAM
+1 HUSB US05_5
+1 WIFE US05_6
+1 MARR
+2 DATE 22 APR 1993
 0 Note *************End US05*************
 0 Note ***************US06***************
 0 Note *************End US06*************

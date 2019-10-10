@@ -194,6 +194,7 @@ void finalStore(){
     if(strcmp(curFam.married.c_str(), "") != 0){
     	BirthB4Marriage(curFam, marryline);
     	MarriageB4Death(curFam, marryline);
+    	DivorceB4Death(curFam, divorceline);
         famMap[curIDFam.c_str()] = curFam;
     }
     
@@ -239,6 +240,7 @@ void store(string level, string tag, string args){
         if(strcmp(curFam.married.c_str(), "") != 0){
         	BirthB4Marriage(curFam, marryline);
         	MarriageB4Death(curFam, marryline);
+        	DivorceB4Death(curFam,divorceline);
             famMap[curIDFam.c_str()] = curFam;
         }
         family ftemp = {"N/A", "N/A", "N/A", "N/A", {}, {0,0,0,0}};

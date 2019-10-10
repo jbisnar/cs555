@@ -226,6 +226,84 @@ void US03_04() {
 	}
 }
 
+void US05_01() {
+	printf("Starting Test US05-01: ");
+	individual deadf;
+	deadf.death = "2000-06-09";
+	individual necrom;
+	indiMap.insert({"TEST05-dead", deadf});
+	indiMap.insert({"TEST05-alive", necrom});
+	family illegal;
+	illegal.married = "2009-09-09";
+	illegal.husbandID = "TEST05-alive";
+	illegal.wifeID = "TEST05-dead";
+	if (!MarriageB4Death(illegal, 0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
+
+void US05_02() {
+	printf("Starting Test US05-02: ");
+	individual deadm;
+	deadm.death = "2000-06-09";
+	individual necrof;
+	indiMap.insert({"TEST05-dead2", deadm});
+	indiMap.insert({"TEST05-alive2", necrof});
+	family illegal;
+	illegal.married = "2009-09-09";
+	illegal.husbandID = "TEST05-dead2";
+	illegal.wifeID = "TEST05-alive2";
+	if (!MarriageB4Death(illegal, 0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
+
+void US06_01() {
+	printf("Starting Test US06-01: ");
+	individual deadf;
+	deadf.death = "2006-06-09";
+	individual widower;
+	indiMap.insert({"TEST06-dead", deadf});
+	indiMap.insert({"TEST06-widower", widower});
+	family illegal;
+	illegal.married = "2000-09-09";
+	illegal.divorced = "2010-07-23";
+	illegal.husbandID = "TEST06-widower";
+	illegal.wifeID = "TEST06-dead";
+	if (!DivorceB4Death(illegal, 0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
+
+void US06_02() {
+	printf("Starting Test US06-02: ");
+	individual deadm;
+	deadm.death = "2006-06-09";
+	individual widow;
+	indiMap.insert({"TEST06-dead", deadm});
+	indiMap.insert({"TEST06-widow", widow});
+	family illegal;
+	illegal.married = "2000-09-09";
+	illegal.divorced = "2010-07-23";
+	illegal.husbandID = "TEST06-dead";
+	illegal.wifeID = "TEST06-widow";
+	if (!DivorceB4Death(illegal, 0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
+
 void US02_01() {
 	printf("Starting Test US02-01: ");
 	individual fetus;
@@ -253,7 +331,7 @@ void US02_02() {
 	indiMap.insert({"TEST02-c", born});
 	indiMap.insert({"TEST02-a", pedo});
 	family illegal;
-	illegal.married = "20099-09-09";
+	illegal.married = "2009-09-09";
 	illegal.husbandID = "TEST02-a";
 	illegal.wifeID = "TEST02-c";
 	if (BirthB4Marriage(illegal, 0)) {
@@ -324,6 +402,10 @@ int main(int argc, char** argv) {
     US03_02();
     US03_03();
     US03_04();
+    US05_01();
+    US05_02();
+    US06_01();
+    US06_02();
     US0701();
     US1001();
     US2101();
