@@ -395,6 +395,27 @@ void US4201(){
 	}
 }
 
+/* US 12: checks to see if mom is less than 60 yrs older and dad is less than 80 years older their kids*/
+void US1201(){
+	printf("Starting Test US12-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+    indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Family"}, "", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Family"}, "", {0,0,0,0,0,0}};
+	indiList["Child1"] = {"John MacTavish", 'M', "2000-01-01", true, "N/A", {}, "Family", {0,0,0,0,0,0}};
+	indiList["Child2"] = {"Anna MacTavish", 'F', "2000-01-01", true, "N/A", {}, "Family", {0,0,0,0,0,0}};
+    famList["Family"] = {"", "N/A", "Husband", "Wife", {"Child1", "Child2"}, {0,0,0,0}};
+	
+	if(parentsNotTooOld(indiList, famList)){
+		printf("PASSED\n");
+	}
+	else{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
 int main(int argc, char** argv) {
     US02_01();
     US02_02();
@@ -416,5 +437,6 @@ int main(int argc, char** argv) {
     US3002();
     US4001();
 	US4201();
+	US1201();
     printf("%i Tests Failed\n", failed);
 }

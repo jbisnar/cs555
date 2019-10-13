@@ -444,4 +444,39 @@
 1 MARR
 2 DATE 32 JAN 1990
 0 Note *************End US42*************
+0 Note ***************US12***************
+0 US_12_01 INDI
+1 NAME Soap MacTavish
+2 GIVN Soap
+2 SURN MacTavish
+1 SEX M
+1 BIRT
+2 DATE 11 JAN 1920
+0 US_12_02 INDI
+1 NAME Missus MacTavish
+2 GIVN Missus
+2 SURN MacTavish
+1 SEX F
+1 BIRT
+2 DATE 11 JAN 1920
+0 US_12_03 INDI
+1 NAME John MacTavish
+2 GIVN John
+2 SURN MacTavish
+1 SEX M
+1 BIRT
+2 DATE 10 JAN 2000
+0 US_12_04 INDI
+1 NAME Anna MacTavish
+2 GIVN Anna
+2 SURN MacTavish
+1 SEX F
+1 BIRT
+2 DATE 10 JAN 2002
+0 US12_FAM FAM
+1 HUSB US_12_01
+1 WIFE US_12_02
+1 CHIL US_12_03
+1 CHIL US_12_04
+0 Note *************End US12*************
 0 TRLR
