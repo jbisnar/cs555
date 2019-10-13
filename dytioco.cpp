@@ -8,6 +8,7 @@
 #include <string>
 #include <ctime>
 #include <unordered_map>
+#include <list>
 
 
 #include "globals.h"
@@ -55,21 +56,25 @@ struct tm String2Date (string sdate) {
 	return givendate;
 }
 
-bool marriageAfter14(individual person, family fam, int marryline){
-	struct tm birth = String2Date(person.birthday);
-	struct tm marriage = String2Date(fam.married);
-	
-	int deltaDay = marriage.tm_mday - birth.tm_mday;
-	int deltaMonth = marriage.tm_mon - birth.tm_mon;
-	int deltaYear = marriage.tm_year - birth.tm_year;
+
+int yearsBetweenDates(struct tm date1, struct tm date2){
+	int deltaDay = date2.tm_mday - date1.tm_mday;
+	int deltaMonth = date2.tm_mon - date1.tm_mon;
+	int deltaYear = date2.tm_year - date1.tm_year;
 	
 	if (deltaDay < 0)
 		deltaMonth--;
 	if (deltaMonth < 0)
 		deltaYear--;
-		
 	
-    if (deltaYear < 14){
+	return deltaYear;
+}
+
+bool marriageAfter14(individual person, family fam, int marryline){
+	struct tm birth = String2Date(person.birthday);
+	struct tm marriage = String2Date(fam.married);
+
+    if (yearsBetweenDates(birth, marriage) < 14){
         errorStatements.push_back("ERROR: INDIVIDUAL: US07: " + to_string(marryline) + ": " +  person.name + 
                 " is married before 14 years of age, which is illegal in the US."); 
         return false;
@@ -156,5 +161,36 @@ bool legalDate(string sdate, int dateline){
 	}
 }
 
-
-
+// Mother should be less than 60 years older than her children and father should be less than 80 years older than his children
+// US 12
+bool parentsNotTooOld(unordered_map<string, individual> indis, unordered_map<string, family> fams){
+	unordered_map<string, family>:: iterator itr;
+	list<string>:: iterator childItr;
+	
+	struct tm motherBirthDay;
+	struct tm fatherBirthDay;
+	struct tm childBirthDay;
+    
+    for(itr = fams.begin(); itr != fams.end(); itr++){ // scan through given fam struct
+	
+		motherBirthDay = String2Date(indis.at(itr->second.wifeID).birthday);
+		fatherBirthDay = String2Date(indis.at(itr->second.husbandID).birthday);
+		
+		// goes through the list of children in fams, and checks their individual struct to get the birthday
+		for (childItr = itr->second.children.begin(); childItr != itr->second.children.end(); childItr++){
+			childBirthDay = String2Date(indis.at(*childItr).birthday);
+			
+			if (yearsBetweenDates(motherBirthDay, childBirthDay) >= 60){
+				errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the mother is older than 60 years old.");
+				return false;
+			}
+			if (yearsBetweenDates(fatherBirthDay, childBirthDay) >= 80){
+				errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the father is older than 60 years old.");
+				return false;
+			}			
+		}
+	}
+	
+	
+	return true;
+}
