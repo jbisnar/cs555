@@ -5,7 +5,7 @@ os:
 - windows
 
 script:
-- Makefile
+- make test
 
 branches:
     only:
