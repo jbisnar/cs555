@@ -5,7 +5,7 @@ os:
 - windows
 
 script:
-- make test
+- ./configure && make && make test
 
 branches:
     only:
