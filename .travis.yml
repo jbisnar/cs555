@@ -4,7 +4,7 @@ language: cpp
 compiler:
 - gcc
 os:
-- windows
+- osx
 
 script:
 - make
