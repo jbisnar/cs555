@@ -197,7 +197,8 @@ void finalStore(){
     	DivorceB4Death(curFam, divorceline);
         famMap[curIDFam.c_str()] = curFam;
     }
-    
+    parentsNotTooOld(indiMap, famMap);
+	
     return;
 }
 
@@ -271,7 +272,6 @@ void store(string level, string tag, string args){
             birthline = lineNumber;
 			notOlderThan150(curIndi, birthline);
 			legalDate(curIndi.birthday, birthline);
-			parentsNotTooOld(indiMap, famMap);
         }else if(strcmp(curTag.c_str(), "DEAT") == 0){
             curIndi.death = improveDate(args.c_str());
             curIndi.lineNumbers[4] = lineNumber;
