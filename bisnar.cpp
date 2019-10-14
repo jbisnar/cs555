@@ -92,7 +92,7 @@ bool DivorceB4Death (family fam, int divorceline) {
 			return true;
 		} else if ( ((strcmp(hdeath.c_str(), fam.divorced.c_str()) < 0 && (strcmp(hdeath.c_str(), "") != 0))
 		|| ( (strcmp(wdeath.c_str(), fam.divorced.c_str())) < 0 && (strcmp(wdeath.c_str(), "") != 0)))) {
-			errorStatements.push_back("ERROR: FAMILY:     US05: "
+			errorStatements.push_back("ERROR: FAMILY:     US06: "
 			+ to_string(divorceline) +": "
 			+ "Divorce date is after someone died"); 
 			return false;
