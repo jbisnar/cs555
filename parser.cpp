@@ -264,7 +264,7 @@ void store(string level, string tag, string args){
         curFam.children.push_back(args);
     }else if(strcmp(tag.c_str(), "DIV") == 0){
         curTag = tag.c_str();
-        divorceline = lineNumber;
+        // divorceline = lineNumber;
     }else if(strcmp(tag.c_str(), "DATE") == 0){
         if(strcmp(curTag.c_str(), "BIRT") == 0){
             curIndi.birthday = improveDate(args.c_str());

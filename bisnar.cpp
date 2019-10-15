@@ -73,8 +73,8 @@ bool MarriageB4Death (family fam, int marryline) {
 	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
 		string hdeath = indiMap.find(fam.husbandID)->second.death;
 		string wdeath = indiMap.find(fam.wifeID)->second.death;
-		if ( ((strcmp(hdeath.c_str(), fam.married.c_str()) < 0 && (strcmp(hdeath.c_str(), "") != 0))
-		|| ( (strcmp(wdeath.c_str(), fam.married.c_str())) < 0 && (strcmp(wdeath.c_str(), "") != 0)))) {
+		if ( ((strcmp(hdeath.c_str(), fam.married.c_str()) < 0 && (strcmp(hdeath.c_str(), "N/A") != 0))
+		|| ( (strcmp(wdeath.c_str(), fam.married.c_str())) < 0 && (strcmp(wdeath.c_str(), "N/A") != 0)))) {
 			errorStatements.push_back("ERROR: FAMILY:     US05: "
 			+ to_string(marryline) +": "
 			+ "Marry date is after someone died"); 
@@ -88,12 +88,12 @@ bool DivorceB4Death (family fam, int divorceline) {
 	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
 		string hdeath = indiMap.find(fam.husbandID)->second.death;
 		string wdeath = indiMap.find(fam.wifeID)->second.death;
-		if (strcmp("", fam.divorced.c_str()) == 0) {
+		if (strcmp("N/A", fam.divorced.c_str()) == 0) {
 			return true;
-		} else if ( ((strcmp(hdeath.c_str(), fam.divorced.c_str()) < 0 && (strcmp(hdeath.c_str(), "") != 0))
-		|| ( (strcmp(wdeath.c_str(), fam.divorced.c_str())) < 0 && (strcmp(wdeath.c_str(), "") != 0)))) {
+		} else if ( ((strcmp(hdeath.c_str(), fam.divorced.c_str()) < 0 && (strcmp(hdeath.c_str(), "N/A") != 0))
+		|| ( (strcmp(wdeath.c_str(), fam.divorced.c_str())) < 0 && (strcmp(wdeath.c_str(), "N/A") != 0)))) {
 			errorStatements.push_back("ERROR: FAMILY:     US06: "
-			+ to_string(divorceline) +": "
+			+ to_string(fam.lineNumbers[1]) +": "
 			+ "Divorce date is after someone died"); 
 			return false;
 		}
