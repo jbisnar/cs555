@@ -185,7 +185,7 @@ bool parentsNotTooOld(unordered_map<string, individual> indis, unordered_map<str
 				return false;
 			}
 			if (yearsBetweenDates(fatherBirthDay, childBirthDay) >= 80){
-				errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the father is older than 60 years old.");
+				errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the father is older than 80 years old.");
 				return false;
 			}			
 		}
