@@ -281,6 +281,7 @@ void store(string level, string tag, string args){
             curFam.lineNumbers[1] = lineNumber;
             curFam.divorced = improveDate(args.c_str());
 			legalDate(curFam.divorced, lineNumber);
+			DivorceB4Death(curFam,divorceline);
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
             curFam.lineNumbers[0] = lineNumber;
             curFam.married = improveDate(args.c_str());
