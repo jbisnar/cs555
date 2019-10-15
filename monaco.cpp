@@ -3,6 +3,7 @@
  * I pledge my honor that I have abided by the Stevens Honor System                             */
 
 
+#include <string.h>
 #include <unordered_map>
 
 #include "globals.h"
@@ -10,19 +11,62 @@
 
 using namespace std;
 
-bool uniqueID(string key, unordered_map<string, individual> indis){
+bool uniqueID(string key, unordered_map<string, individual> indis) {
+    
     if (indis.find(key) != indis.end()){
-        errorStatements.push_back("ERROR: INDIVIDUAL: US22: " + to_string(lineNumber) + ": " + key.c_str() + 
-                ": ID already exists. May effect later results"); 
+        errorStatements.push_back("ERROR: INDIVIDUAL: US22: " + to_string(lineNumber) + ": " + 
+                key.c_str() + ": ID already exists. May effect later results"); 
         return false;
     }
+    
     return true;
 }
-bool uniqueFamID(string key, unordered_map<string, family> indis){
+
+bool uniqueFamID(string key, unordered_map<string, family> indis) {
+    
     if (indis.find(key) != indis.end()){
-        errorStatements.push_back("ERROR: FAMILY:     US22: " + to_string(lineNumber) + ": " + key.c_str() + 
-                ": ID already exists. May effect later results"); 
+        errorStatements.push_back("ERROR: FAMILY:     US22: " + to_string(lineNumber) + ": " + 
+                key.c_str() + ": ID already exists. May effect later results"); 
         return false;
     }
-return true;
+    
+    return true;
+}
+
+list<string> getLivingMarried(unordered_map<string, family> fams, 
+        unordered_map<string, individual> indis) {
+    
+    unordered_map<string, family>:: iterator itr;
+    list<string> livingMarried;
+
+    for(itr = fams.begin(); itr != fams.end(); itr++){
+        if(strcmp(itr->second.divorced.c_str(), "N/A") == 0){
+            if(indis.at(itr->second.husbandID).alive && indis.at(itr->second.wifeID).alive){
+                livingMarried.push_back(itr->second.husbandID); 
+                livingMarried.push_back(itr->second.wifeID);
+            }
+        }
+    }
+
+    return livingMarried;
+}
+
+void correctGender(unordered_map<string, individual> indis, unordered_map<string, family> fams) {
+
+    unordered_map<string, family>:: iterator itr;
+    
+    for(itr = fams.begin(); itr != fams.end(); itr++){
+        if(indis.at(itr->second.husbandID).gender == 'F'){
+            errorStatements.push_back("ERROR: FAMILY:     US21: " + 
+                    to_string(itr->second.lineNumbers[2]) + ": " + itr->first.c_str() + 
+                    ": Husband is a female");
+        }
+        if(indis.at(itr->second.wifeID).gender == 'M'){
+            errorStatements.push_back("ERROR: FAMILY:     US21: " + 
+                    to_string(itr->second.lineNumbers[3]) + ": " + itr->first.c_str() + 
+                    ": Wife is a male");
+        }
+    }
+
+    return;
 }

@@ -36,7 +36,7 @@ bool BirthB4Death (individual person, int birthline, int deathline) {
 		return true;
 	}
 	if ( strcmp(person.birthday.c_str(), person.death.c_str()) > 0) {
-		errorStatements.push_back("ERROR: INDIVIDUAL: US03: lines "
+		errorStatements.push_back("ERROR: INDIVIDUAL: US03: "
 		+ to_string(birthline) + " and " + to_string(deathline) + ": "
 		+ person.name + "'s death date is before their birth date"); 
 		return false;
@@ -57,7 +57,7 @@ bool BirthB4Marriage (family fam, int marryline) {
 		if ( strcmp(indiMap.find(fam.husbandID)->second.birthday.c_str(), fam.married.c_str()) > 0
 		|| strcmp(indiMap.find(fam.wifeID)->second.birthday.c_str(), fam.married.c_str()) > 0) {
 			//printf ("BB4M Checkpoint 1\n");
-			errorStatements.push_back("ERROR: FAMILY: US02: line "
+			errorStatements.push_back("ERROR: FAMILY:     US02: "
 			+ to_string(marryline) +": "
 			+ "Marry date is before someone's birthday"); 
 			return false;
@@ -66,5 +66,37 @@ bool BirthB4Marriage (family fam, int marryline) {
 		}
 	}
 	//printf ("BB4M Checkpoint 3\n");
+	return true;
+}
+
+bool MarriageB4Death (family fam, int marryline) {
+	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
+		string hdeath = indiMap.find(fam.husbandID)->second.death;
+		string wdeath = indiMap.find(fam.wifeID)->second.death;
+		if ( ((strcmp(hdeath.c_str(), fam.married.c_str()) < 0 && (strcmp(hdeath.c_str(), "N/A") != 0))
+		|| ( (strcmp(wdeath.c_str(), fam.married.c_str())) < 0 && (strcmp(wdeath.c_str(), "N/A") != 0)))) {
+			errorStatements.push_back("ERROR: FAMILY:     US05: "
+			+ to_string(marryline) +": "
+			+ "Marry date is after someone died"); 
+			return false;
+		}
+	}
+	return true;
+}
+
+bool DivorceB4Death (family fam, int divorceline) {
+	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
+		string hdeath = indiMap.find(fam.husbandID)->second.death;
+		string wdeath = indiMap.find(fam.wifeID)->second.death;
+		if (strcmp("N/A", fam.divorced.c_str()) == 0) {
+			return true;
+		} else if ( ((strcmp(hdeath.c_str(), fam.divorced.c_str()) < 0 && (strcmp(hdeath.c_str(), "N/A") != 0))
+		|| ( (strcmp(wdeath.c_str(), fam.divorced.c_str())) < 0 && (strcmp(wdeath.c_str(), "N/A") != 0)))) {
+			errorStatements.push_back("ERROR: FAMILY:     US06: "
+			+ to_string(fam.lineNumbers[1]) +": "
+			+ "Divorce date is after someone died"); 
+			return false;
+		}
+	}
 	return true;
 }

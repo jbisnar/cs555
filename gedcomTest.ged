@@ -14,19 +14,19 @@
 0 Note ***************US22***************
 0 I-22-01 INDI
 1 NAME Courtney Cox
-1 SEX F
+1 SEX M
 1 BIRT
 2 DATE 15 JUN 1963
 1 FAMS F-22-01
 0 I-22-01 INDI
 1 NAME Monica Geller
-1 SEX F
+1 SEX M
 1 BIRT
 2 DATE 15 JUN 1964
 1 FAMS F-22-01
 0 I-22-02 INDI
 1 NAME Chandler Bing
-1 SEX M
+1 SEX F
 1 BIRT
 2 DATE 19 AUG 1969
 1 FAMS F-22-01
@@ -216,6 +216,7 @@
 1 NAME Miss Carriage
 2 GIVN Miss
 2 SURN Carriage
+1 SEX F
 1 BIRT
 2 DATE 1 MAY 1989
 1 DEAT Y
@@ -224,6 +225,7 @@
 1 NAME Valid Birth
 2 GIVN Valid
 2 SURN Birth
+1 SEX M
 1 BIRT
 2 DATE 1 MAY 1989
 1 DEAT Y
@@ -232,6 +234,7 @@
 1 NAME Short Lived
 2 GIVN Short
 2 SURN Lived
+1 SEX F
 1 BIRT
 2 DATE 1 MAY 1989
 1 DEAT Y
@@ -240,6 +243,7 @@
 1 NAME Abe Bortion
 2 GIVN Abraham
 2 SURN Bortion
+1 SEX M
 1 BIRT
 2 DATE 10 SEP 1989
 1 DEAT Y
@@ -250,6 +254,7 @@
 1 NAME Notborne Yet
 2 GIVN Notborne
 2 SURN Yet
+1 SEX F
 1 BIRT
 2 DATE 1 JUN 1993
 1 FAMS US02_F1
@@ -257,6 +262,7 @@
 1 NAME Super Pedophile
 2 GIVN Super
 2 SURN Pedophile
+1 SEX M
 1 BIRT
 2 DATE 3 AUG 1967
 1 FAMS US02_F1
@@ -269,6 +275,7 @@
 1 NAME Child Marriage
 2 GIVN Child
 2 SURN Marriage
+1 SEX M
 1 BIRT
 2 DATE 1 JUN 1993
 1 FAMS US02_F2
@@ -276,6 +283,7 @@
 1 NAME Normal Pedo
 2 GIVN Normal
 2 SURN Pedo
+1 SEX F
 1 BIRT
 2 DATE 3 AUG 1967
 1 FAMS US02_F2
@@ -288,6 +296,7 @@
 1 NAME Time Traveler
 2 GIVN Time
 2 SURN Traveler
+1 SEX M
 1 BIRT
 2 DATE 1 JUN 1993
 1 FAMS US02_F1
@@ -295,6 +304,7 @@
 1 NAME Ambiguous Legality
 2 GIVN Ambiguous
 2 SURN Legality
+1 SEX F
 1 BIRT
 2 DATE 3 AUG 1967
 1 FAMS US02_F1
@@ -304,11 +314,135 @@
 1 MARR
 2 DATE 22 APR 1993
 0 Note *************End US03*************
+0 Note ***************US05***************
+0 US05_1 INDI
+1 NAME Graveyard Groom
+2 GIVN Graveyard
+2 SURN Groom
+1 SEX M
+1 BIRT
+2 DATE 1 JUN 1965
+1 DEAT Y
+2 DATE 1 MAY 1989
+1 FAMS US05_F1
+0 US05_2 INDI
+1 NAME Necker Ophelia
+2 GIVN Necker
+2 SURN Ophelia
+1 SEX F
+1 BIRT
+2 DATE 3 AUG 1967
+1 FAMS US05_F1
+0 US05_F1 FAM
+1 HUSB US05_1
+1 WIFE US05_2
+1 MARR
+2 DATE 22 APR 1993
+0 US05_3 INDI
+1 NAME Grave Robert
+2 GIVN Grave
+2 SURN Robert
+1 SEX M
+1 BIRT
+2 DATE 1 JUN 1965
+1 FAMS US05_F2
+0 US05_4 INDI
+1 NAME Ghost Girl
+2 GIVN Ghost
+2 SURN Girl
+1 SEX F
+1 BIRT
+2 DATE 3 AUG 1967
+1 DEAT Y
+2 DATE 1 MAY 1989
+1 FAMS US05_F2
+0 US05_F2 FAM
+1 HUSB US05_3
+1 WIFE US05_4
+1 MARR
+2 DATE 22 APR 1993
+0 US05_5 INDI
+1 NAME Graveyard Smash
+2 GIVN Graveyard
+2 SURN Smash
+1 SEX M
+1 BIRT
+2 DATE 3 AUG 1967
+1 DEAT Y
+2 DATE 1 MAY 1989
+0 US05_6 INDI
+1 NAME Monster Mash
+2 GIVN Monster
+2 SURN Mash
+1 SEX F
+1 BIRT
+2 DATE 3 AUG 1967
+1 DEAT Y
+2 DATE 1 MAY 1989
+0 US05_F3 FAM
+1 HUSB US05_5
+1 WIFE US05_6
+1 MARR
+2 DATE 22 APR 1993
+0 Note *************End US05*************
+0 Note ***************US06***************
+0 US06_1 INDI
+1 NAME Death Do
+2 GIVN Death
+2 SURN Do
+1 SEX M
+1 BIRT
+2 DATE 1 JUN 1965
+1 DEAT Y
+2 DATE 1 MAY 1999
+1 FAMS US06_F1
+0 US06_2 INDI
+1 NAME Us Part
+2 GIVN Us
+2 SURN Part
+1 SEX F
+1 BIRT
+2 DATE 3 AUG 1967
+1 FAMS US06_F1
+0 US06_F1 FAM
+1 HUSB US06_1
+1 WIFE US06_2
+1 MARR
+2 DATE 22 APR 1993
+1 DIV
+2 DATE 30 JUN 2000
+0 US06_3 INDI
+1 NAME Widower
+2 GIVN Living
+2 SURN Husband
+1 SEX M
+1 BIRT
+2 DATE 1 JUN 1965
+1 FAMS US06_F1
+0 US06_4 INDI
+1 NAME Dead Wife
+2 GIVN Dead
+2 SURN Wife
+1 SEX F
+1 BIRT
+2 DATE 3 AUG 1967
+1 DEAT Y
+2 DATE 1 MAY 1999
+1 FAMS US06_F2
+0 US06_F2 FAM
+1 HUSB US06_3
+1 WIFE US06_4
+1 MARR
+2 DATE 22 APR 1993
+1 DIV
+2 DATE 30 JUN 2000
+0 Note *************End US06*************
 0 Note ***************US07***************
 0 US_07_01 INDI
 1 NAME IHaveSurpassed OneFittyYears
 2 GIVN IHaveSurpassed
 2 SURN OneFittyYears
+1 SEX M
 1 BIRT
 2 DATE 1 OCT 1859
 0 Note *************End US07*************
@@ -317,6 +451,7 @@
 1 NAME IMarried AtFourteen
 2 GIVN IMarried
 2 SURN AtFourteen
+1 SEX F
 1 BIRT
 2 DATE 5 FEB 2000
 1 MARR
@@ -326,6 +461,7 @@
 1 NAME EveryoneIs APedo
 2 GIVN EveryoneIs
 2 SURN APedo
+1 SEX M
 1 BIRT
 2 DATE 5 FEB 1980
 1 MARR
@@ -337,4 +473,60 @@
 1 MARR
 2 DATE 3 FEB 2014
 0 Note *************End US10*************
+0 Note ***************US42***************
+0 US_42_01 INDI
+1 NAME Robert House
+2 GIVN Robert
+2 SURN House
+1 SEX M
+1 BIRT
+2 DATE 30 FEB 1960
+0 US_42_02 INDI
+1 NAME Missus House
+2 GIVN Missus
+2 SURN House
+1 SEX F
+1 BIRT
+2 DATE 30 FEB 1960
+0 US42_F1 FAM
+1 HUSB US_42_01
+1 WIFE US_42_02
+1 MARR
+2 DATE 32 JAN 1990
+0 Note *************End US42*************
+0 Note ***************US12***************
+0 US_12_01 INDI
+1 NAME Soap MacTavish
+2 GIVN Soap
+2 SURN MacTavish
+1 SEX M
+1 BIRT
+2 DATE 11 JAN 1900
+0 US_12_02 INDI
+1 NAME Missus MacTavish
+2 GIVN Missus
+2 SURN MacTavish
+1 SEX F
+1 BIRT
+2 DATE 11 JAN 1900
+0 US_12_03 INDI
+1 NAME John MacTavish
+2 GIVN John
+2 SURN MacTavish
+1 SEX M
+1 BIRT
+2 DATE 10 JAN 2000
+0 US_12_04 INDI
+1 NAME Anna MacTavish
+2 GIVN Anna
+2 SURN MacTavish
+1 SEX F
+1 BIRT
+2 DATE 10 JAN 2002
+0 US12_FAM FAM
+1 HUSB US_12_01
+1 WIFE US_12_02
+1 CHIL US_12_03
+1 CHIL US_12_04
+0 Note *************End US12*************
 0 TRLR

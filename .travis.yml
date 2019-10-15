@@ -1,0 +1,12 @@
+language: cpp
+compiler:
+- gcc
+os:
+- osx
+
+script:
+- make
+
+branches:
+    only:
+    - sprint2
