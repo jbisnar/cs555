@@ -124,6 +124,54 @@ void US3002() {
 
 }
 
+/* List Deceased Individuals */
+void US2901() {
+    
+    printf("Starting Test US29-01: ");
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    list<string> ids = getDeceased(indiList);
+
+    if (!ids.empty()){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+
+}
+
+void US2902() {
+
+    printf("Starting Test US29-02: ");
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", '\0', "N/A", false, "2000-02-01", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", false, "2000-02-01", {}, "N/A", {0,0,0,0,0,0}};
+    list<string> ids = getDeceased(indiList);
+
+    if(strcmp(ids.front().c_str(), "Wife") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    } else if (strcmp(ids.back().c_str(), "Husband") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    } else if (ids.size() != 2){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+
+}
+
+
 /* Every spouse is the correct gender */
 void US2101() {
     printf("Starting Test US21-01: ");
@@ -433,10 +481,12 @@ int main(int argc, char** argv) {
     US2102();
     US2201();
     US2202();
+    US2901();
+    US2902();
     US3001();
     US3002();
     US4001();
-	US4201();
-	US1201();
+    US4201();
+    US1201();
     printf("%i Tests Failed\n", failed);
 }

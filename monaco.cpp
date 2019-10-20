@@ -51,6 +51,20 @@ list<string> getLivingMarried(unordered_map<string, family> fams,
     return livingMarried;
 }
 
+list<string> getDeceased(unordered_map<string, individual> indis) {
+
+    unordered_map<string, individual>:: iterator itr;
+    list<string> deceased;
+
+    for(itr = indis.begin(); itr != indis.end(); itr++){
+        if(strcmp(itr->second.death.c_str(), "N/A") != 0){
+            deceased.push_back(itr->first);
+        }
+    }
+
+    return deceased;
+}
+
 void correctGender(unordered_map<string, individual> indis, unordered_map<string, family> fams) {
 
     unordered_map<string, family>:: iterator itr;
