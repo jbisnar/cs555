@@ -19,4 +19,6 @@ list<string> getDeceased(unordered_map<string, individual> indis);
 
 void correctGender(unordered_map<string, individual> indis, unordered_map<string, family> fams);
 
+bool maleLastNames(unordered_map<string, individual> indis, unordered_map<string, family> fams);
+
 #endif

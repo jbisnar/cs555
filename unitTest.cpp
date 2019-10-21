@@ -171,6 +171,28 @@ void US2902() {
 
 }
 
+/* US16: Male Last Names Match Husband */
+void US1601() {
+    
+    printf("Starting Test US16-01: ");
+    errorStatements.clear();
+    
+    unordered_map<string, family> famList;
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", 'M', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Son"] = {"The Son", 'M', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    famList["Family"] = {"", "2000-01-01", "Husband", "N/A", {"Son"}, {0,0,0,0}};
+    
+    if(maleLastNames(indiList, famList)){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+}
+
 
 /* Every spouse is the correct gender */
 void US2101() {
@@ -477,6 +499,8 @@ int main(int argc, char** argv) {
     US06_02();
     US0701();
     US1001();
+    US1201();
+    US1601();
     US2101();
     US2102();
     US2201();
@@ -487,6 +511,5 @@ int main(int argc, char** argv) {
     US3002();
     US4001();
     US4201();
-    US1201();
     printf("%i Tests Failed\n", failed);
 }

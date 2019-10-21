@@ -29,6 +29,7 @@ int main(int argc, char** argv) {
     finalStore();
    
     correctGender(indiMap, famMap);
+    maleLastNames(indiMap, famMap);
 
     printf("LIST OF ALL INDIVIDUALS:\n");
     printIndividuals(sortIndividuals(indiMap));
