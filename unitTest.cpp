@@ -253,7 +253,7 @@ void US02_01() {
 	illegal.married = "1999-09-09";
 	illegal.husbandID = "TEST02-a";
 	illegal.wifeID = "TEST02-c";
-	if (BirthB4Marriage(illegal, 0)) {
+	if (BirthB4Marriage(illegal)) {
 		failed++;
         printf("FAILED\n");
     } else {
@@ -272,7 +272,7 @@ void US02_02() {
 	illegal.married = "2009-09-09";
 	illegal.husbandID = "TEST02-a";
 	illegal.wifeID = "TEST02-c";
-	if (BirthB4Marriage(illegal, 0)) {
+	if (BirthB4Marriage(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -285,7 +285,7 @@ void US03_01() {
 	individual born;
 	born.birthday = "2012-04-29";
 	born.death = "2049-07-22";
-	if (BirthB4Death(born, 0, 0)) {
+	if (BirthB4Death(born)) {
 		printf("PASSED\n");
 	} else {
 		failed++;
@@ -298,7 +298,7 @@ void US03_02() {
 	individual unborn;
 	unborn.birthday = "2012-04-29";
 	unborn.death = "2010-07-22";
-	if (BirthB4Death(unborn, 0, 0)) {
+	if (BirthB4Death(unborn)) {
 		failed++;
         printf("FAILED\n");
 	} else {
@@ -312,7 +312,7 @@ void US03_03() {
 	alive.birthday = "2012-04-29";
 	//printf("birthday string: %s\n", alive.birthday.c_str());
 	//printf("death string: %s\n", alive.death.c_str());
-	if (BirthB4Death(alive, 0, 0)) {
+	if (BirthB4Death(alive)) {
 		printf("PASSED\n");
 	} else {
 		failed++;
@@ -325,7 +325,7 @@ void US03_04() {
 	individual stillborn;
 	stillborn.birthday = "2012-04-29";
 	stillborn.death = "2012-04-29";
-	if (BirthB4Death(stillborn, 0, 0)) {
+	if (BirthB4Death(stillborn)) {
 		printf("PASSED\n");
 	} else {
 		failed++;
@@ -335,9 +335,21 @@ void US03_04() {
 
 void US04_01() {
 	printf("Starting Test US04-01: ");
-	printf("UNIMPLEMENTED ");
-	failed++;
-    printf("FAILED\n");
+	individual predivm;
+	individual predivf;
+	indiMap.insert({"TEST04-husband", predivm});
+	indiMap.insert({"TEST04-wife", predivf});
+	family breakup;
+	breakup.husbandID = "TEST04-husband";
+	breakup.wifeID = "TEST04-wife";
+	breakup.married = "2009-09-09";
+	breakup.divorced = "2009-09-08";
+	if (!MarriageB4Divorce(breakup)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
 }
 
 void US05_01() {
@@ -351,7 +363,7 @@ void US05_01() {
 	illegal.married = "2009-09-09";
 	illegal.husbandID = "TEST05-alive";
 	illegal.wifeID = "TEST05-dead";
-	if (!MarriageB4Death(illegal, 0)) {
+	if (!MarriageB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -370,7 +382,7 @@ void US05_02() {
 	illegal.married = "2009-09-09";
 	illegal.husbandID = "TEST05-dead2";
 	illegal.wifeID = "TEST05-alive2";
-	if (!MarriageB4Death(illegal, 0)) {
+	if (!MarriageB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -390,7 +402,7 @@ void US06_01() {
 	illegal.divorced = "2010-07-23";
 	illegal.husbandID = "TEST06-widower";
 	illegal.wifeID = "TEST06-dead";
-	if (!DivorceB4Death(illegal, 0)) {
+	if (!DivorceB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -410,7 +422,7 @@ void US06_02() {
 	illegal.divorced = "2010-07-23";
 	illegal.husbandID = "TEST06-dead";
 	illegal.wifeID = "TEST06-widow";
-	if (!DivorceB4Death(illegal, 0)) {
+	if (!DivorceB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -420,9 +432,73 @@ void US06_02() {
 
 void US09_01() {
 	printf("Starting Test US09-01: ");
-	printf("UNIMPLEMENTED ");
-	failed++;
-    printf("FAILED\n");
+	individual deadmom;
+	deadmom.death = "2006-06-09";
+	individual deaddad;
+	deaddad.death = "2006-06-09";
+	individual impossiblechild;
+	impossiblechild.birthday = "2007-08-11";
+	individual impossiblechild2;
+	impossiblechild.birthday = "2008-07-20";
+	indiMap.insert({"TEST09-deadmom", deadmom});
+	indiMap.insert({"TEST09-deaddad", deaddad});
+	indiMap.insert({"TEST09-child1", impossiblechild});
+	indiMap.insert({"TEST09-child2", impossiblechild2});
+	family bothdead;
+	bothdead.wifeID = "TEST09-deadmom";
+	bothdead.husbandID = "TEST09-deaddad";
+	bothdead.children.push_back("TEST09-child1");
+	bothdead.children.push_back("TEST09-child2");
+	if (!BirthB4ParentsDeath(bothdead)) {
+		printf("PASSED\n");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    }
+}
+
+void US09_02() {
+	printf("Starting Test US09-02: ");
+	individual livemom;
+	individual deaddad;
+	deaddad.death = "2006-06-09";
+	individual possiblechild;
+	possiblechild.birthday = "2007-01-11";
+	indiMap.insert({"TEST09-livemom", livemom});
+	indiMap.insert({"TEST09-deaddad", deaddad});
+	indiMap.insert({"TEST09-child1", possiblechild});
+	family singlemom;
+	singlemom.wifeID = "TEST09-livemom";
+	singlemom.husbandID = "TEST09-deaddad";
+	singlemom.children.push_back("TEST09-child1");
+	//Unsure if we will handle the case where the father dies during the mother's pregnancy
+	if (BirthB4ParentsDeath(singlemom)) {
+		printf("PASSED\n");
+	} else {
+		printf("PASSED\n");
+    }
+}
+
+void US09_03() {
+	printf("Starting Test US09-03: ");
+	individual deadmom;
+	deadmom.death = "2006-06-09";
+	individual livedad;
+	individual impossiblechild;
+	impossiblechild.birthday = "2007-01-11";
+	indiMap.insert({"TEST09-deadmom", deadmom});
+	indiMap.insert({"TEST09-livedad", livedad});
+	indiMap.insert({"TEST09-child1", impossiblechild});
+	family impossdad;
+	impossdad.wifeID = "TEST09-deadmom";
+	impossdad.husbandID = "TEST09-deaddad";
+	impossdad.children.push_back("TEST09-child1");
+	if (!BirthB4ParentsDeath(impossdad)) {
+		printf("PASSED\n");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    }
 }
 
 /* US07: Less than 150 years old */
@@ -513,6 +589,8 @@ int main(int argc, char** argv) {
     US06_02();
     US0701();
     US09_01();
+    US09_02();
+    US09_03();
     US1001();
     US1201();
     US1601();

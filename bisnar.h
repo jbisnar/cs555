@@ -7,12 +7,16 @@
 
 using namespace std;
 
-bool BirthB4Death (individual person, int birthline, int deathline);
+bool BirthB4Death (individual person);
 
-bool BirthB4Marriage (family fam, int marryline);
+bool BirthB4Marriage (family fam);
 
-bool MarriageB4Death (family fam, int marryline);
+bool MarriageB4Death (family fam);
 
-bool DivorceB4Death (family fam, int divorceline);
+bool DivorceB4Death (family fam);
+
+bool MarriageB4Divorce (family fam);
+
+bool BirthB4ParentsDeath (family fam);
 
 #endif

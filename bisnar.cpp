@@ -30,21 +30,21 @@ time_t String2Date (string sdate) {
 }
 */
 
-bool BirthB4Death (individual person, int birthline, int deathline) {
+bool BirthB4Death (individual person) {
 	if (strcmp(person.death.c_str(), "") == 0) {
 		//printf ("This mf still alive");
 		return true;
 	}
 	if ( strcmp(person.birthday.c_str(), person.death.c_str()) > 0) {
 		errorStatements.push_back("ERROR: INDIVIDUAL: US03: "
-		+ to_string(birthline) + " and " + to_string(deathline) + ": "
+		+ to_string(person.lineNumbers[2]) + " and " + to_string(person.lineNumbers[4]) + ": "
 		+ person.name + "'s death date is before their birth date"); 
 		return false;
 	}
 	return true;
 }
 
-bool BirthB4Marriage (family fam, int marryline) {
+bool BirthB4Marriage (family fam) {
 	/*
 	printf ("BB4M Checkpoint 0\n");
 	printf ("Family marryline is %d\n", marryline);
@@ -58,7 +58,7 @@ bool BirthB4Marriage (family fam, int marryline) {
 		|| strcmp(indiMap.find(fam.wifeID)->second.birthday.c_str(), fam.married.c_str()) > 0) {
 			//printf ("BB4M Checkpoint 1\n");
 			errorStatements.push_back("ERROR: FAMILY:     US02: "
-			+ to_string(marryline) +": "
+			+ to_string(fam.lineNumbers[0]) +": "
 			+ "Marry date is before someone's birthday"); 
 			return false;
 			return false;
@@ -69,14 +69,14 @@ bool BirthB4Marriage (family fam, int marryline) {
 	return true;
 }
 
-bool MarriageB4Death (family fam, int marryline) {
+bool MarriageB4Death (family fam) {
 	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
 		string hdeath = indiMap.find(fam.husbandID)->second.death;
 		string wdeath = indiMap.find(fam.wifeID)->second.death;
 		if ( ((strcmp(hdeath.c_str(), fam.married.c_str()) < 0 && (strcmp(hdeath.c_str(), "N/A") != 0))
 		|| ( (strcmp(wdeath.c_str(), fam.married.c_str())) < 0 && (strcmp(wdeath.c_str(), "N/A") != 0)))) {
 			errorStatements.push_back("ERROR: FAMILY:     US05: "
-			+ to_string(marryline) +": "
+			+ to_string(fam.lineNumbers[0]) +": "
 			+ "Marry date is after someone died"); 
 			return false;
 		}
@@ -84,7 +84,7 @@ bool MarriageB4Death (family fam, int marryline) {
 	return true;
 }
 
-bool DivorceB4Death (family fam, int divorceline) {
+bool DivorceB4Death (family fam) {
 	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
 		string hdeath = indiMap.find(fam.husbandID)->second.death;
 		string wdeath = indiMap.find(fam.wifeID)->second.death;
@@ -98,5 +98,15 @@ bool DivorceB4Death (family fam, int divorceline) {
 			return false;
 		}
 	}
+	return true;
+}
+
+bool MarriageB4Divorce (family fam) {
+	printf("MarriageB4Divorce UNIMPLEMENTED ");
+	return true;
+}
+
+bool BirthB4ParentsDeath (family fam) {
+	printf("BirthB4ParentsDeath UNIMPLEMENTED ");
 	return true;
 }
