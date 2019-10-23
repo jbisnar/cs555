@@ -242,6 +242,43 @@ void US2102() {
 
 }
 
+void US02_01() {
+	printf("Starting Test US02-01: ");
+	individual fetus;
+	fetus.birthday = "2000-06-09";
+	individual pedo;
+	indiMap.insert({"TEST02-c", fetus});
+	indiMap.insert({"TEST02-a", pedo});
+	family illegal;
+	illegal.married = "1999-09-09";
+	illegal.husbandID = "TEST02-a";
+	illegal.wifeID = "TEST02-c";
+	if (BirthB4Marriage(illegal, 0)) {
+		failed++;
+        printf("FAILED\n");
+    } else {
+    	printf("PASSED\n");
+	}
+}
+
+void US02_02() {
+	printf("Starting Test US02-02: ");
+	individual born;
+	born.birthday = "2000-06-09";
+	individual pedo;
+	indiMap.insert({"TEST02-c", born});
+	indiMap.insert({"TEST02-a", pedo});
+	family illegal;
+	illegal.married = "2009-09-09";
+	illegal.husbandID = "TEST02-a";
+	illegal.wifeID = "TEST02-c";
+	if (BirthB4Marriage(illegal, 0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
 
 void US03_01() {
 	printf("Starting Test US03-01: ");
@@ -294,6 +331,13 @@ void US03_04() {
 		failed++;
         printf("FAILED\n");
 	}
+}
+
+void US04_01() {
+	printf("Starting Test US04-01: ");
+	printf("UNIMPLEMENTED ");
+	failed++;
+    printf("FAILED\n");
 }
 
 void US05_01() {
@@ -374,42 +418,11 @@ void US06_02() {
 	}
 }
 
-void US02_01() {
-	printf("Starting Test US02-01: ");
-	individual fetus;
-	fetus.birthday = "2000-06-09";
-	individual pedo;
-	indiMap.insert({"TEST02-c", fetus});
-	indiMap.insert({"TEST02-a", pedo});
-	family illegal;
-	illegal.married = "1999-09-09";
-	illegal.husbandID = "TEST02-a";
-	illegal.wifeID = "TEST02-c";
-	if (BirthB4Marriage(illegal, 0)) {
-		failed++;
-        printf("FAILED\n");
-    } else {
-    	printf("PASSED\n");
-	}
-}
-
-void US02_02() {
-	printf("Starting Test US02-02: ");
-	individual born;
-	born.birthday = "2000-06-09";
-	individual pedo;
-	indiMap.insert({"TEST02-c", born});
-	indiMap.insert({"TEST02-a", pedo});
-	family illegal;
-	illegal.married = "2009-09-09";
-	illegal.husbandID = "TEST02-a";
-	illegal.wifeID = "TEST02-c";
-	if (BirthB4Marriage(illegal, 0)) {
-		printf("PASSED\n");
-    } else {
-    	failed++;
-        printf("FAILED\n");
-	}
+void US09_01() {
+	printf("Starting Test US09-01: ");
+	printf("UNIMPLEMENTED ");
+	failed++;
+    printf("FAILED\n");
 }
 
 /* US07: Less than 150 years old */
@@ -493,11 +506,13 @@ int main(int argc, char** argv) {
     US03_02();
     US03_03();
     US03_04();
+    US04_01();
     US05_01();
     US05_02();
     US06_01();
     US06_02();
     US0701();
+    US09_01();
     US1001();
     US1201();
     US1601();
