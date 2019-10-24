@@ -102,11 +102,26 @@ bool DivorceB4Death (family fam) {
 }
 
 bool MarriageB4Divorce (family fam) {
-	printf("MarriageB4Divorce UNIMPLEMENTED ");
+	//printf("MarriageB4Divorce called \n");
+	if ( (strcmp(fam.married.c_str(), fam.divorced.c_str()) > 0) && (strcmp(fam.divorced.c_str(),"N/A") != 0)) {
+		errorStatements.push_back("ERROR: FAMILY:     US04: "
+			+ to_string(fam.lineNumbers[0]) +" and "+ to_string(fam.lineNumbers[1]) +": "
+			+ "Divorce date is before marriage date");
+			return false;
+	}
 	return true;
 }
 
 bool BirthB4ParentsDeath (family fam) {
-	printf("BirthB4ParentsDeath UNIMPLEMENTED ");
+	/*
+	printf ("Child of family %s\n",person.CID.c_str());
+	family fam = famMap.find(person.CID)->second;
+	printf ("Family found with husband %s and wife %s\n",fam.husbandID.c_str(),fam.wifeID.c_str());
+	string hdeath = indiMap.find(fam.husbandID)->second.death;
+	string wdeath = indiMap.find(fam.wifeID)->second.death;
+	printf ("Dad died %s\n",hdeath.c_str());
+	printf ("Mom died %s\n",wdeath.c_str());
+	*/
+	printf ("BirthB4ParentsDeath UNIMPLEMENTED ");
 	return true;
 }

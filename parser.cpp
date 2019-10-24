@@ -195,6 +195,7 @@ void finalStore(){
     	BirthB4Marriage(curFam);
     	MarriageB4Death(curFam);
     	DivorceB4Death(curFam);
+    	MarriageB4Divorce(curFam);
         famMap[curIDFam.c_str()] = curFam;
     }
     parentsNotTooOld(indiMap, famMap);
@@ -242,6 +243,7 @@ void store(string level, string tag, string args){
         	BirthB4Marriage(curFam);
         	MarriageB4Death(curFam);
         	DivorceB4Death(curFam);
+        	//MarriageB4Divorce(curFam);
             famMap[curIDFam.c_str()] = curFam;
         }
         family ftemp = {"N/A", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
@@ -282,6 +284,7 @@ void store(string level, string tag, string args){
             curFam.divorced = improveDate(args.c_str());
 			legalDate(curFam.divorced, lineNumber);
 			DivorceB4Death(curFam);
+			MarriageB4Divorce(curFam);
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
             curFam.lineNumbers[0] = lineNumber;
             curFam.married = improveDate(args.c_str());
