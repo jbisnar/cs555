@@ -199,7 +199,7 @@ void finalStore(){
         famMap[curIDFam.c_str()] = curFam;
     }
     parentsNotTooOld(indiMap, famMap);
-	
+	siblingsNotMarried(indiMap, curFam);
     return;
 }
 
@@ -258,10 +258,12 @@ void store(string level, string tag, string args){
         curTag = tag.c_str();
     }else if(strcmp(tag.c_str(), "HUSB") == 0){
         curFam.lineNumbers[2] = lineNumber;
-        curFam.husbandID = args.c_str(); 
+        curFam.husbandID = args.c_str();
+		//siblingsNotMarried(indiMap, curFam.husbandID, curFam.wifeID);
     }else if(strcmp(tag.c_str(), "WIFE") == 0){
         curFam.lineNumbers[3] = lineNumber;
         curFam.wifeID = args.c_str();
+		//siblingsNotMarried(indiMap, curFam.husbandID, curFam.wifeID);
     }else if(strcmp(tag.c_str(), "CHIL") == 0){
         curFam.children.push_back(args);
     }else if(strcmp(tag.c_str(), "DIV") == 0){
