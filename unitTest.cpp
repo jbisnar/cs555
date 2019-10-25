@@ -575,6 +575,51 @@ void US1201(){
 	}
 }
 
+// checks if siblings are not married: one child only
+// US 18
+void US1801(){
+	printf("Starting Test US18-01: ");
+    unordered_map<string, individual> indiList;
+	family curFam = {"", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
+	
+	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
+	indiList["Child1"] = {"John MacTavish", 'M', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
+	curFam.husbandID = "Child1";
+	
+	if (siblingsNotMarried(indiList, curFam))
+		printf("PASSED\n");
+	else
+	{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+// checks if siblings are not married: family has more than one child
+// US 18
+void US1802(){
+	printf("Starting Test US18-02: ");
+    unordered_map<string, individual> indiList;
+	family curFam = {"", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
+	
+	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
+	indiList["Child1"] = {"John MacTavish", 'M', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
+	indiList["Child2"] = {"Anna MacTavish", 'F', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
+	indiList["Sierra"] = {"Sierra Price", 'F', "2000-01-01", true, "N/A", {"Fam2"}, "Fam3", {0,0,0,0,0,0}};
+	curFam.husbandID = "Child1";
+	curFam.wifeID = "Sierra";
+	
+	if (siblingsNotMarried(indiList, curFam))
+		printf("PASSED\n");
+	else
+	{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
 int main(int argc, char** argv) {
     US02_01();
     US02_02();
@@ -604,5 +649,7 @@ int main(int argc, char** argv) {
     US3002();
     US4001();
     US4201();
+	US1801();
+	US1802();
     printf("%i Tests Failed\n", failed);
 }

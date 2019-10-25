@@ -194,3 +194,21 @@ bool parentsNotTooOld(unordered_map<string, individual> indis, unordered_map<str
 	
 	return true;
 }
+
+// Siblings don't marry each other
+// US 18
+bool siblingsNotMarried(unordered_map<string, individual> indis, family curFam){
+	// only one spouse listed in the family
+	if (curFam.husbandID.compare("N/A") == 0 || curFam.wifeID.compare("N/A") == 0)
+		return true;
+	else{
+		string husbandCID = indis.at(curFam.husbandID).CID;
+		string wifeCID = indis.at(curFam.wifeID).CID;
+		
+		if (husbandCID.compare(wifeCID) == 0){ // spouses have the same parents >:(
+			errorStatements.push_back("ERROR: FAMILY:     US18: " + to_string(curFam.lineNumbers[2]) + ": " + indis.at(curFam.husbandID).name + " is married to his sister.");
+			return false;
+		}
+	}
+	return true;
+}
