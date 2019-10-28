@@ -170,25 +170,38 @@ bool parentsNotTooOld(unordered_map<string, individual> indis, unordered_map<str
 	struct tm motherBirthDay;
 	struct tm fatherBirthDay;
 	struct tm childBirthDay;
-    
+    string strMotherBirthDay = "N/A", strFatherBirthDay = "N/A", strChildBirthDay = "N/A";
     for(itr = fams.begin(); itr != fams.end(); itr++){ // scan through given fam struct
-	
-		motherBirthDay = String2Date(indis.at(itr->second.wifeID).birthday);
-		fatherBirthDay = String2Date(indis.at(itr->second.husbandID).birthday);
+		strMotherBirthDay = indis.at(itr->second.wifeID).birthday;
+		strFatherBirthDay = indis.at(itr->second.husbandID).birthday;
+		if (strMotherBirthDay.compare("N/A") == 0 || strFatherBirthDay.compare("N/A") == 0) // no birthday entered for parents
+			;
+		else{
+			motherBirthDay = String2Date(strMotherBirthDay);
+			fatherBirthDay = String2Date(strFatherBirthDay);
 		
-		// goes through the list of children in fams, and checks their individual struct to get the birthday
-		for (childItr = itr->second.children.begin(); childItr != itr->second.children.end(); childItr++){
-			childBirthDay = String2Date(indis.at(*childItr).birthday);
+			// goes through the list of children in fams, and checks their individual struct to get the birthday
+			for (childItr = itr->second.children.begin(); childItr != itr->second.children.end(); childItr++){
+				strChildBirthDay = indis.at(*childItr).birthday;
+				if (strChildBirthDay.compare("N/A") == 0) // no birthday entered for child
+					break;
+				
+				childBirthDay = String2Date(strChildBirthDay);
+				
+				if (yearsBetweenDates(motherBirthDay, childBirthDay) >= 60){
+					errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the mother is older than 60 years old.");
+					return false;
+				}
 			
-			if (yearsBetweenDates(motherBirthDay, childBirthDay) >= 60){
-				errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the mother is older than 60 years old.");
-				return false;
+		
+				if (yearsBetweenDates(fatherBirthDay, childBirthDay) >= 80){
+					errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the father is older than 80 years old.");
+					return false;
+				}
 			}
-			if (yearsBetweenDates(fatherBirthDay, childBirthDay) >= 80){
-				errorStatements.push_back("ERROR: INDIVIDUAL: US12: " + to_string(indis.at(*childItr).lineNumbers[2]) + ": The child is born when the father is older than 80 years old.");
-				return false;
-			}			
 		}
+		
+		
 	}
 	
 	
@@ -197,17 +210,93 @@ bool parentsNotTooOld(unordered_map<string, individual> indis, unordered_map<str
 
 // Siblings don't marry each other
 // US 18
-bool siblingsNotMarried(unordered_map<string, individual> indis, family curFam){
-	// only one spouse listed in the family
-	if (curFam.husbandID.compare("N/A") == 0 || curFam.wifeID.compare("N/A") == 0)
-		return true;
-	else{
-		string husbandCID = indis.at(curFam.husbandID).CID;
-		string wifeCID = indis.at(curFam.wifeID).CID;
+bool siblingsNotMarried(unordered_map<string, individual> indis, unordered_map<string, family> fams){
+	unordered_map<string, family>:: iterator itr;
+	
+	for(itr = fams.begin(); itr != fams.end(); itr++){ // scan through given fam struct
 		
-		if (husbandCID.compare(wifeCID) == 0){ // spouses have the same parents >:(
-			errorStatements.push_back("ERROR: FAMILY:     US18: " + to_string(curFam.lineNumbers[2]) + ": " + indis.at(curFam.husbandID).name + " is married to his sister.");
-			return false;
+		// only one spouse listed in the family: do nothing and move on to the next family
+		if (itr->second.husbandID.compare("N/A") == 0 || itr->second.wifeID.compare("N/A") == 0)
+			;
+		else{
+			string husbandCID = indis.at(itr->second.husbandID).CID;
+			string wifeCID = indis.at(itr->second.wifeID).CID;
+			
+			if(husbandCID.compare("N/A") == 0 || wifeCID.compare("N/A") == 0)
+				;
+			if (husbandCID.compare(wifeCID) == 0){ // spouses have the same parents >:(
+				errorStatements.push_back("ERROR: FAMILY:     US18: " + to_string(itr->second.lineNumbers[2]) + ": " + indis.at(itr->second.husbandID).name + " is married to his sister.");
+				return false;
+			}
+		}
+	}
+	
+	
+	
+	
+	return true;
+}
+
+// First cousins don't marry each other
+// US 19
+bool cousinsNotMarried(unordered_map<string, individual> indis, unordered_map<string, family> fams){
+	unordered_map<string, family>:: iterator curFamItr;
+	unordered_map<string, family>:: iterator itr;
+	
+	string curHusband, curWife;
+	string husbandsDadFam, husbandsMomFam, wifesDadFam, wifesMomFam;
+	
+	bool incest = false;
+	
+	for(curFamItr = fams.begin(); curFamItr != fams.end(); curFamItr++){ // scan through given fam struct
+		curHusband = curFamItr->second.husbandID;
+		curWife = curFamItr->second.wifeID;
+		if (curHusband.compare("N/A") == 0 || curWife.compare("N/A") == 0)
+			;
+		else{
+			string husbandFam = indis.at(curHusband).CID;
+			string wifeFam = indis.at(curWife).CID;
+			
+			if (husbandFam.compare("N/A") == 0 || wifeFam.compare("N/A") == 0)
+				;
+			else{
+				// searches out the husband (male cousin)'s family roots
+				itr = fams.find(husbandFam);
+				husbandsDadFam = indis.at(itr->second.husbandID).CID;
+				husbandsMomFam = indis.at(itr->second.wifeID).CID;
+				
+				// searches out the wife (female cousin)'s family roots
+				itr = fams.find(wifeFam);
+				wifesDadFam = indis.at(itr->second.husbandID).CID;
+				wifesMomFam = indis.at(itr->second.wifeID).CID;
+				
+				
+				if (husbandsDadFam.compare("N/A") != 0 && husbandsDadFam.compare(wifesDadFam) == 0)
+					incest = true;
+				else if (husbandsDadFam.compare("N/A") != 0 && husbandsDadFam.compare(wifesMomFam) == 0)
+					incest = true;
+				
+				if (husbandsMomFam.compare("N/A") != 0 && husbandsDadFam.compare(wifesDadFam) == 0)
+					incest = true;
+				else if (husbandsMomFam.compare("N/A") != 0 && husbandsDadFam.compare(wifesMomFam) == 0)
+					incest = true;
+				
+				// redundancy so that we're safe and sound: do comparison from mom's side
+				if (wifesDadFam.compare("N/A") != 0 && wifesDadFam.compare(husbandsDadFam) == 0)
+					incest = true;
+				else if (wifesDadFam.compare("N/A") != 0 && wifesDadFam.compare(husbandsMomFam) == 0)
+					incest = true;
+				
+				if (wifesMomFam.compare("N/A") != 0 && wifesDadFam.compare(husbandsDadFam) == 0)
+					incest = true;
+				else if (wifesMomFam.compare("N/A") != 0 && wifesDadFam.compare(husbandsMomFam) == 0)
+					incest = true;
+				
+				if (incest){
+					errorStatements.push_back("ERROR: FAMILY:     US19: " + to_string(curFamItr->second.lineNumbers[2]) + ": " + indis.at(curFamItr->second.husbandID).name + " is married to his cousin.");
+					return false;
+				}
+			}
 		}
 	}
 	return true;

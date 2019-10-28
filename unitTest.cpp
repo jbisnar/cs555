@@ -580,14 +580,15 @@ void US1201(){
 void US1801(){
 	printf("Starting Test US18-01: ");
     unordered_map<string, individual> indiList;
-	family curFam = {"", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
+	unordered_map<string, family> famList;
 	
-	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
-    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
+	
+	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
 	indiList["Child1"] = {"John MacTavish", 'M', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
-	curFam.husbandID = "Child1";
+	famList["Fam1"]= {"", "N/A", "Child1", "N/A", {}, {0,0,0,0}};
 	
-	if (siblingsNotMarried(indiList, curFam))
+	if (siblingsNotMarried(indiList, famList))
 		printf("PASSED\n");
 	else
 	{
@@ -601,17 +602,56 @@ void US1801(){
 void US1802(){
 	printf("Starting Test US18-02: ");
     unordered_map<string, individual> indiList;
-	family curFam = {"", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
+	unordered_map<string, family> famList;
 	
-	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
-    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "", {0,0,0,0,0,0}};
+	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
 	indiList["Child1"] = {"John MacTavish", 'M', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
 	indiList["Child2"] = {"Anna MacTavish", 'F', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
 	indiList["Sierra"] = {"Sierra Price", 'F', "2000-01-01", true, "N/A", {"Fam2"}, "Fam3", {0,0,0,0,0,0}};
-	curFam.husbandID = "Child1";
-	curFam.wifeID = "Sierra";
+	famList["Fam1"]= {"", "N/A", "Child1", "Sierra", {}, {0,0,0,0}};
 	
-	if (siblingsNotMarried(indiList, curFam))
+	if (siblingsNotMarried(indiList, famList))
+		printf("PASSED\n");
+	else
+	{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+// checks if cousins are not married
+void US1901(){
+	printf("Starting Test US19-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	family curFam = {"", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
+	
+	
+	indiList["1_Gramps"] = {"First Last", 'M', "N/A", true, "N/A", {"Grand1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["1_Gramms"] = {"First Last", 'F', "N/A", true, "N/A", {"Grand1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["2_Gramps"] = {"First Last", 'M', "N/A", true, "N/A", {"Grand2"}, "N/A", {0,0,0,0,0,0}};
+	indiList["2_Gramms"] = {"First Last", 'F', "N/A", true, "N/A", {"Grand2"}, "N/A", {0,0,0,0,0,0}};
+	indiList["3_Gramps"] = {"First Last", 'M', "N/A", true, "N/A", {"Grand3"}, "N/A", {0,0,0,0,0,0}};
+	indiList["3_Gramms"] = {"First Last", 'F', "N/A", true, "N/A", {"Grand3"}, "N/A", {0,0,0,0,0,0}};
+	indiList["1A_Dad"] = {"First Last", 'M', "N/A", true, "N/A", {"Paternal"}, "Grand1", {0,0,0,0,0,0}};
+	indiList["1A_Mom"] = {"First Last", 'F', "N/A", true, "N/A", {"Paternal"}, "Grand2", {0,0,0,0,0,0}};
+	indiList["2A_Dad"] = {"First Last", 'M', "N/A", true, "N/A", {"Maternal"}, "Grand2", {0,0,0,0,0,0}};
+	indiList["2A_Mom"] = {"First Last", 'F', "N/A", true, "N/A", {"Maternal"}, "Grand3", {0,0,0,0,0,0}};
+	indiList["1B_Husb"] = {"First Last", 'M', "N/A", true, "N/A", {"Current"}, "Paternal", {0,0,0,0,0,0}};
+	indiList["2B_Wife"] = {"First Last", 'F', "N/A", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	
+	famList["Grand1"] = {"", "N/A", "1_Gramps", "1_Gramms", {"1A_Dad"}, {0,0,0,0}};
+	famList["Grand2"] = {"", "N/A", "2_Gramps", "2_Gramms", {"1A_Mom", "2A_Dad"}, {0,0,0,0}};
+	famList["Grand3"] = {"", "N/A", "3_Gramps", "3_Gramms", {"2A_Mom"}, {0,0,0,0}};
+	famList["Paternal"] = {"", "N/A", "1A_Dad", "1A_Mom", {"1B_Husb"}, {0,0,0,0}};
+	famList["Maternal"] = {"", "N/A", "2A_Dad", "2A_Mom", {}, {0,0,0,0}};
+	famList["Current"] = {"", "N/A", "1B_Husb", "2B_Wife", {}, {0,0,0,0}};
+	
+	curFam.husbandID = "1B_Husb";
+	curFam.wifeID = "2B_Wife";
+	
+	if (cousinsNotMarried(indiList, famList))
 		printf("PASSED\n");
 	else
 	{
@@ -651,5 +691,6 @@ int main(int argc, char** argv) {
     US4201();
 	US1801();
 	US1802();
+	US1901();
     printf("%i Tests Failed\n", failed);
 }
