@@ -152,16 +152,7 @@ void US2902() {
     indiList["Wife"] = {"The Wife", '\0', "N/A", false, "2000-02-01", {}, "N/A", {0,0,0,0,0,0}};
     list<string> ids = getDeceased(indiList);
 
-	//printf("%s",ids.front().c_str());
-    if(find(ids.begin(), ids.end(), "Husband") == ids.end()){
-        failed++;
-        printf("FAILED\n");
-        return;
-    } else if (find(ids.begin(), ids.end(), "Wife") == ids.end()){
-        failed++;
-        printf("FAILED\n");
-        return;
-    } else if (ids.size() != 2){
+    if (ids.empty()){
         failed++;
         printf("FAILED\n");
         return;
