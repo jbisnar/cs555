@@ -114,7 +114,7 @@ bool MarriageB4Divorce (family fam) {
 	return true;
 }
 
-bool BirthB4ParentsDeath (family famly) {
+bool BirthB4ParentsDeath () {
 	bool noerrors = true;
 	unordered_map<string, family>:: iterator fam;
 	for(fam = famMap.begin(); fam != famMap.end(); fam++){
@@ -129,12 +129,12 @@ bool BirthB4ParentsDeath (family famly) {
 		for (kid = kidlist.begin(); kid != kidlist.end(); ++kid) {
 			string cbirth = indiMap.find(kid->c_str())->second.birthday;
 			//printf("Child %s was born %s\n", kid->c_str(), cbirth.c_str());
-			if ( strcmp(wdeath.c_str(), cbirth.c_str()) < 0 && strcmp(wdeath.c_str(), "N/A") != 0 ) {
+			if ( strcmp(wdeath.c_str(), cbirth.c_str()) < 0 && strcmp(wdeath.c_str(), "N/A") != 0 && strcmp(wdeath.c_str(), "") != 0 ) {
 				errorStatements.push_back("ERROR: INDIVIDUAL: US09: "
 				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
 				+ "Child born after mother died");
 				noerrors = false;
-			} else if ( strcmp(fathergrace.c_str(), cbirth.c_str()) < 0 && strcmp(hdeath.c_str(), "N/A") != 0 ) {
+			} else if ( strcmp(fathergrace.c_str(), cbirth.c_str()) < 0 && strcmp(hdeath.c_str(), "N/A") != 0 && strcmp(hdeath.c_str(), "") != 0) {
 				errorStatements.push_back("ERROR: INDIVIDUAL: US09: "
 				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
 				+ "Child born over 9 months after father died");
@@ -151,21 +151,33 @@ string NineMonthsLater (string date) {
 	//printf("Nine Months Later Called on string %s\n",date.c_str());
 	if (date.length() != 10) {return date;}
 	string yearstr = date.substr(0,4);
-	string monthstr = date.substr(6,8);
-	//printf("year and month strings acquired\n");
-	string daystr = date.substr(9,11);
-	//printf("day string acquired\n");
+	//printf("year string is %s\n",yearstr.c_str());
+	string monthstr = date.substr(5,2);
+	//printf("month string is %s\n",monthstr.c_str());
+	string daystr = date.substr(8,2);
+	//printf("day string is %s\n",daystr.c_str());
 	int year = atoi(yearstr.c_str());
 	int month = atoi(monthstr.c_str());
-	//printf("year and month strings converted\n");
-	int day = atoi(daystr.c_str());
-	//printf("day string converted\n");
+	//int day = atoi(daystr.c_str());
 	int newmonth = (month+9)%12;
-	char newdate[10];
-	if (newmonth < month) {
-		sprintf(newdate,"%i-%i-%i",year+1,newmonth,day);
+	//printf("NML Checkpoint 1\n");
+	char newmonthstr[3];
+	char newdate[11];
+	//printf("NML Checkpoint 2\n");
+	if (newmonth < 10) {
+		//printf("0%i",newmonth);
+		sprintf(newmonthstr,"0%i",newmonth);
 	} else {
-		sprintf(newdate,"%i-%i-%i",year,newmonth,day);
+		//printf("0%i",newmonth);
+		sprintf(newmonthstr,"%i",newmonth);
+	}
+	//printf("NML Checkpoint 3\n");
+	if (newmonth < month) {
+		//printf("%i-%s-%s",year+1,newmonthstr,daystr.c_str());
+		sprintf(newdate,"%i-%s-%s",year+1,newmonthstr,daystr.c_str());
+	} else {
+		//printf("%i-%s-%s",year,newmonthstr,daystr.c_str());
+		sprintf(newdate,"%i-%s-%s",year,newmonthstr,daystr.c_str());
 	}
 	return newdate;
 }

@@ -17,7 +17,7 @@ bool DivorceB4Death (family fam);
 
 bool MarriageB4Divorce (family fam);
 
-bool BirthB4ParentsDeath (family fam);
+bool BirthB4ParentsDeath ();
 
 string NineMonthsLater (string date);
 

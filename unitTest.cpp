@@ -449,11 +449,14 @@ void US09_01() {
 	bothdead.husbandID = "TEST09-deaddad";
 	bothdead.children.push_back("TEST09-child1");
 	bothdead.children.push_back("TEST09-child2");
-	if (!BirthB4ParentsDeath(bothdead)) {
+	famMap.insert({"TEST09-bothdead", bothdead});
+	if (!BirthB4ParentsDeath()) {
 		printf("PASSED\n");
+		famMap.erase("TEST09-bothdead");
 	} else {
 		failed++;
     	printf("FAILED\n");
+    	famMap.erase("TEST09-bothdead");
     }
 }
 
@@ -464,18 +467,22 @@ void US09_02() {
 	deaddad.death = "2006-06-09";
 	individual possiblechild;
 	possiblechild.birthday = "2007-01-11";
-	indiMap.insert({"TEST09-livemom", livemom});
-	indiMap.insert({"TEST09-deaddad", deaddad});
-	indiMap.insert({"TEST09-child1", possiblechild});
+	indiMap.insert({"TEST0902-livemom", livemom});
+	indiMap.insert({"TEST0902-deaddad", deaddad});
+	indiMap.insert({"TEST0902-child1", possiblechild});
 	family singlemom;
-	singlemom.wifeID = "TEST09-livemom";
+	singlemom.wifeID = "TEST0902-livemom";
 	singlemom.husbandID = "TEST09-deaddad";
-	singlemom.children.push_back("TEST09-child1");
+	singlemom.children.push_back("TEST0902-child1");
+	famMap.insert({"TEST09-singlemom", singlemom});
 	//Unsure if we will handle the case where the father dies during the mother's pregnancy
-	if (BirthB4ParentsDeath(singlemom)) {
+	if (BirthB4ParentsDeath()) {
 		printf("PASSED\n");
+		famMap.erase("TEST09-singlemom");
 	} else {
-		printf("PASSED\n");
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-singlemom");
     }
 }
 
@@ -486,18 +493,21 @@ void US09_03() {
 	individual livedad;
 	individual impossiblechild;
 	impossiblechild.birthday = "2007-01-11";
-	indiMap.insert({"TEST09-deadmom", deadmom});
-	indiMap.insert({"TEST09-livedad", livedad});
-	indiMap.insert({"TEST09-child1", impossiblechild});
+	indiMap.insert({"TEST0903-deadmom", deadmom});
+	indiMap.insert({"TEST0903-livedad", livedad});
+	indiMap.insert({"TEST0903-child1", impossiblechild});
 	family impossdad;
-	impossdad.wifeID = "TEST09-deadmom";
-	impossdad.husbandID = "TEST09-deaddad";
-	impossdad.children.push_back("TEST09-child1");
-	if (!BirthB4ParentsDeath(impossdad)) {
+	impossdad.wifeID = "TEST0903-deadmom";
+	impossdad.husbandID = "TEST0903-livedad";
+	impossdad.children.push_back("TEST0903-child1");
+	famMap.insert({"TEST0903-impossdad",impossdad});
+	if (!BirthB4ParentsDeath()) {
 		printf("PASSED\n");
+		famMap.erase("TEST0903-impossdad");
 	} else {
 		failed++;
     	printf("FAILED\n");
+    	famMap.erase("TEST0903-impossdad");
     }
 }
 
