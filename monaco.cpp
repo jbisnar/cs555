@@ -51,6 +51,20 @@ list<string> getLivingMarried(unordered_map<string, family> fams,
     return livingMarried;
 }
 
+list<string> getDeceased(unordered_map<string, individual> indis) {
+
+    unordered_map<string, individual>:: iterator itr;
+    list<string> deceased;
+
+    for(itr = indis.begin(); itr != indis.end(); itr++){
+        if(strcmp(itr->second.death.c_str(), "N/A") != 0){
+            deceased.push_back(itr->first);
+        }
+    }
+
+    return deceased;
+}
+
 void correctGender(unordered_map<string, individual> indis, unordered_map<string, family> fams) {
 
     unordered_map<string, family>:: iterator itr;
@@ -69,4 +83,28 @@ void correctGender(unordered_map<string, individual> indis, unordered_map<string
     }
 
     return;
+}
+
+string getLastName(string name){
+    return name.substr(name.find(' '));
+}
+
+bool maleLastNames(unordered_map<string, individual> indis, unordered_map<string, family> fams) {
+    bool noError = true; 
+    unordered_map<string, family>:: iterator itr;
+    
+    for(itr = fams.begin(); itr != fams.end(); itr++){
+        string curLastName = getLastName(indis.at(itr->second.husbandID).name);
+        list<string>::iterator it;
+        for(it = (itr->second.children).begin(); it != (itr->second.children).end(); ++it){
+            if(indis.at(*it).gender = 'M' && 
+                    (strcmp(getLastName(indis.at(*it).name).c_str(), curLastName.c_str()) != 0)){
+                errorStatements.push_back("ERROR: FAMILY:     US16: " +
+                    to_string(indis.at(*it).lineNumbers[0]) + ": " + 
+                    "Child's last name does not match male parent");
+                noError = false;
+            }
+        }
+    }
+    return noError;
 }

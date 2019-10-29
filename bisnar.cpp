@@ -2,8 +2,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctime>
+#include <stdlib.h>
 
 #include <unordered_map>
+#include <list>
 
 #include "globals.h"
 #include "bisnar.h"
@@ -30,21 +32,21 @@ time_t String2Date (string sdate) {
 }
 */
 
-bool BirthB4Death (individual person, int birthline, int deathline) {
+bool BirthB4Death (individual person) {
 	if (strcmp(person.death.c_str(), "") == 0) {
 		//printf ("This mf still alive");
 		return true;
 	}
 	if ( strcmp(person.birthday.c_str(), person.death.c_str()) > 0) {
 		errorStatements.push_back("ERROR: INDIVIDUAL: US03: "
-		+ to_string(birthline) + " and " + to_string(deathline) + ": "
+		+ to_string(person.lineNumbers[2]) + " and " + to_string(person.lineNumbers[4]) + ": "
 		+ person.name + "'s death date is before their birth date"); 
 		return false;
 	}
 	return true;
 }
 
-bool BirthB4Marriage (family fam, int marryline) {
+bool BirthB4Marriage (family fam) {
 	/*
 	printf ("BB4M Checkpoint 0\n");
 	printf ("Family marryline is %d\n", marryline);
@@ -58,7 +60,7 @@ bool BirthB4Marriage (family fam, int marryline) {
 		|| strcmp(indiMap.find(fam.wifeID)->second.birthday.c_str(), fam.married.c_str()) > 0) {
 			//printf ("BB4M Checkpoint 1\n");
 			errorStatements.push_back("ERROR: FAMILY:     US02: "
-			+ to_string(marryline) +": "
+			+ to_string(fam.lineNumbers[0]) +": "
 			+ "Marry date is before someone's birthday"); 
 			return false;
 			return false;
@@ -69,14 +71,14 @@ bool BirthB4Marriage (family fam, int marryline) {
 	return true;
 }
 
-bool MarriageB4Death (family fam, int marryline) {
+bool MarriageB4Death (family fam) {
 	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
 		string hdeath = indiMap.find(fam.husbandID)->second.death;
 		string wdeath = indiMap.find(fam.wifeID)->second.death;
 		if ( ((strcmp(hdeath.c_str(), fam.married.c_str()) < 0 && (strcmp(hdeath.c_str(), "N/A") != 0))
 		|| ( (strcmp(wdeath.c_str(), fam.married.c_str())) < 0 && (strcmp(wdeath.c_str(), "N/A") != 0)))) {
 			errorStatements.push_back("ERROR: FAMILY:     US05: "
-			+ to_string(marryline) +": "
+			+ to_string(fam.lineNumbers[0]) +": "
 			+ "Marry date is after someone died"); 
 			return false;
 		}
@@ -84,7 +86,7 @@ bool MarriageB4Death (family fam, int marryline) {
 	return true;
 }
 
-bool DivorceB4Death (family fam, int divorceline) {
+bool DivorceB4Death (family fam) {
 	if (indiMap.find(fam.husbandID) != indiMap.end() && indiMap.find(fam.wifeID) != indiMap.end()) {
 		string hdeath = indiMap.find(fam.husbandID)->second.death;
 		string wdeath = indiMap.find(fam.wifeID)->second.death;
@@ -99,4 +101,83 @@ bool DivorceB4Death (family fam, int divorceline) {
 		}
 	}
 	return true;
+}
+
+bool MarriageB4Divorce (family fam) {
+	//printf("MarriageB4Divorce called \n");
+	if ( (strcmp(fam.married.c_str(), fam.divorced.c_str()) > 0) && (strcmp(fam.divorced.c_str(),"N/A") != 0)) {
+		errorStatements.push_back("ERROR: FAMILY:     US04: "
+			+ to_string(fam.lineNumbers[0]) +" and "+ to_string(fam.lineNumbers[1]) +": "
+			+ "Divorce date is before marriage date");
+			return false;
+	}
+	return true;
+}
+
+bool BirthB4ParentsDeath () {
+	bool noerrors = true;
+	unordered_map<string, family>:: iterator fam;
+	for(fam = famMap.begin(); fam != famMap.end(); fam++){
+		string hdeath = indiMap.find(fam->second.husbandID)->second.death;
+		string fathergrace = NineMonthsLater(hdeath);
+		string wdeath = indiMap.find(fam->second.wifeID)->second.death;
+		//printf("Family %s: father died %s, mother died %s\n",
+		//		fam->first.c_str(), hdeath.c_str(), wdeath.c_str());
+		//printf("But the father can have a child until %s\n",fathergrace.c_str());
+		list<string> kidlist = fam->second.children;
+		list<string>::iterator kid;
+		for (kid = kidlist.begin(); kid != kidlist.end(); ++kid) {
+			string cbirth = indiMap.find(kid->c_str())->second.birthday;
+			//printf("Child %s was born %s\n", kid->c_str(), cbirth.c_str());
+			if ( strcmp(wdeath.c_str(), cbirth.c_str()) < 0 && strcmp(wdeath.c_str(), "N/A") != 0 && strcmp(wdeath.c_str(), "") != 0 ) {
+				errorStatements.push_back("ERROR: INDIVIDUAL: US09: "
+				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
+				+ "Child born after mother died");
+				noerrors = false;
+			} else if ( strcmp(fathergrace.c_str(), cbirth.c_str()) < 0 && strcmp(hdeath.c_str(), "N/A") != 0 && strcmp(hdeath.c_str(), "") != 0) {
+				errorStatements.push_back("ERROR: INDIVIDUAL: US09: "
+				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
+				+ "Child born over 9 months after father died");
+				noerrors = false;
+			}
+		}
+	}
+	//printf ("BirthB4ParentsDeath UNIMPLEMENTED ");
+	return noerrors;
+}
+
+string NineMonthsLater (string date) {
+	// Assumes format "yyyy-mm-dd"
+	//printf("Nine Months Later Called on string %s\n",date.c_str());
+	if (date.length() != 10) {return date;}
+	string yearstr = date.substr(0,4);
+	//printf("year string is %s\n",yearstr.c_str());
+	string monthstr = date.substr(5,2);
+	//printf("month string is %s\n",monthstr.c_str());
+	string daystr = date.substr(8,2);
+	//printf("day string is %s\n",daystr.c_str());
+	int year = atoi(yearstr.c_str());
+	int month = atoi(monthstr.c_str());
+	//int day = atoi(daystr.c_str());
+	int newmonth = (month+9)%12;
+	//printf("NML Checkpoint 1\n");
+	char newmonthstr[3];
+	char newdate[11];
+	//printf("NML Checkpoint 2\n");
+	if (newmonth < 10) {
+		//printf("0%i",newmonth);
+		sprintf(newmonthstr,"0%i",newmonth);
+	} else {
+		//printf("0%i",newmonth);
+		sprintf(newmonthstr,"%i",newmonth);
+	}
+	//printf("NML Checkpoint 3\n");
+	if (newmonth < month) {
+		//printf("%i-%s-%s",year+1,newmonthstr,daystr.c_str());
+		sprintf(newdate,"%i-%s-%s",year+1,newmonthstr,daystr.c_str());
+	} else {
+		//printf("%i-%s-%s",year,newmonthstr,daystr.c_str());
+		sprintf(newdate,"%i-%s-%s",year,newmonthstr,daystr.c_str());
+	}
+	return newdate;
 }

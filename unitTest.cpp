@@ -124,6 +124,68 @@ void US3002() {
 
 }
 
+/* List Deceased Individuals */
+void US2901() {
+    
+    printf("Starting Test US29-01: ");
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    list<string> ids = getDeceased(indiList);
+
+    if (!ids.empty()){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+
+}
+
+void US2902() {
+
+    printf("Starting Test US29-02: ");
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", '\0', "N/A", false, "2000-02-01", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"The Wife", '\0', "N/A", false, "2000-02-01", {}, "N/A", {0,0,0,0,0,0}};
+    list<string> ids = getDeceased(indiList);
+
+    if (ids.empty()){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+
+}
+
+/* US16: Male Last Names Match Husband */
+void US1601() {
+    
+    printf("Starting Test US16-01: ");
+    errorStatements.clear();
+    
+    unordered_map<string, family> famList;
+    unordered_map<string, individual> indiList;
+    indiList["Husband"] = {"The Husband", 'M', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    indiList["Son"] = {"The Son", 'M', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
+    famList["Family"] = {"", "2000-01-01", "Husband", "N/A", {"Son"}, {0,0,0,0}};
+    
+    if(maleLastNames(indiList, famList)){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+
+    return;
+}
+
+
 /* Every spouse is the correct gender */
 void US2101() {
     printf("Starting Test US21-01: ");
@@ -172,13 +234,50 @@ void US2102() {
 
 }
 
+void US02_01() {
+	printf("Starting Test US02-01: ");
+	individual fetus;
+	fetus.birthday = "2000-06-09";
+	individual pedo;
+	indiMap.insert({"TEST02-c", fetus});
+	indiMap.insert({"TEST02-a", pedo});
+	family illegal;
+	illegal.married = "1999-09-09";
+	illegal.husbandID = "TEST02-a";
+	illegal.wifeID = "TEST02-c";
+	if (BirthB4Marriage(illegal)) {
+		failed++;
+        printf("FAILED\n");
+    } else {
+    	printf("PASSED\n");
+	}
+}
+
+void US02_02() {
+	printf("Starting Test US02-02: ");
+	individual born;
+	born.birthday = "2000-06-09";
+	individual pedo;
+	indiMap.insert({"TEST02-c", born});
+	indiMap.insert({"TEST02-a", pedo});
+	family illegal;
+	illegal.married = "2009-09-09";
+	illegal.husbandID = "TEST02-a";
+	illegal.wifeID = "TEST02-c";
+	if (BirthB4Marriage(illegal)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
 
 void US03_01() {
 	printf("Starting Test US03-01: ");
 	individual born;
 	born.birthday = "2012-04-29";
 	born.death = "2049-07-22";
-	if (BirthB4Death(born, 0, 0)) {
+	if (BirthB4Death(born)) {
 		printf("PASSED\n");
 	} else {
 		failed++;
@@ -191,7 +290,7 @@ void US03_02() {
 	individual unborn;
 	unborn.birthday = "2012-04-29";
 	unborn.death = "2010-07-22";
-	if (BirthB4Death(unborn, 0, 0)) {
+	if (BirthB4Death(unborn)) {
 		failed++;
         printf("FAILED\n");
 	} else {
@@ -205,7 +304,7 @@ void US03_03() {
 	alive.birthday = "2012-04-29";
 	//printf("birthday string: %s\n", alive.birthday.c_str());
 	//printf("death string: %s\n", alive.death.c_str());
-	if (BirthB4Death(alive, 0, 0)) {
+	if (BirthB4Death(alive)) {
 		printf("PASSED\n");
 	} else {
 		failed++;
@@ -218,10 +317,29 @@ void US03_04() {
 	individual stillborn;
 	stillborn.birthday = "2012-04-29";
 	stillborn.death = "2012-04-29";
-	if (BirthB4Death(stillborn, 0, 0)) {
+	if (BirthB4Death(stillborn)) {
 		printf("PASSED\n");
 	} else {
 		failed++;
+        printf("FAILED\n");
+	}
+}
+
+void US04_01() {
+	printf("Starting Test US04-01: ");
+	individual predivm;
+	individual predivf;
+	indiMap.insert({"TEST04-husband", predivm});
+	indiMap.insert({"TEST04-wife", predivf});
+	family breakup;
+	breakup.husbandID = "TEST04-husband";
+	breakup.wifeID = "TEST04-wife";
+	breakup.married = "2009-09-09";
+	breakup.divorced = "2009-09-08";
+	if (!MarriageB4Divorce(breakup)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
         printf("FAILED\n");
 	}
 }
@@ -237,7 +355,7 @@ void US05_01() {
 	illegal.married = "2009-09-09";
 	illegal.husbandID = "TEST05-alive";
 	illegal.wifeID = "TEST05-dead";
-	if (!MarriageB4Death(illegal, 0)) {
+	if (!MarriageB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -256,7 +374,7 @@ void US05_02() {
 	illegal.married = "2009-09-09";
 	illegal.husbandID = "TEST05-dead2";
 	illegal.wifeID = "TEST05-alive2";
-	if (!MarriageB4Death(illegal, 0)) {
+	if (!MarriageB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -276,7 +394,7 @@ void US06_01() {
 	illegal.divorced = "2010-07-23";
 	illegal.husbandID = "TEST06-widower";
 	illegal.wifeID = "TEST06-dead";
-	if (!DivorceB4Death(illegal, 0)) {
+	if (!DivorceB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -296,7 +414,7 @@ void US06_02() {
 	illegal.divorced = "2010-07-23";
 	illegal.husbandID = "TEST06-dead";
 	illegal.wifeID = "TEST06-widow";
-	if (!DivorceB4Death(illegal, 0)) {
+	if (!DivorceB4Death(illegal)) {
 		printf("PASSED\n");
     } else {
     	failed++;
@@ -304,42 +422,85 @@ void US06_02() {
 	}
 }
 
-void US02_01() {
-	printf("Starting Test US02-01: ");
-	individual fetus;
-	fetus.birthday = "2000-06-09";
-	individual pedo;
-	indiMap.insert({"TEST02-c", fetus});
-	indiMap.insert({"TEST02-a", pedo});
-	family illegal;
-	illegal.married = "1999-09-09";
-	illegal.husbandID = "TEST02-a";
-	illegal.wifeID = "TEST02-c";
-	if (BirthB4Marriage(illegal, 0)) {
+void US09_01() {
+	printf("Starting Test US09-01: ");
+	individual deadmom;
+	deadmom.death = "2006-06-09";
+	individual deaddad;
+	deaddad.death = "2006-06-09";
+	individual impossiblechild;
+	impossiblechild.birthday = "2007-08-11";
+	individual impossiblechild2;
+	impossiblechild.birthday = "2008-07-20";
+	indiMap.insert({"TEST09-deadmom", deadmom});
+	indiMap.insert({"TEST09-deaddad", deaddad});
+	indiMap.insert({"TEST09-child1", impossiblechild});
+	indiMap.insert({"TEST09-child2", impossiblechild2});
+	family bothdead;
+	bothdead.wifeID = "TEST09-deadmom";
+	bothdead.husbandID = "TEST09-deaddad";
+	bothdead.children.push_back("TEST09-child1");
+	bothdead.children.push_back("TEST09-child2");
+	famMap.insert({"TEST09-bothdead", bothdead});
+	if (!BirthB4ParentsDeath()) {
+		printf("PASSED\n");
+		famMap.erase("TEST09-bothdead");
+	} else {
 		failed++;
-        printf("FAILED\n");
-    } else {
-    	printf("PASSED\n");
-	}
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-bothdead");
+    }
 }
 
-void US02_02() {
-	printf("Starting Test US02-02: ");
-	individual born;
-	born.birthday = "2000-06-09";
-	individual pedo;
-	indiMap.insert({"TEST02-c", born});
-	indiMap.insert({"TEST02-a", pedo});
-	family illegal;
-	illegal.married = "2009-09-09";
-	illegal.husbandID = "TEST02-a";
-	illegal.wifeID = "TEST02-c";
-	if (BirthB4Marriage(illegal, 0)) {
+void US09_02() {
+	printf("Starting Test US09-02: ");
+	individual livemom;
+	individual deaddad;
+	deaddad.death = "2006-06-09";
+	individual possiblechild;
+	possiblechild.birthday = "2007-01-11";
+	indiMap.insert({"TEST0902-livemom", livemom});
+	indiMap.insert({"TEST0902-deaddad", deaddad});
+	indiMap.insert({"TEST0902-child1", possiblechild});
+	family singlemom;
+	singlemom.wifeID = "TEST0902-livemom";
+	singlemom.husbandID = "TEST09-deaddad";
+	singlemom.children.push_back("TEST0902-child1");
+	famMap.insert({"TEST09-singlemom", singlemom});
+	//Unsure if we will handle the case where the father dies during the mother's pregnancy
+	if (BirthB4ParentsDeath()) {
 		printf("PASSED\n");
-    } else {
-    	failed++;
-        printf("FAILED\n");
-	}
+		famMap.erase("TEST09-singlemom");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-singlemom");
+    }
+}
+
+void US09_03() {
+	printf("Starting Test US09-03: ");
+	individual deadmom;
+	deadmom.death = "2006-06-09";
+	individual livedad;
+	individual impossiblechild;
+	impossiblechild.birthday = "2007-01-11";
+	indiMap.insert({"TEST0903-deadmom", deadmom});
+	indiMap.insert({"TEST0903-livedad", livedad});
+	indiMap.insert({"TEST0903-child1", impossiblechild});
+	family impossdad;
+	impossdad.wifeID = "TEST0903-deadmom";
+	impossdad.husbandID = "TEST0903-livedad";
+	impossdad.children.push_back("TEST0903-child1");
+	famMap.insert({"TEST0903-impossdad",impossdad});
+	if (!BirthB4ParentsDeath()) {
+		printf("PASSED\n");
+		famMap.erase("TEST0903-impossdad");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST0903-impossdad");
+    }
 }
 
 /* US07: Less than 150 years old */
@@ -416,6 +577,91 @@ void US1201(){
 	}
 }
 
+// checks if siblings are not married: one child only
+// US 18
+void US1801(){
+	printf("Starting Test US18-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+	
+	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Child1"] = {"John MacTavish", 'M', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
+	famList["Fam1"]= {"", "N/A", "Child1", "N/A", {}, {0,0,0,0}};
+	
+	if (siblingsNotMarried(indiList, famList))
+		printf("PASSED\n");
+	else
+	{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+// checks if siblings are not married: family has more than one child
+// US 18
+void US1802(){
+	printf("Starting Test US18-02: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+	indiList["Husband"] = {"Soap MacTavish", 'M', "1920-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
+    indiList["Wife"] = {"Missus MacTavish", 'F', "1940-01-02", true, "N/A", {"Fam1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Child1"] = {"John MacTavish", 'M', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
+	indiList["Child2"] = {"Anna MacTavish", 'F', "2000-01-01", true, "N/A", {"Fam2"}, "Fam1", {0,0,0,0,0,0}};
+	indiList["Sierra"] = {"Sierra Price", 'F', "2000-01-01", true, "N/A", {"Fam2"}, "Fam3", {0,0,0,0,0,0}};
+	famList["Fam1"]= {"", "N/A", "Child1", "Sierra", {}, {0,0,0,0}};
+	
+	if (siblingsNotMarried(indiList, famList))
+		printf("PASSED\n");
+	else
+	{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+// checks if cousins are not married
+void US1901(){
+	printf("Starting Test US19-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	family curFam = {"", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
+	
+	
+	indiList["1_Gramps"] = {"First Last", 'M', "N/A", true, "N/A", {"Grand1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["1_Gramms"] = {"First Last", 'F', "N/A", true, "N/A", {"Grand1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["2_Gramps"] = {"First Last", 'M', "N/A", true, "N/A", {"Grand2"}, "N/A", {0,0,0,0,0,0}};
+	indiList["2_Gramms"] = {"First Last", 'F', "N/A", true, "N/A", {"Grand2"}, "N/A", {0,0,0,0,0,0}};
+	indiList["3_Gramps"] = {"First Last", 'M', "N/A", true, "N/A", {"Grand3"}, "N/A", {0,0,0,0,0,0}};
+	indiList["3_Gramms"] = {"First Last", 'F', "N/A", true, "N/A", {"Grand3"}, "N/A", {0,0,0,0,0,0}};
+	indiList["1A_Dad"] = {"First Last", 'M', "N/A", true, "N/A", {"Paternal"}, "Grand1", {0,0,0,0,0,0}};
+	indiList["1A_Mom"] = {"First Last", 'F', "N/A", true, "N/A", {"Paternal"}, "Grand2", {0,0,0,0,0,0}};
+	indiList["2A_Dad"] = {"First Last", 'M', "N/A", true, "N/A", {"Maternal"}, "Grand2", {0,0,0,0,0,0}};
+	indiList["2A_Mom"] = {"First Last", 'F', "N/A", true, "N/A", {"Maternal"}, "Grand3", {0,0,0,0,0,0}};
+	indiList["1B_Husb"] = {"First Last", 'M', "N/A", true, "N/A", {"Current"}, "Paternal", {0,0,0,0,0,0}};
+	indiList["2B_Wife"] = {"First Last", 'F', "N/A", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	
+	famList["Grand1"] = {"", "N/A", "1_Gramps", "1_Gramms", {"1A_Dad"}, {0,0,0,0}};
+	famList["Grand2"] = {"", "N/A", "2_Gramps", "2_Gramms", {"1A_Mom", "2A_Dad"}, {0,0,0,0}};
+	famList["Grand3"] = {"", "N/A", "3_Gramps", "3_Gramms", {"2A_Mom"}, {0,0,0,0}};
+	famList["Paternal"] = {"", "N/A", "1A_Dad", "1A_Mom", {"1B_Husb"}, {0,0,0,0}};
+	famList["Maternal"] = {"", "N/A", "2A_Dad", "2A_Mom", {}, {0,0,0,0}};
+	famList["Current"] = {"", "N/A", "1B_Husb", "2B_Wife", {}, {0,0,0,0}};
+	
+	curFam.husbandID = "1B_Husb";
+	curFam.wifeID = "2B_Wife";
+	
+	if (cousinsNotMarried(indiList, famList))
+		printf("PASSED\n");
+	else
+	{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
 int main(int argc, char** argv) {
     US02_01();
     US02_02();
@@ -423,20 +669,30 @@ int main(int argc, char** argv) {
     US03_02();
     US03_03();
     US03_04();
+    US04_01();
     US05_01();
     US05_02();
     US06_01();
     US06_02();
     US0701();
+    US09_01();
+    US09_02();
+    US09_03();
     US1001();
+    US1201();
+    US1601();
     US2101();
     US2102();
     US2201();
     US2202();
+    US2901();
+    US2902();
     US3001();
     US3002();
     US4001();
-	US4201();
-	US1201();
+    US4201();
+	US1801();
+	US1802();
+	US1901();
     printf("%i Tests Failed\n", failed);
 }

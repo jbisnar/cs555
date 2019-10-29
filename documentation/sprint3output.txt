@@ -1,0 +1,204 @@
+LIST OF ALL INDIVIDUALS:
+           ID |                         NAME | GENDER |   BIRTHDAY | ALIVE |      DEATH |        CHILD | SPOUSE
+
+      I-22-01 |                Monica Geller |      M | 1964-06-15 |  True |        N/A |          N/A | {'F-22-01'}
+      I-22-02 |                Chandler Bing |      F | 1969-08-19 |  True |        N/A |          N/A | {'F-22-01'}
+          I01 |                Matthew Monny |      M | 1998-10-13 |  True |        N/A |           F1 |
+          I02 |                 Mario Monaco |      M | 1958-02-23 |  True |        N/A |          N/A | {'F1'}
+          I03 |               Debra D'Angelo |      F | 1964-12-25 |  True |        N/A |           F2 | {'F1'}
+          I04 |               Anthony Monaco |      M | 1994-05-09 |  True |        N/A |           F1 |
+          I05 |               Vincent Monaco |      M | 1995-09-12 |  True |        N/A |           F1 |
+          I06 |                John D'Angelo |      M | 1930-04-12 |  True |        N/A |          N/A | {'F2'} {'F3'}
+          I07 |            Concetta Iacovino |      F | 1924-05-18 | False | 2008-04-13 |          N/A | {'F2'}
+          I08 |              Laurie D'Angelo |      F | 1963-08-07 |  True |        N/A |           F2 |
+          I09 |                John D'Angelo |      M | 1959-03-17 |  True |        N/A |           F2 | {'F4'} {'F5'}
+          I10 |               Aspe Fritschie |      F | 1968-11-26 |  True |        N/A |          N/A | {'F4'}
+          I11 |              Fabbie Goldiger |      F | 1965-01-04 |  True |        N/A |          N/A | {'F5'}
+          I12 |                Mark D'Angelo |      M | 1992-05-23 |  True |        N/A |           F5 |
+          I13 |          Alexandria D'Angelo |      F | 2002-06-10 |  True |        N/A |           F4 |
+          I14 |             Caroline Andrews |      F | 1935-09-16 |  True |        N/A |          N/A | {'F3'}
+       US02_1 |                 Notborne Yet |      F | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_2 |              Super Pedophile |      M | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_3 |               Child Marriage |      M | 1993-06-01 |  True |        N/A |          N/A | {'US02_F2'}
+       US02_4 |                  Normal Pedo |      F | 1967-08-03 |  True |        N/A |          N/A | {'US02_F2'}
+       US02_5 |                Time Traveler |      M | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_6 |           Ambiguous Legality |      F | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
+       US03_1 |                Miss Carriage |      F | 1989-05-01 | False | 1989-01-13 |          N/A |
+       US03_2 |                  Valid Birth |      M | 1989-05-01 | False | 1989-05-02 |          N/A |
+       US03_3 |                  Short Lived |      F | 1989-05-01 | False | 1989-05-01 |          N/A |
+       US03_4 |                  Abe Bortion |      M | 1989-09-10 | False | 1989-01-20 |          N/A |
+       US04_1 |                    Brake Kap |      M | 1965-06-01 |  True |        N/A |          N/A | {'US04_F1'}
+       US04_2 |                    Div Orace |      F | 1967-08-03 |  True |        N/A |          N/A | {'US04_F1'}
+       US05_1 |              Graveyard Groom |      M | 1965-06-01 | False | 1989-05-01 |          N/A | {'US05_F1'}
+       US05_2 |               Necker Ophelia |      F | 1967-08-03 |  True |        N/A |          N/A | {'US05_F1'}
+       US05_3 |                 Grave Robert |      M | 1965-06-01 |  True |        N/A |          N/A | {'US05_F2'}
+       US05_4 |                   Ghost Girl |      F | 1967-08-03 | False | 1989-05-01 |          N/A | {'US05_F2'}
+       US05_5 |              Graveyard Smash |      M | 1967-08-03 | False | 1989-05-01 |          N/A |
+       US05_6 |                 Monster Mash |      F | 1967-08-03 | False | 1989-05-01 |          N/A |
+       US06_1 |                     Death Do |      M | 1965-06-01 | False | 1999-05-01 |          N/A | {'US06_F1'}
+       US06_2 |                      Us Part |      F | 1967-08-03 |  True |        N/A |          N/A | {'US06_F1'}
+       US06_3 |                  Widower Sir |      M | 1965-06-01 |  True |        N/A |          N/A | {'US06_F1'}
+       US06_4 |                    Dead Wife |      F | 1967-08-03 | False | 1999-05-01 |          N/A | {'US06_F2'}
+       US09_1 |                 Thomas Wayne |      M | 1965-06-01 | False | 1999-05-01 |          N/A | {'US09_F1'}
+      US09_10 |                       I Born |      M | 2001-08-24 |  True |        N/A |      US09_F3 |
+       US09_2 |                 Martha Wayne |      F | 1967-08-03 | False | 1999-05-01 |          N/A | {'US09_F1'}
+       US09_3 |             Belated Birthday |      M | 2000-02-07 |  True |        N/A |      US09_F1 |
+       US09_4 |            Creampie Then Die |      M | 1965-06-01 | False | 1999-05-01 |          N/A | {'US09_F2'}
+       US09_5 |                   Single Mom |      F | 1967-08-03 |  True |        N/A |          N/A | {'US09_F2'}
+       US09_6 |                 Daddy Issues |      F | 2000-02-28 |  True |        N/A |      US09_F2 |
+       US09_7 |                   Single Dad |      M | 1965-06-01 |  True |        N/A |          N/A | {'US09_F3'}
+       US09_8 |                 Zombie Birth |      F | 1967-08-03 | False | 1999-05-01 |          N/A | {'US09_F3'}
+       US09_9 |                      How Was |      F | 2000-02-28 |  True |        N/A |      US09_F3 |
+     US_07_01 | IHaveSurpassed OneFittyYears |      M | 1859-10-01 |  True |        N/A |          N/A |
+     US_10_01 |          IMarried AtFourteen |      F | 2000-02-05 |  True |        N/A |          N/A | {'US10_F1'}
+     US_10_02 |             EveryoneIs APedo |      M | 1980-02-05 |  True |        N/A |          N/A | {'US10_F1'}
+     US_12_01 |               Soap MacTavish |      M | 1900-01-11 |  True |        N/A |          N/A |
+     US_12_02 |             Missus MacTavish |      F | 1900-01-11 |  True |        N/A |          N/A |
+     US_12_03 |               John MacTavish |      M | 2000-01-10 |  True |        N/A |          N/A |
+     US_12_04 |               Anna MacTavish |      F | 2002-01-10 |  True |        N/A |          N/A |
+     US_18_01 |                Manfred Price |      M | 1900-01-11 |  True |        N/A |          N/A |
+     US_18_02 |                   Lady Price |      F | 1900-01-11 |  True |        N/A |          N/A |
+     US_18_03 |                  Crazy Price |      M | 2000-01-10 |  True |        N/A |     US18_FAM |
+     US_18_04 |                  Bella Price |      F | 2002-01-10 |  True |        N/A |     US18_FAM |
+    US_19_1AF |              Isabelle Caesar |      F |        N/A |  True |        N/A |       GRAND2 | {'PATERNAL'}
+    US_19_1AM |                Gaius Zachaev |      M |        N/A |  True |        N/A |       GRAND1 | {'PATERNAL'}
+ US_19_1BHUSB |               Viktor Zachaev |      M |        N/A |  True |        N/A |     PATERNAL | {'INCEST_CUZ'}
+     US_19_1F |           Alexandria Zachaev |      F |        N/A |  True |        N/A |          N/A | {'GRAND1'}
+     US_19_1M |               Ingram Zachaev |      M |        N/A |  True |        N/A |          N/A | {'GRAND1'}
+    US_19_2AF |            Moldava Kuskovich |      F |        N/A |  True |        N/A |       GRAND3 | {'MATERNAL'}
+    US_19_2AM |               Mark Kuskovich |      M |        N/A |  True |        N/A |       GRAND2 | {'MATERNAL'}
+ US_19_2BWIFE |               Krista Zachaev |      F |        N/A |  True |        N/A |     MATERNAL | {'INCEST_CUZ'}
+     US_19_2F |            Annania Kuskovich |      F |        N/A |  True |        N/A |          N/A | {'GRAND2'}
+     US_19_2M |               Yuri Kuskovich |      M |        N/A |  True |        N/A |          N/A | {'GRAND2'}
+     US_19_3F |                 Kira Borisov |      F |        N/A |  True |        N/A |          N/A | {'GRAND3'}
+     US_19_3M |                Boris Borisov |      M |        N/A |  True |        N/A |          N/A | {'GRAND3'}
+     US_42_01 |                 Robert House |      M | 1960-02-30 |  True |        N/A |          N/A |
+     US_42_02 |                 Missus House |      F | 1960-02-30 |  True |        N/A |          N/A |
+
+LIST OF ALL FAMILIES:
+           ID |    MARRIED |   DIVORCED |   HUSBAND ID |                 HUSBAND NAME |      WIFE ID |                    WIFE NAME | CHILDREN
+
+      F-22-01 |        N/A |        N/A |      I-22-02 |                Chandler Bing |      I-22-01 |                Monica Geller |
+           F1 | 1991-10-26 |        N/A |          I02 |                 Mario Monaco |          I03 |               Debra D'Angelo | {'I01'} {'I04'} {'I05'}
+           F2 | 1957-07-01 |        N/A |          I06 |                John D'Angelo |          I07 |            Concetta Iacovino | {'I03'} {'I08'} {'I09'}
+           F3 | 2014-11-15 |        N/A |          I06 |                John D'Angelo |          I14 |             Caroline Andrews |
+           F4 | 1999-03-09 |        N/A |          I09 |                John D'Angelo |          I10 |               Aspe Fritschie | {'I13'}
+           F5 | 1989-02-10 | 1993-12-28 |          I09 |                John D'Angelo |          I11 |              Fabbie Goldiger | {'I12'}
+       GRAND1 |        N/A |        N/A |     US_19_1M |               Ingram Zachaev |     US_19_1F |           Alexandria Zachaev | {'US_19_1AM'}
+       GRAND2 |        N/A |        N/A |     US_19_2M |               Yuri Kuskovich |     US_19_2F |            Annania Kuskovich | {'US_19_1AF'} {'US_19_2AM'}
+       GRAND3 |        N/A |        N/A |     US_19_3M |                Boris Borisov |     US_19_3F |                 Kira Borisov | {'US_19_2AF'}
+   INCEST_CUZ |        N/A |        N/A | US_19_1BHUSB |               Viktor Zachaev | US_19_2BWIFE |               Krista Zachaev |
+     MATERNAL |        N/A |        N/A |    US_19_2AM |               Mark Kuskovich |    US_19_2AM |               Mark Kuskovich | {'US_19_2BWIFE'}
+     PATERNAL |        N/A |        N/A |    US_19_1AM |                Gaius Zachaev |    US_19_1AF |              Isabelle Caesar | {'US_19_1BHUSB'}
+      US02_F1 | 1993-04-22 |        N/A |       US02_2 |              Super Pedophile |       US02_1 |                 Notborne Yet |
+      US02_F2 | 1994-04-22 |        N/A |       US02_3 |               Child Marriage |       US02_4 |                  Normal Pedo |
+      US02_F3 | 1993-04-22 |        N/A |       US02_5 |                Time Traveler |       US02_6 |           Ambiguous Legality |
+      US04_F1 | 1997-04-22 | 1995-06-30 |       US04_1 |                    Brake Kap |       US04_2 |                    Div Orace |
+      US05_F1 | 1993-04-22 |        N/A |       US05_1 |              Graveyard Groom |       US05_2 |               Necker Ophelia |
+      US05_F2 | 1993-04-22 |        N/A |       US05_3 |                 Grave Robert |       US05_4 |                   Ghost Girl |
+      US05_F3 | 1993-04-22 |        N/A |       US05_5 |              Graveyard Smash |       US05_6 |                 Monster Mash |
+      US06_F1 | 1993-04-22 | 2000-06-30 |       US06_1 |                     Death Do |       US06_2 |                      Us Part |
+      US06_F2 | 1993-04-22 | 2000-06-30 |       US06_3 |                  Widower Sir |       US06_4 |                    Dead Wife |
+      US09_F1 | 1993-04-22 |        N/A |       US09_4 |            Creampie Then Die |       US09_5 |                   Single Mom | {'US09_6'}
+      US09_F3 | 2014-02-03 |        N/A |       US09_7 |                   Single Dad |       US09_8 |                 Zombie Birth | {'US09_9'} {'US09_10'}
+      US10_F1 | 2014-02-03 |        N/A |     US_10_02 |             EveryoneIs APedo |     US_10_01 |          IMarried AtFourteen |
+     US12_FAM |        N/A |        N/A |     US_12_01 |               Soap MacTavish |     US_12_02 |             Missus MacTavish | {'US_12_03'} {'US_12_04'}
+     US18_FAM |        N/A |        N/A |     US_18_01 |                Manfred Price |     US_18_02 |                   Lady Price | {'US_18_03'} {'US_18_04'}
+  US18_INCEST |        N/A |        N/A |     US_18_03 |                  Crazy Price |     US_18_04 |                  Bella Price |
+      US42_F1 | 1990-01-32 |        N/A |     US_42_01 |                 Robert House |     US_42_02 |                 Missus House |
+
+LIST OF ALL LIVING MARRIED INDIVIDUALS:
+           ID |                         NAME | GENDER |   BIRTHDAY | ALIVE |      DEATH |        CHILD | SPOUSE
+
+     US_42_01 |                 Robert House |      M | 1960-02-30 |  True |        N/A |          N/A |
+     US_42_02 |                 Missus House |      F | 1960-02-30 |  True |        N/A |          N/A |
+ US_19_1BHUSB |               Viktor Zachaev |      M |        N/A |  True |        N/A |     PATERNAL | {'INCEST_CUZ'}
+ US_19_2BWIFE |               Krista Zachaev |      F |        N/A |  True |        N/A |     MATERNAL | {'INCEST_CUZ'}
+    US_19_2AM |               Mark Kuskovich |      M |        N/A |  True |        N/A |       GRAND2 | {'MATERNAL'}
+    US_19_2AM |               Mark Kuskovich |      M |        N/A |  True |        N/A |       GRAND2 | {'MATERNAL'}
+       US02_5 |                Time Traveler |      M | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_6 |           Ambiguous Legality |      F | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_3 |               Child Marriage |      M | 1993-06-01 |  True |        N/A |          N/A | {'US02_F2'}
+       US02_4 |                  Normal Pedo |      F | 1967-08-03 |  True |        N/A |          N/A | {'US02_F2'}
+       US02_2 |              Super Pedophile |      M | 1967-08-03 |  True |        N/A |          N/A | {'US02_F1'}
+       US02_1 |                 Notborne Yet |      F | 1993-06-01 |  True |        N/A |          N/A | {'US02_F1'}
+          I02 |                 Mario Monaco |      M | 1958-02-23 |  True |        N/A |          N/A | {'F1'}
+          I03 |               Debra D'Angelo |      F | 1964-12-25 |  True |        N/A |           F2 | {'F1'}
+     US_19_3M |                Boris Borisov |      M |        N/A |  True |        N/A |          N/A | {'GRAND3'}
+     US_19_3F |                 Kira Borisov |      F |        N/A |  True |        N/A |          N/A | {'GRAND3'}
+      I-22-02 |                Chandler Bing |      F | 1969-08-19 |  True |        N/A |          N/A | {'F-22-01'}
+      I-22-01 |                Monica Geller |      M | 1964-06-15 |  True |        N/A |          N/A | {'F-22-01'}
+          I09 |                John D'Angelo |      M | 1959-03-17 |  True |        N/A |           F2 | {'F4'} {'F5'}
+          I10 |               Aspe Fritschie |      F | 1968-11-26 |  True |        N/A |          N/A | {'F4'}
+     US_18_01 |                Manfred Price |      M | 1900-01-11 |  True |        N/A |          N/A |
+     US_18_02 |                   Lady Price |      F | 1900-01-11 |  True |        N/A |          N/A |
+     US_12_01 |               Soap MacTavish |      M | 1900-01-11 |  True |        N/A |          N/A |
+     US_12_02 |             Missus MacTavish |      F | 1900-01-11 |  True |        N/A |          N/A |
+     US_19_1M |               Ingram Zachaev |      M |        N/A |  True |        N/A |          N/A | {'GRAND1'}
+     US_19_1F |           Alexandria Zachaev |      F |        N/A |  True |        N/A |          N/A | {'GRAND1'}
+    US_19_1AM |                Gaius Zachaev |      M |        N/A |  True |        N/A |       GRAND1 | {'PATERNAL'}
+    US_19_1AF |              Isabelle Caesar |      F |        N/A |  True |        N/A |       GRAND2 | {'PATERNAL'}
+     US_18_03 |                  Crazy Price |      M | 2000-01-10 |  True |        N/A |     US18_FAM |
+     US_18_04 |                  Bella Price |      F | 2002-01-10 |  True |        N/A |     US18_FAM |
+     US_10_02 |             EveryoneIs APedo |      M | 1980-02-05 |  True |        N/A |          N/A | {'US10_F1'}
+     US_10_01 |          IMarried AtFourteen |      F | 2000-02-05 |  True |        N/A |          N/A | {'US10_F1'}
+          I06 |                John D'Angelo |      M | 1930-04-12 |  True |        N/A |          N/A | {'F2'} {'F3'}
+          I14 |             Caroline Andrews |      F | 1935-09-16 |  True |        N/A |          N/A | {'F3'}
+     US_19_2M |               Yuri Kuskovich |      M |        N/A |  True |        N/A |          N/A | {'GRAND2'}
+     US_19_2F |            Annania Kuskovich |      F |        N/A |  True |        N/A |          N/A | {'GRAND2'}
+
+LIST OF ALL DECEASED PERSONS:
+           ID |                         NAME | GENDER |   BIRTHDAY | ALIVE |      DEATH |        CHILD | SPOUSE
+
+       US03_4 |                  Abe Bortion |      M | 1989-09-10 | False | 1989-01-20 |          N/A |
+       US05_6 |                 Monster Mash |      F | 1967-08-03 | False | 1989-05-01 |          N/A |
+       US03_1 |                Miss Carriage |      F | 1989-05-01 | False | 1989-01-13 |          N/A |
+          I07 |            Concetta Iacovino |      F | 1924-05-18 | False | 2008-04-13 |          N/A | {'F2'}
+       US09_2 |                 Martha Wayne |      F | 1967-08-03 | False | 1999-05-01 |          N/A | {'US09_F1'}
+       US05_5 |              Graveyard Smash |      M | 1967-08-03 | False | 1989-05-01 |          N/A |
+       US05_1 |              Graveyard Groom |      M | 1965-06-01 | False | 1989-05-01 |          N/A | {'US05_F1'}
+       US03_3 |                  Short Lived |      F | 1989-05-01 | False | 1989-05-01 |          N/A |
+       US09_4 |            Creampie Then Die |      M | 1965-06-01 | False | 1999-05-01 |          N/A | {'US09_F2'}
+       US05_4 |                   Ghost Girl |      F | 1967-08-03 | False | 1989-05-01 |          N/A | {'US05_F2'}
+       US06_1 |                     Death Do |      M | 1965-06-01 | False | 1999-05-01 |          N/A | {'US06_F1'}
+       US06_4 |                    Dead Wife |      F | 1967-08-03 | False | 1999-05-01 |          N/A | {'US06_F2'}
+       US09_1 |                 Thomas Wayne |      M | 1965-06-01 | False | 1999-05-01 |          N/A | {'US09_F1'}
+       US03_2 |                  Valid Birth |      M | 1989-05-01 | False | 1989-05-02 |          N/A |
+       US09_8 |                 Zombie Birth |      F | 1967-08-03 | False | 1999-05-01 |          N/A | {'US09_F3'}
+
+LIST OF ALL KNOWN ERRORS:
+ERROR: INDIVIDUAL: US22: 21: I-22-01: ID already exists. May effect later results
+ERROR: FAMILY:     US22: 36: F-22-01: ID already exists. May effect later results
+ERROR: INDIVIDUAL: US03: 221 and 223: Miss Carriage's death date is before their birth date
+ERROR: INDIVIDUAL: US03: 248 and 250: Abe Bortion's death date is before their birth date
+ERROR: FAMILY:     US02: 273: Marry date is before someone's birthday
+ERROR: FAMILY:     US02: 315: Marry date is before someone's birthday
+ERROR: FAMILY:     US05: 340: Marry date is after someone died
+ERROR: FAMILY:     US05: 363: Marry date is after someone died
+ERROR: FAMILY:     US05: 386: Marry date is after someone died
+ERROR: FAMILY:     US06: 413: Divorce date is after someone died
+ERROR: FAMILY:     US06: 438: Divorce date is after someone died
+ERROR: FAMILY:     US04: 461 and 463: Divorce date is before marriage date
+ERROR: INDIVIDUAL: US07: 499: Belated Birthday is married before 14 years of age, which is illegal in the US.
+ERROR: FAMILY:     US22: 526: US09_F1: ID already exists. May effect later results
+ERROR: INDIVIDUAL: US07: 531: Daddy Issues is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US07: 572: I Born is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US10: 581: IHaveSurpassed OneFittyYears is listed as being older than 150 years old, which today is highly improbable.
+ERROR: INDIVIDUAL: US07: 592: IMarried AtFourteen is married before 14 years of age, which is illegal in the US.
+ERROR: FAMILY:     US05: 602: Marry date is after someone died
+ERROR: INDIVIDUAL: US42: 764: February can't have the day number specified according to the Gregorian calendar.
+ERROR: INDIVIDUAL: US42: 771: February can't have the day number specified according to the Gregorian calendar.
+ERROR: INDIVIDUAL: US42: 776: There is an illegal day according to the Gregorian calendar.
+ERROR: INDIVIDUAL: US12: 660: The child is born when the mother is older than 60 years old.
+ERROR: FAMILY:     US18: 773: Robert House is married to his sister.
+ERROR: FAMILY:     US19: 754: Viktor Zachaev is married to his cousin.
+ERROR: FAMILY:     US21: 751: MATERNAL: Wife is a male
+ERROR: FAMILY:     US21: 37: F-22-01: Husband is a female
+ERROR: FAMILY:     US21: 38: F-22-01: Wife is a male
+ERROR: FAMILY:     US16: 728: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 41: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 718: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 519: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 551: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 559: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 708: Child's last name does not match male parent

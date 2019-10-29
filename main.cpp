@@ -29,6 +29,7 @@ int main(int argc, char** argv) {
     finalStore();
    
     correctGender(indiMap, famMap);
+    maleLastNames(indiMap, famMap);
 
     printf("LIST OF ALL INDIVIDUALS:\n");
     printIndividuals(sortIndividuals(indiMap));
@@ -38,6 +39,9 @@ int main(int argc, char** argv) {
     printf("\n");
     printf("LIST OF ALL LIVING MARRIED INDIVIDUALS:\n");
     printIndividuals(getLivingMarried(famMap, indiMap));
+    printf("\n");
+    printf("LIST OF ALL DECEASED PERSONS:\n");
+    printIndividuals(getDeceased(indiMap));
     printf("\n");
     printf("LIST OF ALL KNOWN ERRORS:\n");
     list <string> :: iterator it;

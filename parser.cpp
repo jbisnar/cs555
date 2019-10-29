@@ -188,17 +188,20 @@ void printIndividuals(list<string> idList){
 void finalStore(){
     
     if(strcmp(curIndi.name.c_str(), "") != 0){
-    	BirthB4Death(curIndi, birthline, deathline);
+    	BirthB4Death(curIndi);
         indiMap[curIDInd.c_str()] = curIndi;
     }
     if(strcmp(curFam.married.c_str(), "") != 0){
-    	BirthB4Marriage(curFam, marryline);
-    	MarriageB4Death(curFam, marryline);
-    	DivorceB4Death(curFam, divorceline);
+    	BirthB4Marriage(curFam);
+    	MarriageB4Death(curFam);
+    	DivorceB4Death(curFam);
+    	MarriageB4Divorce(curFam);
         famMap[curIDFam.c_str()] = curFam;
     }
     parentsNotTooOld(indiMap, famMap);
-	
+	siblingsNotMarried(indiMap, famMap);
+	cousinsNotMarried(indiMap, famMap);
+	BirthB4ParentsDeath();
     return;
 }
 
@@ -207,7 +210,7 @@ void store(string level, string tag, string args){
     
     if(strcmp(tag.c_str(), "INDI") == 0){
         if(strcmp(curIndi.name.c_str(), "") != 0){
-        	BirthB4Death(curIndi, birthline, deathline);
+        	BirthB4Death(curIndi);
             indiMap[curIDInd.c_str()] = curIndi;
         }
         individual temp = {"N/A", '\0', "N/A", true, "N/A", {}, "N/A", {0,0,0,0,0,0}};
@@ -239,9 +242,10 @@ void store(string level, string tag, string args){
         curIndi.SID.push_back(args);
     }else if(strcmp(tag.c_str(), "FAM") == 0){
         if(strcmp(curFam.married.c_str(), "") != 0){
-        	BirthB4Marriage(curFam, marryline);
-        	MarriageB4Death(curFam, marryline);
-        	DivorceB4Death(curFam,divorceline);
+        	BirthB4Marriage(curFam);
+        	MarriageB4Death(curFam);
+        	DivorceB4Death(curFam);
+        	//MarriageB4Divorce(curFam);
             famMap[curIDFam.c_str()] = curFam;
         }
         family ftemp = {"N/A", "N/A", "N/A", "N/A", {}, {0,0,0,0}};
@@ -256,12 +260,13 @@ void store(string level, string tag, string args){
         curTag = tag.c_str();
     }else if(strcmp(tag.c_str(), "HUSB") == 0){
         curFam.lineNumbers[2] = lineNumber;
-        curFam.husbandID = args.c_str(); 
+        curFam.husbandID = args.c_str();
     }else if(strcmp(tag.c_str(), "WIFE") == 0){
         curFam.lineNumbers[3] = lineNumber;
         curFam.wifeID = args.c_str();
     }else if(strcmp(tag.c_str(), "CHIL") == 0){
         curFam.children.push_back(args);
+		
     }else if(strcmp(tag.c_str(), "DIV") == 0){
         curTag = tag.c_str();
         // divorceline = lineNumber;
@@ -281,7 +286,8 @@ void store(string level, string tag, string args){
             curFam.lineNumbers[1] = lineNumber;
             curFam.divorced = improveDate(args.c_str());
 			legalDate(curFam.divorced, lineNumber);
-			DivorceB4Death(curFam,divorceline);
+			DivorceB4Death(curFam);
+			MarriageB4Divorce(curFam);
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
             curFam.lineNumbers[0] = lineNumber;
             curFam.married = improveDate(args.c_str());

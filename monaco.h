@@ -15,6 +15,10 @@ bool uniqueFamID(string key, unordered_map<string, family> indis);
 list<string> getLivingMarried(unordered_map<string, family> fams, 
         unordered_map<string, individual> indis); 
 
+list<string> getDeceased(unordered_map<string, individual> indis);
+
 void correctGender(unordered_map<string, individual> indis, unordered_map<string, family> fams);
+
+bool maleLastNames(unordered_map<string, individual> indis, unordered_map<string, family> fams);
 
 #endif
