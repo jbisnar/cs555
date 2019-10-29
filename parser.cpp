@@ -201,6 +201,7 @@ void finalStore(){
     parentsNotTooOld(indiMap, famMap);
 	siblingsNotMarried(indiMap, famMap);
 	cousinsNotMarried(indiMap, famMap);
+	BirthB4ParentsDeath(curFam);
     return;
 }
 
