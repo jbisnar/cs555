@@ -152,11 +152,11 @@ void US2902() {
     indiList["Wife"] = {"The Wife", '\0', "N/A", false, "2000-02-01", {}, "N/A", {0,0,0,0,0,0}};
     list<string> ids = getDeceased(indiList);
 
-    if(strcmp(ids.front().c_str(), "Wife") != 0){
+    if((strcmp(ids.front().c_str(), "Wife") != 0) || (strcmp(ids.front().c_str(), "Husband") != 0)){
         failed++;
         printf("FAILED\n");
         return;
-    } else if (strcmp(ids.back().c_str(), "Husband") != 0){
+    } else if ((strcmp(ids.front().c_str(), "Wife") != 0) || (strcmp(ids.front().c_str(), "Husband") != 0)){
         failed++;
         printf("FAILED\n");
         return;
