@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string>
 #include <string.h>
+#include <time.h>
 #include <unordered_map>
 
 #include "globals.h"
@@ -80,7 +81,72 @@ string improveDate(string inputDate){
     }
     return inputDate + "-" + month + "-" + day;
 }
+/* Given a birth date and a death/current date, calculates age */
+string getAge(string birthDate, string deathDate){
+    
+    int deathYear;
+    int deathMonth;
+    int deathDay;
 
+    if(strcmp(birthDate.c_str(),"N/A") == 0){
+        return "N/A";
+    }else if(strcmp(deathDate.c_str(),"N/A") == 0){
+        
+        time_t curtime; 
+        time(&curtime); 
+        string rawDay = ctime(&curtime);
+        
+        deathDay = stoi(rawDay.substr(8,10));
+        string month = rawDay.substr(4,7);
+        deathYear = stoi(rawDay.substr(20));
+
+        if(strcmp(month.c_str(), "Jan") == 0){
+            deathMonth = 1;
+        }else if(strcmp(month.c_str(), "Feb") == 0){
+            deathMonth = 2;
+        }else if(strcmp(month.c_str(), "Mar") == 0){
+            deathMonth = 3;
+        }else if(strcmp(month.c_str(), "Apr") == 0){
+            deathMonth = 4;
+        }else if(strcmp(month.c_str(), "May") == 0){
+            deathMonth = 5;
+        }else if(strcmp(month.c_str(), "Jun") == 0){
+            deathMonth = 6;
+        }else if(strcmp(month.c_str(), "Jul") == 0){
+            deathMonth = 7;
+        }else if(strcmp(month.c_str(), "Aug") == 0){
+            deathMonth = 8;
+        }else if(strcmp(month.c_str(), "Sep") == 0){
+            deathMonth = 9;
+        }else if(strcmp(month.c_str(), "Oct") == 0){
+            deathMonth = 10;
+        }else if(strcmp(month.c_str(), "Nov") == 0){
+            deathMonth = 11;
+        }else if(strcmp(month.c_str(), "Dec") == 0){
+            deathMonth = 12;
+       }
+
+    }else{
+        deathYear = stoi(deathDate.substr(0,4));
+        deathMonth = stoi(deathDate.substr(5,7));
+        deathDay = stoi(deathDate.substr(8));
+    }
+
+    int birthYear = stoi(birthDate.substr(0,4));
+    int birthMonth = stoi(birthDate.substr(5,7));
+    int birthDay = stoi(birthDate.substr(8));
+
+    int age = deathYear - birthYear;
+    if(birthMonth > deathMonth){
+        age--;
+    }else if(birthMonth == deathMonth){
+        if(birthDay > deathDay){
+            age--;
+        }
+    }
+
+    return to_string(age);
+}
 /* Given an unordered list of individuals, this returns a list of the ids in alphabetical order */
 list<string> sortIndividuals(unordered_map<string, individual> inputMap){
     
@@ -151,6 +217,7 @@ void printIndividuals(list<string> idList){
     cout << setw(maxIDLength+1) << "ID" << " |" 
         << setw(maxNameLength+1) << "NAME" << " |"
         << setw(7) << "GENDER" << " |"
+        << setw(4) << " AGE " << " |"
         << setw(11) << "BIRTHDAY" << " |" 
         << setw(6) << "ALIVE" << " |"
         << setw(11) << "DEATH" << " |"
@@ -170,6 +237,7 @@ void printIndividuals(list<string> idList){
         cout <<  setw(maxIDLength+1) << *nextID << " |" 
             << setw(maxNameLength+1) << itr.name << " |"
             << setw(7) << itr.gender << " |"
+            << setw(5) << getAge(itr.birthday, itr.death) << " |"
             << setw(11) << itr.birthday << " |" 
             << setw(6) << alive << " |"
             << setw(11) << itr.death << " |"
