@@ -20,16 +20,24 @@ int main(int argc, char** argv) {
     string nextLine;
     ifstream gedcomFile;
     gedcomFile.open(argv[1]);
-    
+
+
     lineNumber = 1;
     while(getline(gedcomFile, nextLine)){
         parse(nextLine);
+        printf("%s\n",nextLine.c_str());
         lineNumber++;
     }
+    
+    printf("hello\n");
     finalStore();
-   
+ 
+    printf("hello\n");
     correctGender(indiMap, famMap);
+    printf("hello\n");
     maleLastNames(indiMap, famMap);
+    printf("hello\n");
+    lessThan15Kids(famMap, indiMap);
 
     printf("LIST OF ALL INDIVIDUALS:\n");
     printIndividuals(sortIndividuals(indiMap));

@@ -21,4 +21,6 @@ void correctGender(unordered_map<string, individual> indis, unordered_map<string
 
 bool maleLastNames(unordered_map<string, individual> indis, unordered_map<string, family> fams);
 
+bool lessThan15Kids(unordered_map<string, family> fams, unordered_map<string, individual> indis); 
+    
 #endif

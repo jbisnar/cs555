@@ -11,6 +11,129 @@
 1 SUBM I01
 1 SUBN
 1 CHAR UTF-8
+0 Note ***************US15***************
+0 1 INDI
+1 NAME One Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1963
+1 FAMC F15
+0 2 INDI
+1 NAME Two Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1964
+1 FAMC F15
+0 3 INDI
+1 NAME Three Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1965
+1 FAMC F15
+0 4 INDI
+1 NAME Four Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1966
+1 FAMC F15
+0 5 INDI
+1 NAME Five Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1967
+1 FAMC F15
+0 6 INDI
+1 NAME Six Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1968
+1 FAMC F15
+0 7 INDI
+1 NAME Seven Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1969
+1 FAMC F15
+0 8 INDI
+1 NAME Eight Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1970
+1 FAMC F15
+0 9 INDI
+1 NAME Nine Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1971
+1 FAMC F15
+0 10 INDI
+1 NAME Ten Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1972
+1 FAMC F15
+0 11 INDI
+1 NAME Eleven Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1973
+1 FAMC F15
+0 12 INDI
+1 NAME Twelve Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1974
+1 FAMC F15
+0 13 INDI
+1 NAME Thirteen Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1975
+1 FAMC F15
+0 14 INDI
+1 NAME Fourteen Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1976
+1 FAMC F15
+0 15 INDI
+1 NAME Fifteen Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1977
+1 FAMC F15
+0 16 INDI
+1 NAME Husband Person
+1 SEX M
+1 BIRT
+2 DATE 15 JUN 1960
+1 FAMS F15
+0 17 INDI
+1 NAME Wife Person
+1 SEX F
+1 BIRT
+2 DATE 15 JUN 1960
+1 FAMS F15
+0 F15 FAM
+1 HUSB 16
+1 WIFE 17
+1 CHIL 15
+1 CHIL 14
+1 CHIL 13
+1 CHIL 12
+1 CHIL 11
+1 CHIL 10
+1 CHIL 9
+1 CHIL 8
+1 CHIL 7
+1 CHIL 6
+1 CHIL 5
+1 CHIL 4
+1 CHIL 3
+1 CHIL 2
+1 CHIL 1
+1 MARR
+2 DATE 26 OCT 1963
 0 Note ***************US22***************
 0 I-22-01 INDI
 1 NAME Courtney Cox
@@ -152,8 +275,8 @@
 2 DATE 23 MAY 1992
 1 FAMC F5
 0 I13 INDI
-1 NAME Alexandria D'Angelo
-2 GIVN Alexandria
+1 NAME Alex D'Angelo
+2 GIVN Alex
 2 SURN D'Angelo
 2 _MARNM D'Angelo
 1 SEX F
@@ -573,18 +696,16 @@
 0 Note *************End US09*************
 0 Note ***************US07***************
 0 US_07_01 INDI
-1 NAME IHaveSurpassed OneFittyYears
-2 GIVN IHaveSurpassed
-2 SURN OneFittyYears
+1 NAME One Fitty
 1 SEX M
 1 BIRT
 2 DATE 1 OCT 1859
 0 Note *************End US07*************
 0 Note ***************US10***************
 0 US_10_01 INDI
-1 NAME IMarried AtFourteen
-2 GIVN IMarried
-2 SURN AtFourteen
+1 NAME IMarr Fourteen
+2 GIVN IMarr
+2 SURN Fourteen
 1 SEX F
 1 BIRT
 2 DATE 5 FEB 2000
