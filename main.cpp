@@ -25,18 +25,13 @@ int main(int argc, char** argv) {
     lineNumber = 1;
     while(getline(gedcomFile, nextLine)){
         parse(nextLine);
-        printf("%s\n",nextLine.c_str());
         lineNumber++;
     }
     
-    printf("hello\n");
     finalStore();
  
-    printf("hello\n");
     correctGender(indiMap, famMap);
-    printf("hello\n");
     maleLastNames(indiMap, famMap);
-    printf("hello\n");
     lessThan15Kids(famMap, indiMap);
 
     printf("LIST OF ALL INDIVIDUALS:\n");

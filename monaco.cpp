@@ -110,15 +110,15 @@ bool maleLastNames(unordered_map<string, individual> indis, unordered_map<string
 }
 
 bool lessThan15Kids(unordered_map<string, family> fams, unordered_map<string, individual> indis) {
-    printf("weqq\n");
     unordered_map<string, family>::iterator itr;
-
+    bool less = true;
     for(itr = fams.begin(); itr != fams.end(); itr++){
         if(itr->second.children.size() > 14){
+            less = false;
             errorStatements.push_back("ERROR: FAMILY:     US15: " + 
                 to_string(indis.at(itr->second.children.front()).lineNumbers[5]) + ": " + 
                 "More than 14 kids in family " + itr->first);
-
         }
     }
+    return less;
 }

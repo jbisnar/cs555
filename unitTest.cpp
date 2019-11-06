@@ -173,6 +173,25 @@ void US2701(){
     printf("PASSED\n");
 }
 
+void US1501(){
+    printf("Starting Test US15-01: ");
+    unordered_map<string, individual> indiList;
+    indiList["15"] = {"The Last", '\0', "N/A", false, "2000-01-01", {}, "N/A", {0,0,0,0,0,0}};
+    unordered_map<string, family> famList;
+    list <string> kids;
+    for(int i = 0; i<15; i++){
+        kids.push_back("15");
+    }
+    famList["Family"] = {"", "2000-01-01", "Husband", "Wife", kids, {0,0,0,0}};
+    
+    if(lessThan15Kids(famList, indiList)){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+}
+
 void US2702(){
     printf("Starting Test US27-02: ");
     if(strcmp(getAge("N/A", "2019-11-5").c_str(), "N/A") != 0){
@@ -701,6 +720,7 @@ int main(int argc, char** argv) {
     US09_03();
     US1001();
     US1201();
+    US1501();
     US1601();
     US2101();
     US2102();
