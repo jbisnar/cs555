@@ -181,3 +181,32 @@ string NineMonthsLater (string date) {
 	}
 	return newdate;
 }
+
+bool BirthB4ParentsMarriage () {
+	bool noerrors = true;
+	unordered_map<string, family>:: iterator fam;
+	for(fam = famMap.begin(); fam != famMap.end(); fam++){
+		string marrday = fam->second.married;
+		string divday = fam->second.divorced;
+		string divgrace = NineMonthsLater(divday);
+		list<string> kidlist = fam->second.children;
+		list<string>::iterator kid;
+		for (kid = kidlist.begin(); kid != kidlist.end(); ++kid) {
+			string cbirth = indiMap.find(kid->c_str())->second.birthday;
+			//printf("Child %s was born %s\n", kid->c_str(), cbirth.c_str());
+			if ( strcmp(cbirth.c_str(), marrday.c_str()) < 0 && strcmp(marrday.c_str(), "N/A") != 0 && strcmp(marrday.c_str(), "") != 0 ) {
+				errorStatements.push_back("ERROR: INDIVIDUAL: US04: "
+				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
+				+ indiMap.find(kid->c_str())->second.name + "Child born after mother died");
+				noerrors = false;
+			} else if ( strcmp(cbirth.c_str(), divgrace.c_str()) < 0 && strcmp(divday.c_str(), "N/A") != 0 && strcmp(divday.c_str(), "") != 0) {
+				errorStatements.push_back("ERROR: INDIVIDUAL: US04: "
+				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
+				+ indiMap.find(kid->c_str())->second.name + "Child born over 9 months after father died");
+				noerrors = false;
+			}
+		}
+	}
+	//printf ("BirthB4ParentsDeath UNIMPLEMENTED ");
+	return noerrors;
+}

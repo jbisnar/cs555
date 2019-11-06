@@ -21,4 +21,6 @@ bool BirthB4ParentsDeath ();
 
 string NineMonthsLater (string date);
 
+bool BirthB4ParentsMarriage ();
+
 #endif
