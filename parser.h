@@ -21,4 +21,6 @@ list<string> sortIndividuals(unordered_map<string, individual> inputMap);
 
 list<string> sortFamilies(unordered_map<string, family> inputMap);
 
+string getAge(string birthDate, string deathDate);
+
 #endif

@@ -163,6 +163,27 @@ void US2902() {
 
 }
 
+void US2701(){
+    printf("Starting Test US27-02: ");
+    if(strcmp(getAge("1998-10-13", "2019-11-5").c_str(), "21") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+}
+
+void US2702(){
+    printf("Starting Test US27-02: ");
+    if(strcmp(getAge("N/A", "2019-11-5").c_str(), "N/A") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+}
+
+
 /* US16: Male Last Names Match Husband */
 void US1601() {
     
@@ -685,6 +706,8 @@ int main(int argc, char** argv) {
     US2102();
     US2201();
     US2202();
+    US2701();
+    US2702();
     US2901();
     US2902();
     US3001();
