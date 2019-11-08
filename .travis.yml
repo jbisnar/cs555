@@ -9,4 +9,4 @@ script:
 
 branches:
     only:
-    - sprint3
+    - sprint4

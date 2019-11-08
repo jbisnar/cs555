@@ -119,6 +119,7 @@ bool BirthB4ParentsDeath () {
 	unordered_map<string, family>:: iterator fam;
 	for(fam = famMap.begin(); fam != famMap.end(); fam++){
 		string hdeath = indiMap.find(fam->second.husbandID)->second.death;
+		//printf("Processing family %s\n", fam->first.c_str());
 		string fathergrace = NineMonthsLater(hdeath);
 		string wdeath = indiMap.find(fam->second.wifeID)->second.death;
 		//printf("Family %s: father died %s, mother died %s\n",
@@ -132,24 +133,26 @@ bool BirthB4ParentsDeath () {
 			if ( strcmp(wdeath.c_str(), cbirth.c_str()) < 0 && strcmp(wdeath.c_str(), "N/A") != 0 && strcmp(wdeath.c_str(), "") != 0 ) {
 				errorStatements.push_back("ERROR: INDIVIDUAL: US09: "
 				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
-				+ "Child born after mother died");
+				+ indiMap.find(kid->c_str())->second.name + " born after mother died");
 				noerrors = false;
 			} else if ( strcmp(fathergrace.c_str(), cbirth.c_str()) < 0 && strcmp(hdeath.c_str(), "N/A") != 0 && strcmp(hdeath.c_str(), "") != 0) {
 				errorStatements.push_back("ERROR: INDIVIDUAL: US09: "
 				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
-				+ "Child born over 9 months after father died");
+				+ indiMap.find(kid->c_str())->second.name + " born over 9 months after father died");
 				noerrors = false;
 			}
 		}
 	}
-	//printf ("BirthB4ParentsDeath UNIMPLEMENTED ");
 	return noerrors;
 }
 
 string NineMonthsLater (string date) {
 	// Assumes format "yyyy-mm-dd"
 	//printf("Nine Months Later Called on string %s\n",date.c_str());
-	if (date.length() != 10) {return date;}
+	if (date.length() != 10) {
+		//printf("NML Return Checkpoint 1\n");
+		return date;
+	}
 	string yearstr = date.substr(0,4);
 	//printf("year string is %s\n",yearstr.c_str());
 	string monthstr = date.substr(5,2);
@@ -179,6 +182,7 @@ string NineMonthsLater (string date) {
 		//printf("%i-%s-%s",year,newmonthstr,daystr.c_str());
 		sprintf(newdate,"%i-%s-%s",year,newmonthstr,daystr.c_str());
 	}
+	//printf("NML Return Checkpoint 2\n");
 	return newdate;
 }
 
@@ -186,6 +190,7 @@ bool BirthB4ParentsMarriage () {
 	bool noerrors = true;
 	unordered_map<string, family>:: iterator fam;
 	for(fam = famMap.begin(); fam != famMap.end(); fam++){
+		//printf("Processing family %s\n", fam->first.c_str());
 		string marrday = fam->second.married;
 		string divday = fam->second.divorced;
 		string divgrace = NineMonthsLater(divday);
@@ -193,20 +198,19 @@ bool BirthB4ParentsMarriage () {
 		list<string>::iterator kid;
 		for (kid = kidlist.begin(); kid != kidlist.end(); ++kid) {
 			string cbirth = indiMap.find(kid->c_str())->second.birthday;
-			//printf("Child %s was born %s\n", kid->c_str(), cbirth.c_str());
+			//printf("Comparing %s's birthday %s with marriage day %s\n", indiMap.find(kid->c_str())->first.c_str(), cbirth.c_str(), marrday.c_str());
 			if ( strcmp(cbirth.c_str(), marrday.c_str()) < 0 && strcmp(marrday.c_str(), "N/A") != 0 && strcmp(marrday.c_str(), "") != 0 ) {
-				errorStatements.push_back("ERROR: INDIVIDUAL: US04: "
+				errorStatements.push_back("ERROR: INDIVIDUAL: US08: "
 				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
-				+ indiMap.find(kid->c_str())->second.name + "Child born after mother died");
+				+ indiMap.find(kid->c_str())->second.name + " born before parents married");
 				noerrors = false;
-			} else if ( strcmp(cbirth.c_str(), divgrace.c_str()) < 0 && strcmp(divday.c_str(), "N/A") != 0 && strcmp(divday.c_str(), "") != 0) {
-				errorStatements.push_back("ERROR: INDIVIDUAL: US04: "
+			} else if ( strcmp(divgrace.c_str(), cbirth.c_str()) < 0 && strcmp(divday.c_str(), "N/A") != 0 && strcmp(divday.c_str(), "") != 0) {
+				errorStatements.push_back("ERROR: INDIVIDUAL: US08: "
 				+ to_string(indiMap.find(kid->c_str())->second.lineNumbers[2]) +": "
-				+ indiMap.find(kid->c_str())->second.name + "Child born over 9 months after father died");
+				+ indiMap.find(kid->c_str())->second.name + " born over 9 months after parents divorced");
 				noerrors = false;
 			}
 		}
 	}
-	//printf ("BirthB4ParentsDeath UNIMPLEMENTED ");
 	return noerrors;
 }

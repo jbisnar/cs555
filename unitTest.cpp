@@ -462,6 +462,87 @@ void US06_02() {
 	}
 }
 
+void US08_01() {
+	printf("Starting Test US08-01: ");
+	individual mom;
+	individual dad;
+	individual bastard;
+	bastard.birthday = "2007-08-11";
+	individual bastard2;
+	bastard2.birthday = "2008-07-20";
+	indiMap.insert({"TEST09-mom", mom});
+	indiMap.insert({"TEST09-dad", dad});
+	indiMap.insert({"TEST09-child1", bastard});
+	indiMap.insert({"TEST09-child2", bastard2});
+	family premarital;
+	premarital.married = "2008-12-30";
+	premarital.wifeID = "TEST09-mom";
+	premarital.husbandID = "TEST09-dad";
+	premarital.children.push_back("TEST09-child1");
+	premarital.children.push_back("TEST09-child2");
+	famMap.insert({"TEST09-premarital", premarital});
+	if (!BirthB4ParentsMarriage()) {
+		printf("PASSED\n");
+		famMap.erase("TEST09-premarital");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-premarital");
+    }
+}
+
+void US08_02() {
+	printf("Starting Test US08-02: ");
+	individual mom;
+	individual dad;
+	individual postdivorce;
+	postdivorce.birthday = "2007-08-11";
+	indiMap.insert({"TEST09-mom", mom});
+	indiMap.insert({"TEST09-dad", dad});
+	indiMap.insert({"TEST09-child1", postdivorce});
+	family predivorce;
+	predivorce.married = "2005-09-09";
+	predivorce.divorced = "2008-02-29";
+	predivorce.wifeID = "TEST09-mom";
+	predivorce.husbandID = "TEST09-dad";
+	predivorce.children.push_back("TEST09-child1");
+	famMap.insert({"TEST09-predivorce", predivorce});
+	if (BirthB4ParentsMarriage()) {
+		printf("PASSED\n");
+		famMap.erase("TEST09-predivorce");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-predivorce");
+    }
+}
+
+void US08_03() {
+	printf("Starting Test US08-03: ");
+	individual mom;
+	individual dad;
+	individual scandal;
+	scandal.birthday = "2011-08-11";
+	indiMap.insert({"TEST09-mom", mom});
+	indiMap.insert({"TEST09-dad", dad});
+	indiMap.insert({"TEST09-child1", scandal});
+	family postdivorce;
+	postdivorce.married = "2005-09-09";
+	postdivorce.divorced = "2008-02-29";
+	postdivorce.wifeID = "TEST09-mom";
+	postdivorce.husbandID = "TEST09-dad";
+	postdivorce.children.push_back("TEST09-child1");
+	famMap.insert({"TEST09-postdivorce", postdivorce});
+	if (BirthB4ParentsMarriage()) {
+		printf("PASSED\n");
+		famMap.erase("TEST09-postdivorce");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-postdivorce");
+    }
+}
+
 void US09_01() {
 	printf("Starting Test US09-01: ");
 	individual deadmom;
@@ -715,6 +796,9 @@ int main(int argc, char** argv) {
     US06_01();
     US06_02();
     US0701();
+    US08_01();
+    US08_02();
+    US08_03();
     US09_01();
     US09_02();
     US09_03();
