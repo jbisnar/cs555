@@ -334,6 +334,40 @@
 1 DIV
 2 DATE 28 DEC 1993
 1 _CURRENT N
+0 Note ***************US01***************
+0 US01_1 INDI
+1 NAME Future future
+2 GIVN Squidward
+2 SURN Tentacles
+1 SEX M
+1 BIRT
+2 DATE 1 MAY 2020
+1 DEAT Y
+2 DATE 6 MAR 4017
+0 US01_2 INDI
+1 NAME Fortune Teller
+2 GIVN Fortune
+2 SURN Teller
+1 SEX M
+1 BIRT
+2 DATE 6 JUL 2008
+1 FAMS US01_F1
+0 US01_3 INDI
+1 NAME Prophet Taker
+2 GIVN Prophet
+2 SURN Taker
+1 SEX F
+1 BIRT
+2 DATE 20 NOV 2010
+1 FAMS US01_F1
+0 US01_F1 FAM
+1 HUSB US01_2
+1 WIFE US01_3
+1 MARR
+2 DATE 22 APR 2030
+1 DIV
+2 DATE 30 JUN 2038
+0 Note *************End US01*************
 0 Note ***************US03***************
 0 US03_1 INDI
 1 NAME Miss Carriage

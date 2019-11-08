@@ -343,24 +343,25 @@ void store(string level, string tag, string args){
         if(strcmp(curTag.c_str(), "BIRT") == 0){
             curIndi.birthday = improveDate(args.c_str());
             curIndi.lineNumbers[2] = lineNumber;
-            birthline = lineNumber;
+            DatesB4Today(curIndi.birthday, "", lineNumber,0);
 			notOlderThan150(curIndi, birthline);
 			legalDate(curIndi.birthday, birthline);
         }else if(strcmp(curTag.c_str(), "DEAT") == 0){
             curIndi.death = improveDate(args.c_str());
             curIndi.lineNumbers[4] = lineNumber;
-            deathline = lineNumber;
+            DatesB4Today(curIndi.death, "", lineNumber,0);
 			legalDate(curIndi.death, deathline);
         }else if(strcmp(curTag.c_str(), "DIV") == 0){
             curFam.lineNumbers[1] = lineNumber;
             curFam.divorced = improveDate(args.c_str());
+            DatesB4Today(curFam.divorced, "", lineNumber,1);
 			legalDate(curFam.divorced, lineNumber);
 			DivorceB4Death(curFam);
 			MarriageB4Divorce(curFam);
         }else if(strcmp(curTag.c_str(), "MARR") == 0){
             curFam.lineNumbers[0] = lineNumber;
             curFam.married = improveDate(args.c_str());
-			marryline = lineNumber;
+            DatesB4Today(curFam.married, "", lineNumber,1);
 			marriageAfter14(curIndi, curFam, marryline);
 			legalDate(curFam.married, lineNumber);
         }

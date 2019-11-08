@@ -274,6 +274,20 @@ void US2102() {
 
 }
 
+void US01_01() {
+	printf("Starting Test US01-01: ");
+	string past = "1946-12-07";
+	string future = "2019-11-23";
+	string override = "2020-01-01";
+	string blank = "";
+	if (DatesB4Today(past,blank,0,0) && !DatesB4Today(future,blank,0,0) && DatesB4Today(future,override,0,0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
+}
+
 void US02_01() {
 	printf("Starting Test US02-01: ");
 	individual fetus;
@@ -784,6 +798,7 @@ void US1901(){
 }
 
 int main(int argc, char** argv) {
+	US01_01();
     US02_01();
     US02_02();
     US03_01();

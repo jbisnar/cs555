@@ -75,7 +75,7 @@ bool marriageAfter14(individual person, family fam, int marryline){
 	struct tm marriage = String2Date(fam.married);
 
     if (yearsBetweenDates(birth, marriage) < 14){
-        errorStatements.push_back("ERROR: INDIVIDUAL: US07: " + to_string(marryline) + ": " +  person.name + 
+        errorStatements.push_back("ERROR: INDIVIDUAL: US07: " + to_string(fam.lineNumbers[0]) + ": " +  person.name + 
                 " is married before 14 years of age, which is illegal in the US."); 
         return false;
     }
@@ -103,7 +103,7 @@ bool notOlderThan150(individual person, int birthline){
 	if (deltaMonth < 0)
 		deltaYear--;
     if (deltaYear > 150){
-        errorStatements.push_back("ERROR: INDIVIDUAL: US10: " + to_string(birthline) + ": " +  person.name + 
+        errorStatements.push_back("ERROR: INDIVIDUAL: US10: " + to_string(person.lineNumbers[2]) + ": " +  person.name + 
                 " is listed as being older than 150 years old, which today is highly improbable."); 
         return false;
     }

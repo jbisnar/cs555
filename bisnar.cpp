@@ -214,3 +214,40 @@ bool BirthB4ParentsMarriage () {
 	}
 	return noerrors;
 }
+
+bool DatesB4Today (string date, string override, int lineNumber, int type) {
+	time_t rawtime;
+	struct tm * timeinfo;
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+	char todate[11];
+	char monthstr[3];
+	if (timeinfo->tm_mon+1 < 10) {
+		sprintf(monthstr,"0%i",timeinfo->tm_mon+1);
+	} else {
+		sprintf(monthstr,"%i",timeinfo->tm_mon+1);
+	}
+	char daystr[3];
+	if (timeinfo->tm_mday < 10) {
+		sprintf(daystr,"0%i",timeinfo->tm_mday);
+	} else {
+		sprintf(daystr,"%i",timeinfo->tm_mday);
+	}
+	sprintf(todate,"%i-%s-%s",timeinfo->tm_year+1900,monthstr,daystr);
+	if (strcmp(override.c_str(), "") != 0) {
+		sprintf(todate,"%s",override.c_str());
+	}
+	//printf ("Comparing given date %s with today's date %s\n", date.c_str(), todate);
+	if (strcmp(todate, date.c_str()) < 0) {
+		if (type == 0) {
+			errorStatements.push_back("ERROR: INDIVIDUAL: US01: " + to_string(lineNumber) + ": "
+									+ "date " + date + " is after today's date " + todate);
+		} else {
+			errorStatements.push_back("ERROR: FAMILY:     US01: " + to_string(lineNumber) + ": "
+									+ "date " + date + " is after today's date " + todate);
+		}
+		return false;
+	} else {
+		return true;
+	}
+}
