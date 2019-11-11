@@ -270,6 +270,7 @@ void finalStore(){
 	siblingsNotMarried(indiMap, famMap);
 	cousinsNotMarried(indiMap, famMap);
 	parentsDidntMarryChildren(indiMap, famMap);
+	correctSiblingBirthdaySpacing(indiMap, famMap);
 	BirthB4ParentsMarriage();
 	BirthB4ParentsDeath();
     return;

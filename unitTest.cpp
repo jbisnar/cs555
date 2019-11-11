@@ -798,8 +798,48 @@ void US1901(){
 }
 
 // US 13: correct spacing between sibling birthdays
+// test 1: 1 sibling
 void US1301(){
+	printf("Starting Test US13-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
 	
+	indiList["Dad"] = {"Dad Calendar", 'M', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Mom"] = {"Mom Calendar", 'F', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["c1"] = {"Daughter Calendar", 'F', "2000-01-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	famList["Current"] = {"", "N/A", "Dad", "Mom", {"c1"}, {0,0,0,0}};
+	
+	if(correctSiblingBirthdaySpacing(indiList, famList))
+		printf("PASSED\n");
+	else{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+// US 13: correct spacing between sibling birthdays
+// test 2: many siblings, last has no birthday inputted (have a bool flag to catch this)
+void US1302(){
+	printf("Starting Test US13-02: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+	indiList["Dad"] = {"Dad Calendar", 'M', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Mom"] = {"Mom Calendar", 'F', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["c1"] = {"Dau1 Calendar", 'F', "1999-01-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c2"] = {"Dau2 Calendar", 'F', "2000-03-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c3"] = {"Dau3 Calendar", 'F', "2000-01-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c4"] = {"Dau4 Calendar", 'F', "2004-04-03", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c5"] = {"Son1 Calendar", 'M', "2004-05-03", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c6"] = {"Son2 Calendar", 'M', "N/A", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	famList["Current"] = {"", "N/A", "Dad", "Mom", {"c1", "c2", "c3", "c4", "c5", "c6"}, {0,0,0,0}};
+	
+	if(correctSiblingBirthdaySpacing(indiList, famList))
+		printf("PASSED\n");
+	else{
+		failed++;
+		printf("FAILED\n");
+	}
 }
 
 // US 17: parents don't marry their own children
@@ -867,5 +907,7 @@ int main(int argc, char** argv) {
 	US1802();
 	US1901();
 	US1701();
+	US1301();
+	US1302();
     printf("%i Tests Failed\n", failed);
 }
