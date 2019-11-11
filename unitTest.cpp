@@ -797,6 +797,36 @@ void US1901(){
 	}
 }
 
+// US 13: correct spacing between sibling birthdays
+void US1301(){
+	
+}
+
+// US 17: parents don't marry their own children
+void US1701(){
+	printf("Starting Test US17-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+	indiList["Dad"] = {"Sicco Mode", 'M', "N/A", true, "N/A", {"Fam-1", "Fam-2"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Mom-1"] = {"PoorWife Mode", 'F', "N/A", true, "N/A", {"Fam-1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Son"] = {"Richard Mode", 'M', "N/A", true, "N/A", {}, "Fam-1", {0,0,0,0,0,0}};
+	indiList["Daughter"] = {"Rip Mode", 'F', "N/A", true, "N/A", {"Fam-2"}, "Fam-1", {0,0,0,0,0,0}};
+	indiList["Mom-2"] = {"Guava Mode", 'F', "N/A", true, "N/A", {"Fam-2"}, "Fam-obscure", {0,0,0,0,0,0}};
+	
+	famList["Fam-1"] = {"1990-01-01", "1992-01-01", "Dad", "Mom-1", {"Son", "Daughter"}, {0,0,0,0}};
+	famList["Fam-2"] = {"2010-06-06", "N/A", "Dad", "Mom-2", {}, {99,99,99,99}};
+	
+	if (parentsDidntMarryChildren(indiList, famList) == true){
+		printf("PASSED\n");
+	}
+	else{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+
 int main(int argc, char** argv) {
 	US01_01();
     US02_01();
@@ -836,5 +866,6 @@ int main(int argc, char** argv) {
 	US1801();
 	US1802();
 	US1901();
+	US1701();
     printf("%i Tests Failed\n", failed);
 }
