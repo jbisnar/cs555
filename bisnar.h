@@ -21,4 +21,8 @@ bool BirthB4ParentsDeath ();
 
 string NineMonthsLater (string date);
 
+bool BirthB4ParentsMarriage ();
+
+bool DatesB4Today (string date, string override, int lineNumber, int type);
+
 #endif

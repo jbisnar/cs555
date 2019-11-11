@@ -163,6 +163,46 @@ void US2902() {
 
 }
 
+void US2701(){
+    printf("Starting Test US27-01: ");
+    if(strcmp(getAge("1998-10-13", "2019-11-5").c_str(), "21") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+}
+
+void US1501(){
+    printf("Starting Test US15-01: ");
+    unordered_map<string, individual> indiList;
+    indiList["15"] = {"The Last", '\0', "N/A", false, "2000-01-01", {}, "N/A", {0,0,0,0,0,0}};
+    unordered_map<string, family> famList;
+    list <string> kids;
+    for(int i = 0; i<15; i++){
+        kids.push_back("15");
+    }
+    famList["Family"] = {"", "2000-01-01", "Husband", "Wife", kids, {0,0,0,0}};
+    
+    if(lessThan15Kids(famList, indiList)){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+}
+
+void US2702(){
+    printf("Starting Test US27-02: ");
+    if(strcmp(getAge("N/A", "2019-11-5").c_str(), "N/A") != 0){
+        failed++;
+        printf("FAILED\n");
+        return;
+    }
+    printf("PASSED\n");
+}
+
+
 /* US16: Male Last Names Match Husband */
 void US1601() {
     
@@ -232,6 +272,20 @@ void US2102() {
 
     return;
 
+}
+
+void US01_01() {
+	printf("Starting Test US01-01: ");
+	string past = "1946-12-07";
+	string future = "2019-11-23";
+	string override = "2020-01-01";
+	string blank = "";
+	if (DatesB4Today(past,blank,0,0) && !DatesB4Today(future,blank,0,0) && DatesB4Today(future,override,0,0)) {
+		printf("PASSED\n");
+    } else {
+    	failed++;
+        printf("FAILED\n");
+	}
 }
 
 void US02_01() {
@@ -420,6 +474,87 @@ void US06_02() {
     	failed++;
         printf("FAILED\n");
 	}
+}
+
+void US08_01() {
+	printf("Starting Test US08-01: ");
+	individual mom;
+	individual dad;
+	individual bastard;
+	bastard.birthday = "2007-08-11";
+	individual bastard2;
+	bastard2.birthday = "2008-07-20";
+	indiMap.insert({"TEST09-mom", mom});
+	indiMap.insert({"TEST09-dad", dad});
+	indiMap.insert({"TEST09-child1", bastard});
+	indiMap.insert({"TEST09-child2", bastard2});
+	family premarital;
+	premarital.married = "2008-12-30";
+	premarital.wifeID = "TEST09-mom";
+	premarital.husbandID = "TEST09-dad";
+	premarital.children.push_back("TEST09-child1");
+	premarital.children.push_back("TEST09-child2");
+	famMap.insert({"TEST09-premarital", premarital});
+	if (!BirthB4ParentsMarriage()) {
+		printf("PASSED\n");
+		famMap.erase("TEST09-premarital");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-premarital");
+    }
+}
+
+void US08_02() {
+	printf("Starting Test US08-02: ");
+	individual mom;
+	individual dad;
+	individual postdivorce;
+	postdivorce.birthday = "2007-08-11";
+	indiMap.insert({"TEST09-mom", mom});
+	indiMap.insert({"TEST09-dad", dad});
+	indiMap.insert({"TEST09-child1", postdivorce});
+	family predivorce;
+	predivorce.married = "2005-09-09";
+	predivorce.divorced = "2008-02-29";
+	predivorce.wifeID = "TEST09-mom";
+	predivorce.husbandID = "TEST09-dad";
+	predivorce.children.push_back("TEST09-child1");
+	famMap.insert({"TEST09-predivorce", predivorce});
+	if (BirthB4ParentsMarriage()) {
+		printf("PASSED\n");
+		famMap.erase("TEST09-predivorce");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-predivorce");
+    }
+}
+
+void US08_03() {
+	printf("Starting Test US08-03: ");
+	individual mom;
+	individual dad;
+	individual scandal;
+	scandal.birthday = "2011-08-11";
+	indiMap.insert({"TEST09-mom", mom});
+	indiMap.insert({"TEST09-dad", dad});
+	indiMap.insert({"TEST09-child1", scandal});
+	family postdivorce;
+	postdivorce.married = "2005-09-09";
+	postdivorce.divorced = "2008-02-29";
+	postdivorce.wifeID = "TEST09-mom";
+	postdivorce.husbandID = "TEST09-dad";
+	postdivorce.children.push_back("TEST09-child1");
+	famMap.insert({"TEST09-postdivorce", postdivorce});
+	if (BirthB4ParentsMarriage()) {
+		printf("PASSED\n");
+		famMap.erase("TEST09-postdivorce");
+	} else {
+		failed++;
+    	printf("FAILED\n");
+    	famMap.erase("TEST09-postdivorce");
+    }
 }
 
 void US09_01() {
@@ -662,7 +797,78 @@ void US1901(){
 	}
 }
 
+// US 13: correct spacing between sibling birthdays
+// test 1: 1 sibling
+void US1301(){
+	printf("Starting Test US13-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+	indiList["Dad"] = {"Dad Calendar", 'M', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Mom"] = {"Mom Calendar", 'F', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["c1"] = {"Daughter Calendar", 'F', "2000-01-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	famList["Current"] = {"", "N/A", "Dad", "Mom", {"c1"}, {0,0,0,0}};
+	
+	if(correctSiblingBirthdaySpacing(indiList, famList))
+		printf("PASSED\n");
+	else{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+// US 13: correct spacing between sibling birthdays
+// test 2: many siblings, last has no birthday inputted (have a bool flag to catch this)
+void US1302(){
+	printf("Starting Test US13-02: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+	indiList["Dad"] = {"Dad Calendar", 'M', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Mom"] = {"Mom Calendar", 'F', "1980-01-01", true, "N/A", {"Current"}, "N/A", {0,0,0,0,0,0}};
+	indiList["c1"] = {"Dau1 Calendar", 'F', "1999-01-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c2"] = {"Dau2 Calendar", 'F', "2000-03-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c3"] = {"Dau3 Calendar", 'F', "2000-01-01", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c4"] = {"Dau4 Calendar", 'F', "2004-04-03", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c5"] = {"Son1 Calendar", 'M', "2004-05-03", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	indiList["c6"] = {"Son2 Calendar", 'M', "N/A", true, "N/A", {}, "Current", {0,0,0,0,0,0}};
+	famList["Current"] = {"", "N/A", "Dad", "Mom", {"c1", "c2", "c3", "c4", "c5", "c6"}, {0,0,0,0}};
+	
+	if(correctSiblingBirthdaySpacing(indiList, famList))
+		printf("PASSED\n");
+	else{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+// US 17: parents don't marry their own children
+void US1701(){
+	printf("Starting Test US17-01: ");
+    unordered_map<string, individual> indiList;
+	unordered_map<string, family> famList;
+	
+	indiList["Dad"] = {"Sicco Mode", 'M', "N/A", true, "N/A", {"Fam-1", "Fam-2"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Mom-1"] = {"PoorWife Mode", 'F', "N/A", true, "N/A", {"Fam-1"}, "N/A", {0,0,0,0,0,0}};
+	indiList["Son"] = {"Richard Mode", 'M', "N/A", true, "N/A", {}, "Fam-1", {0,0,0,0,0,0}};
+	indiList["Daughter"] = {"Rip Mode", 'F', "N/A", true, "N/A", {"Fam-2"}, "Fam-1", {0,0,0,0,0,0}};
+	indiList["Mom-2"] = {"Guava Mode", 'F', "N/A", true, "N/A", {"Fam-2"}, "Fam-obscure", {0,0,0,0,0,0}};
+	
+	famList["Fam-1"] = {"1990-01-01", "1992-01-01", "Dad", "Mom-1", {"Son", "Daughter"}, {0,0,0,0}};
+	famList["Fam-2"] = {"2010-06-06", "N/A", "Dad", "Mom-2", {}, {99,99,99,99}};
+	
+	if (parentsDidntMarryChildren(indiList, famList) == true){
+		printf("PASSED\n");
+	}
+	else{
+		failed++;
+		printf("FAILED\n");
+	}
+}
+
+
 int main(int argc, char** argv) {
+	US01_01();
     US02_01();
     US02_02();
     US03_01();
@@ -675,16 +881,22 @@ int main(int argc, char** argv) {
     US06_01();
     US06_02();
     US0701();
+    US08_01();
+    US08_02();
+    US08_03();
     US09_01();
     US09_02();
     US09_03();
     US1001();
     US1201();
+    US1501();
     US1601();
     US2101();
     US2102();
     US2201();
     US2202();
+    US2701();
+    US2702();
     US2901();
     US2902();
     US3001();
@@ -694,5 +906,8 @@ int main(int argc, char** argv) {
 	US1801();
 	US1802();
 	US1901();
+	US1701();
+	US1301();
+	US1302();
     printf("%i Tests Failed\n", failed);
 }

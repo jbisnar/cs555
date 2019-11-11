@@ -1,0 +1,277 @@
+LIST OF ALL INDIVIDUALS:
+            ID |               NAME | GENDER | AGE  |   BIRTHDAY | ALIVE |      DEATH |         CHILD | SPOUSE
+
+             1 |         One Person |      M |   56 | 1963-06-15 |  True |        N/A |           F15 |
+            10 |         Ten Person |      M |   47 | 1972-06-15 |  True |        N/A |           F15 |
+            11 |      Eleven Person |      M |   46 | 1973-06-15 |  True |        N/A |           F15 |
+            12 |      Twelve Person |      M |   45 | 1974-06-15 |  True |        N/A |           F15 |
+            13 |    Thirteen Person |      M |   44 | 1975-06-15 |  True |        N/A |           F15 |
+            14 |    Fourteen Person |      M |   43 | 1976-06-15 |  True |        N/A |           F15 |
+            15 |     Fifteen Person |      M |   42 | 1977-06-15 |  True |        N/A |           F15 |
+            16 |     Husband Person |      M |   59 | 1960-06-15 |  True |        N/A |           N/A | {'F15'}
+            17 |        Wife Person |      F |   59 | 1960-06-15 |  True |        N/A |           N/A | {'F15'}
+             2 |         Two Person |      M |   55 | 1964-06-15 |  True |        N/A |           F15 |
+             3 |       Three Person |      M |   54 | 1965-06-15 |  True |        N/A |           F15 |
+             4 |        Four Person |      M |   53 | 1966-06-15 |  True |        N/A |           F15 |
+             5 |        Five Person |      M |   52 | 1967-06-15 |  True |        N/A |           F15 |
+             6 |         Six Person |      M |   51 | 1968-06-15 |  True |        N/A |           F15 |
+             7 |       Seven Person |      M |   50 | 1969-06-15 |  True |        N/A |           F15 |
+             8 |       Eight Person |      M |   49 | 1970-06-15 |  True |        N/A |           F15 |
+             9 |        Nine Person |      M |   48 | 1971-06-15 |  True |        N/A |           F15 |
+       I-22-01 |      Monica Geller |      M |   55 | 1964-06-15 |  True |        N/A |           N/A | {'F-22-01'}
+       I-22-02 |      Chandler Bing |      F |   50 | 1969-08-19 |  True |        N/A |           N/A | {'F-22-01'}
+           I01 |      Matthew Monny |      M |   20 | 1998-10-13 |  True |        N/A |            F1 |
+           I02 |       Mario Monaco |      M |   61 | 1958-02-23 |  True |        N/A |           N/A | {'F1'}
+           I03 |     Debra D'Angelo |      F |   54 | 1964-12-25 |  True |        N/A |            F2 | {'F1'}
+           I04 |     Anthony Monaco |      M |   25 | 1994-05-09 |  True |        N/A |            F1 |
+           I05 |     Vincent Monaco |      M |   24 | 1995-09-12 |  True |        N/A |            F1 |
+           I06 |      John D'Angelo |      M |   89 | 1930-04-12 |  True |        N/A |           N/A | {'F2'} {'F3'}
+           I07 |  Concetta Iacovino |      F |   83 | 1924-05-18 | False | 2008-04-13 |           N/A | {'F2'}
+           I08 |    Laurie D'Angelo |      F |   56 | 1963-08-07 |  True |        N/A |            F2 |
+           I09 |      John D'Angelo |      M |   60 | 1959-03-17 |  True |        N/A |            F2 | {'F4'} {'F5'}
+           I10 |     Aspe Fritschie |      F |   50 | 1968-11-26 |  True |        N/A |           N/A | {'F4'}
+           I11 |    Fabbie Goldiger |      F |   54 | 1965-01-04 |  True |        N/A |           N/A | {'F5'}
+           I12 |      Mark D'Angelo |      M |   27 | 1992-05-23 |  True |        N/A |            F5 |
+           I13 |      Alex D'Angelo |      F |   17 | 2002-06-10 |  True |        N/A |            F4 |
+           I14 |   Caroline Andrews |      F |   84 | 1935-09-16 |  True |        N/A |           N/A | {'F3'}
+        US01_1 |      Future future |      M | 1996 | 2020-05-01 | False | 4017-03-06 |           N/A |
+        US01_2 |     Fortune Teller |      M |   11 | 2008-07-06 |  True |        N/A |           N/A | {'US01_F1'}
+        US01_3 |      Prophet Taker |      F |    8 | 2010-11-20 |  True |        N/A |           N/A | {'US01_F1'}
+        US02_1 |       Notborne Yet |      F |   26 | 1993-06-01 |  True |        N/A |           N/A | {'US02_F1'}
+        US02_2 |    Super Pedophile |      M |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US02_F1'}
+        US02_3 |     Child Marriage |      M |   26 | 1993-06-01 |  True |        N/A |           N/A | {'US02_F2'}
+        US02_4 |        Normal Pedo |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US02_F2'}
+        US02_5 |      Time Traveler |      M |   26 | 1993-06-01 |  True |        N/A |           N/A | {'US02_F1'}
+        US02_6 | Ambiguous Legality |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US02_F1'}
+        US03_1 |      Miss Carriage |      F |   -1 | 1989-05-01 | False | 1989-01-13 |           N/A |
+        US03_2 |        Valid Birth |      M |    0 | 1989-05-01 | False | 1989-05-02 |           N/A |
+        US03_3 |        Short Lived |      F |    0 | 1989-05-01 | False | 1989-05-01 |           N/A |
+        US03_4 |        Abe Bortion |      M |   -1 | 1989-09-10 | False | 1989-01-20 |           N/A |
+        US04_1 |          Brake Kap |      M |   54 | 1965-06-01 |  True |        N/A |           N/A | {'US04_F1'}
+        US04_2 |          Div Orace |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US04_F1'}
+        US05_1 |    Graveyard Groom |      M |   23 | 1965-06-01 | False | 1989-05-01 |           N/A | {'US05_F1'}
+        US05_2 |     Necker Ophelia |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US05_F1'}
+        US05_3 |       Grave Robert |      M |   54 | 1965-06-01 |  True |        N/A |           N/A | {'US05_F2'}
+        US05_4 |         Ghost Girl |      F |   21 | 1967-08-03 | False | 1989-05-01 |           N/A | {'US05_F2'}
+        US05_5 |    Graveyard Smash |      M |   21 | 1967-08-03 | False | 1989-05-01 |           N/A |
+        US05_6 |       Monster Mash |      F |   21 | 1967-08-03 | False | 1989-05-01 |           N/A |
+        US06_1 |           Death Do |      M |   33 | 1965-06-01 | False | 1999-05-01 |           N/A | {'US06_F1'}
+        US06_2 |            Us Part |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US06_F1'}
+        US06_3 |        Widower Sir |      M |   54 | 1965-06-01 |  True |        N/A |           N/A | {'US06_F1'}
+        US06_4 |          Dead Wife |      F |   31 | 1967-08-03 | False | 1999-05-01 |           N/A | {'US06_F2'}
+        US08_1 |       Weak Pullout |      M |   54 | 1965-06-01 |  True |        N/A |           N/A | {'US08_F1'}
+        US08_2 |   Tina Pregg-Nancy |      F |   50 | 1969-05-02 |  True |        N/A |           N/A | {'US08_F1'}
+        US08_3 |      Bastard Child |      M |   31 | 1988-02-07 |  True |        N/A |       US08_F1 |
+        US08_4 |     Not Scandalous |      F |   28 | 1991-02-13 |  True |        N/A |       US08_F1 |
+        US08_5 |     Still Attached |      M |   54 | 1965-06-01 |  True |        N/A |           N/A | {'US08_F2'}
+        US08_6 |         Booty Call |      F |   52 | 1967-05-02 |  True |        N/A |           N/A | {'US08_F2'}
+        US08_7 |      Custody Prize |      F |   19 | 1999-11-07 |  True |        N/A |       US08_F2 |
+        US09_1 |       Thomas Wayne |      M |   33 | 1965-06-01 | False | 1999-05-01 |           N/A | {'US09_F1'}
+       US09_10 |             I Born |      M |   18 | 2001-08-24 |  True |        N/A |       US09_F3 |
+        US09_2 |       Martha Wayne |      F |   31 | 1967-08-03 | False | 1999-05-01 |           N/A | {'US09_F1'}
+        US09_3 |   Belated Birthday |      M |   19 | 2000-02-07 |  True |        N/A |       US09_F1 |
+        US09_4 |  Creampie Then Die |      M |   33 | 1965-06-01 | False | 1999-05-01 |           N/A | {'US09_F2'}
+        US09_5 |         Single Mom |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US09_F2'}
+        US09_6 |       Daddy Issues |      F |   19 | 2000-01-28 |  True |        N/A |       US09_F2 |
+        US09_7 |         Single Dad |      M |   54 | 1965-06-01 |  True |        N/A |           N/A | {'US09_F3'}
+        US09_8 |       Zombie Birth |      F |   31 | 1967-08-03 | False | 1999-05-01 |           N/A | {'US09_F3'}
+        US09_9 |            How Was |      F |   19 | 2000-02-28 |  True |        N/A |       US09_F3 |
+      US_07_01 |          One Fitty |      M |  160 | 1859-10-01 |  True |        N/A |           N/A |
+      US_10_01 |     IMarr Fourteen |      F |   19 | 2000-02-05 |  True |        N/A |           N/A | {'US10_F1'}
+      US_10_02 |   EveryoneIs APedo |      M |   39 | 1980-02-05 |  True |        N/A |           N/A | {'US10_F1'}
+      US_12_01 |     Soap MacTavish |      M |  119 | 1900-01-11 |  True |        N/A |           N/A |
+      US_12_02 |   Missus MacTavish |      F |  119 | 1900-01-11 |  True |        N/A |           N/A |
+      US_12_03 |     John MacTavish |      M |   19 | 2000-01-10 |  True |        N/A |           N/A |
+      US_12_04 |     Anna MacTavish |      F |   17 | 2002-01-10 |  True |        N/A |           N/A |
+      US_13_C1 |      Dau1 Calendar |      F |   18 | 2000-11-01 |  True |        N/A | US_13_CURRENT |
+      US_13_C2 |      Dau2 Calendar |      F |   18 | 2001-01-01 |  True |        N/A | US_13_CURRENT |
+      US_13_C3 |      Dau3 Calendar |      F |   16 | 2003-08-13 |  True |        N/A | US_13_CURRENT |
+      US_13_C4 |      Son1 Calendar |      M |   16 | 2003-08-13 |  True |        N/A | US_13_CURRENT |
+     US_13_DAD |       Dad Calendar |      M |   39 | 1980-01-01 |  True |        N/A |           N/A | {'US_13_CURRENT'}
+     US_13_MOM |       Mom Calendar |      F |   35 | 1984-01-01 |  True |        N/A |           N/A | {'US_13_CURRENT'}
+     US_17_DAD |         Sicco Mode |      M |   59 | 1960-01-10 |  True |        N/A |           N/A | {'US_17_01FAM'} {'US_17_02FAM'}
+     US_17_DAU |           Rip Mode |      F |   25 | 1994-05-19 |  True |        N/A |   US_17_01FAM | {'US_17_02FAM'}
+     US_17_MOM |     PoorWaifu Mode |      F |   58 | 1961-05-19 |  True |        N/A |           N/A | {'US_17_01FAM'}
+     US_17_SON |       Richard Mode |      M |   28 | 1991-05-19 |  True |        N/A |   US_17_01FAM |
+      US_18_01 |      Manfred Price |      M |  119 | 1900-01-11 |  True |        N/A |           N/A |
+      US_18_02 |         Lady Price |      F |  119 | 1900-01-11 |  True |        N/A |           N/A |
+      US_18_03 |        Crazy Price |      M |   19 | 2000-01-10 |  True |        N/A |      US18_FAM |
+      US_18_04 |        Bella Price |      F |   17 | 2002-01-10 |  True |        N/A |      US18_FAM |
+     US_19_1AF |    Isabelle Caesar |      F |  N/A |        N/A |  True |        N/A |        GRAND2 | {'PATERNAL'}
+     US_19_1AM |      Gaius Zachaev |      M |  N/A |        N/A |  True |        N/A |        GRAND1 | {'PATERNAL'}
+  US_19_1BHUSB |     Viktor Zachaev |      M |  N/A |        N/A |  True |        N/A |      PATERNAL | {'INCEST_CUZ'}
+      US_19_1F | Alexandria Zachaev |      F |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND1'}
+      US_19_1M |     Ingram Zachaev |      M |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND1'}
+     US_19_2AF |  Moldava Kuskovich |      F |  N/A |        N/A |  True |        N/A |        GRAND3 | {'MATERNAL'}
+     US_19_2AM |     Mark Kuskovich |      M |  N/A |        N/A |  True |        N/A |        GRAND2 | {'MATERNAL'}
+  US_19_2BWIFE |     Krista Zachaev |      F |  N/A |        N/A |  True |        N/A |      MATERNAL | {'INCEST_CUZ'}
+      US_19_2F |  Annania Kuskovich |      F |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND2'}
+      US_19_2M |     Yuri Kuskovich |      M |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND2'}
+      US_19_3F |       Kira Borisov |      F |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND3'}
+      US_19_3M |      Boris Borisov |      M |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND3'}
+      US_42_01 |       Robert House |      M |   59 | 1960-02-30 |  True |        N/A |           N/A |
+      US_42_02 |       Missus House |      F |   59 | 1960-02-30 |  True |        N/A |           N/A |
+
+LIST OF ALL FAMILIES:
+            ID |    MARRIED |   DIVORCED |    HUSBAND ID |       HUSBAND NAME |       WIFE ID |          WIFE NAME | CHILDREN
+
+       F-22-01 |        N/A |        N/A |       I-22-02 |      Chandler Bing |       I-22-01 |      Monica Geller |
+            F1 | 1991-10-26 |        N/A |           I02 |       Mario Monaco |           I03 |     Debra D'Angelo | {'I01'} {'I04'} {'I05'}
+           F15 | 1963-10-26 |        N/A |            16 |     Husband Person |            17 |        Wife Person | {'15'} {'14'} {'13'} {'12'} {'11'} {'10'} {'9'} {'8'} {'7'} {'6'} {'5'} {'4'} {'3'} {'2'} {'1'}
+            F2 | 1957-07-01 |        N/A |           I06 |      John D'Angelo |           I07 |  Concetta Iacovino | {'I03'} {'I08'} {'I09'}
+            F3 | 2014-11-15 |        N/A |           I06 |      John D'Angelo |           I14 |   Caroline Andrews |
+            F4 | 1999-03-09 |        N/A |           I09 |      John D'Angelo |           I10 |     Aspe Fritschie | {'I13'}
+            F5 | 1989-02-10 | 1993-12-28 |           I09 |      John D'Angelo |           I11 |    Fabbie Goldiger | {'I12'}
+        GRAND1 |        N/A |        N/A |      US_19_1M |     Ingram Zachaev |      US_19_1F | Alexandria Zachaev | {'US_19_1AM'}
+        GRAND2 |        N/A |        N/A |      US_19_2M |     Yuri Kuskovich |      US_19_2F |  Annania Kuskovich | {'US_19_1AF'} {'US_19_2AM'}
+        GRAND3 |        N/A |        N/A |      US_19_3M |      Boris Borisov |      US_19_3F |       Kira Borisov | {'US_19_2AF'}
+    INCEST_CUZ |        N/A |        N/A |  US_19_1BHUSB |     Viktor Zachaev |  US_19_2BWIFE |     Krista Zachaev |
+      MATERNAL |        N/A |        N/A |     US_19_2AM |     Mark Kuskovich |     US_19_2AM |     Mark Kuskovich | {'US_19_2BWIFE'}
+      PATERNAL |        N/A |        N/A |     US_19_1AM |      Gaius Zachaev |     US_19_1AF |    Isabelle Caesar | {'US_19_1BHUSB'}
+       US01_F1 | 2030-04-22 | 2038-06-30 |        US01_2 |     Fortune Teller |        US01_3 |      Prophet Taker |
+       US02_F1 | 1993-04-22 |        N/A |        US02_2 |    Super Pedophile |        US02_1 |       Notborne Yet |
+       US02_F2 | 1994-04-22 |        N/A |        US02_3 |     Child Marriage |        US02_4 |        Normal Pedo |
+       US02_F3 | 1993-04-22 |        N/A |        US02_5 |      Time Traveler |        US02_6 | Ambiguous Legality |
+       US04_F1 | 1997-04-22 | 1995-06-30 |        US04_1 |          Brake Kap |        US04_2 |          Div Orace |
+       US05_F1 | 1993-04-22 |        N/A |        US05_1 |    Graveyard Groom |        US05_2 |     Necker Ophelia |
+       US05_F2 | 1993-04-22 |        N/A |        US05_3 |       Grave Robert |        US05_4 |         Ghost Girl |
+       US05_F3 | 1993-04-22 |        N/A |        US05_5 |    Graveyard Smash |        US05_6 |       Monster Mash |
+       US06_F1 | 1993-04-22 | 2000-06-30 |        US06_1 |           Death Do |        US06_2 |            Us Part |
+       US06_F2 | 1993-04-22 | 2000-06-30 |        US06_3 |        Widower Sir |        US06_4 |          Dead Wife |
+       US08_F1 | 1990-04-22 |        N/A |        US08_1 |       Weak Pullout |        US08_2 |   Tina Pregg-Nancy | {'US08_3'} {'US08_4'}
+       US08_F2 | 1994-04-22 | 1998-12-20 |        US08_5 |     Still Attached |        US08_6 |         Booty Call | {'US08_7'}
+       US09_F1 | 1993-04-22 |        N/A |        US09_1 |       Thomas Wayne |        US09_2 |       Martha Wayne | {'US09_3'}
+       US09_F2 | 1993-04-22 |        N/A |        US09_4 |  Creampie Then Die |        US09_5 |         Single Mom | {'US09_6'}
+       US09_F3 | 1993-04-22 |        N/A |        US09_7 |         Single Dad |        US09_8 |       Zombie Birth | {'US09_9'} {'US09_10'}
+       US10_F1 | 2014-02-03 |        N/A |      US_10_02 |   EveryoneIs APedo |      US_10_01 |     IMarr Fourteen |
+      US12_FAM |        N/A |        N/A |      US_12_01 |     Soap MacTavish |      US_12_02 |   Missus MacTavish | {'US_12_03'} {'US_12_04'}
+      US18_FAM |        N/A |        N/A |      US_18_01 |      Manfred Price |      US_18_02 |         Lady Price | {'US_18_03'} {'US_18_04'}
+   US18_INCEST |        N/A |        N/A |      US_18_03 |        Crazy Price |      US_18_04 |        Bella Price |
+       US42_F1 | 1990-01-32 |        N/A |      US_42_01 |       Robert House |      US_42_02 |       Missus House |
+ US_13_CURRENT |        N/A |        N/A |     US_13_DAD |       Dad Calendar |     US_13_MOM |       Mom Calendar | {'US_13_C1'} {'US_13_C2'} {'US_13_C3'} {'US_13_C4'}
+   US_17_01FAM |        N/A |        N/A |     US_17_DAD |         Sicco Mode |     US_17_MOM |     PoorWaifu Mode | {'US_17_SON'} {'US_17_DAU'}
+   US_17_02FAM |        N/A |        N/A |     US_17_DAD |         Sicco Mode |     US_17_DAU |           Rip Mode |
+
+US30: LIST OF ALL LIVING MARRIED INDIVIDUALS:
+            ID |               NAME | GENDER | AGE  |   BIRTHDAY | ALIVE |      DEATH |         CHILD | SPOUSE
+
+     US_13_DAD |       Dad Calendar |      M |   39 | 1980-01-01 |  True |        N/A |           N/A | {'US_13_CURRENT'}
+     US_13_MOM |       Mom Calendar |      F |   35 | 1984-01-01 |  True |        N/A |           N/A | {'US_13_CURRENT'}
+     US_17_DAD |         Sicco Mode |      M |   59 | 1960-01-10 |  True |        N/A |           N/A | {'US_17_01FAM'} {'US_17_02FAM'}
+     US_17_DAU |           Rip Mode |      F |   25 | 1994-05-19 |  True |        N/A |   US_17_01FAM | {'US_17_02FAM'}
+     US_17_DAD |         Sicco Mode |      M |   59 | 1960-01-10 |  True |        N/A |           N/A | {'US_17_01FAM'} {'US_17_02FAM'}
+     US_17_MOM |     PoorWaifu Mode |      F |   58 | 1961-05-19 |  True |        N/A |           N/A | {'US_17_01FAM'}
+      US_42_01 |       Robert House |      M |   59 | 1960-02-30 |  True |        N/A |           N/A |
+      US_42_02 |       Missus House |      F |   59 | 1960-02-30 |  True |        N/A |           N/A |
+  US_19_1BHUSB |     Viktor Zachaev |      M |  N/A |        N/A |  True |        N/A |      PATERNAL | {'INCEST_CUZ'}
+  US_19_2BWIFE |     Krista Zachaev |      F |  N/A |        N/A |  True |        N/A |      MATERNAL | {'INCEST_CUZ'}
+     US_19_2AM |     Mark Kuskovich |      M |  N/A |        N/A |  True |        N/A |        GRAND2 | {'MATERNAL'}
+     US_19_2AM |     Mark Kuskovich |      M |  N/A |        N/A |  True |        N/A |        GRAND2 | {'MATERNAL'}
+      US_19_1M |     Ingram Zachaev |      M |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND1'}
+      US_19_1F | Alexandria Zachaev |      F |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND1'}
+      US_12_01 |     Soap MacTavish |      M |  119 | 1900-01-11 |  True |        N/A |           N/A |
+      US_12_02 |   Missus MacTavish |      F |  119 | 1900-01-11 |  True |        N/A |           N/A |
+        US02_3 |     Child Marriage |      M |   26 | 1993-06-01 |  True |        N/A |           N/A | {'US02_F2'}
+        US02_4 |        Normal Pedo |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US02_F2'}
+        US02_5 |      Time Traveler |      M |   26 | 1993-06-01 |  True |        N/A |           N/A | {'US02_F1'}
+        US02_6 | Ambiguous Legality |      F |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US02_F1'}
+           I09 |      John D'Angelo |      M |   60 | 1959-03-17 |  True |        N/A |            F2 | {'F4'} {'F5'}
+           I10 |     Aspe Fritschie |      F |   50 | 1968-11-26 |  True |        N/A |           N/A | {'F4'}
+       I-22-02 |      Chandler Bing |      F |   50 | 1969-08-19 |  True |        N/A |           N/A | {'F-22-01'}
+       I-22-01 |      Monica Geller |      M |   55 | 1964-06-15 |  True |        N/A |           N/A | {'F-22-01'}
+      US_18_01 |      Manfred Price |      M |  119 | 1900-01-11 |  True |        N/A |           N/A |
+      US_18_02 |         Lady Price |      F |  119 | 1900-01-11 |  True |        N/A |           N/A |
+        US08_1 |       Weak Pullout |      M |   54 | 1965-06-01 |  True |        N/A |           N/A | {'US08_F1'}
+        US08_2 |   Tina Pregg-Nancy |      F |   50 | 1969-05-02 |  True |        N/A |           N/A | {'US08_F1'}
+      US_19_3M |      Boris Borisov |      M |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND3'}
+      US_19_3F |       Kira Borisov |      F |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND3'}
+            16 |     Husband Person |      M |   59 | 1960-06-15 |  True |        N/A |           N/A | {'F15'}
+            17 |        Wife Person |      F |   59 | 1960-06-15 |  True |        N/A |           N/A | {'F15'}
+      US_19_2M |     Yuri Kuskovich |      M |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND2'}
+      US_19_2F |  Annania Kuskovich |      F |  N/A |        N/A |  True |        N/A |           N/A | {'GRAND2'}
+           I06 |      John D'Angelo |      M |   89 | 1930-04-12 |  True |        N/A |           N/A | {'F2'} {'F3'}
+           I14 |   Caroline Andrews |      F |   84 | 1935-09-16 |  True |        N/A |           N/A | {'F3'}
+        US02_2 |    Super Pedophile |      M |   52 | 1967-08-03 |  True |        N/A |           N/A | {'US02_F1'}
+        US02_1 |       Notborne Yet |      F |   26 | 1993-06-01 |  True |        N/A |           N/A | {'US02_F1'}
+           I02 |       Mario Monaco |      M |   61 | 1958-02-23 |  True |        N/A |           N/A | {'F1'}
+           I03 |     Debra D'Angelo |      F |   54 | 1964-12-25 |  True |        N/A |            F2 | {'F1'}
+     US_19_1AM |      Gaius Zachaev |      M |  N/A |        N/A |  True |        N/A |        GRAND1 | {'PATERNAL'}
+     US_19_1AF |    Isabelle Caesar |      F |  N/A |        N/A |  True |        N/A |        GRAND2 | {'PATERNAL'}
+      US_18_03 |        Crazy Price |      M |   19 | 2000-01-10 |  True |        N/A |      US18_FAM |
+      US_18_04 |        Bella Price |      F |   17 | 2002-01-10 |  True |        N/A |      US18_FAM |
+      US_10_02 |   EveryoneIs APedo |      M |   39 | 1980-02-05 |  True |        N/A |           N/A | {'US10_F1'}
+      US_10_01 |     IMarr Fourteen |      F |   19 | 2000-02-05 |  True |        N/A |           N/A | {'US10_F1'}
+
+US29: LIST OF ALL DECEASED PERSONS:
+            ID |               NAME | GENDER | AGE  |   BIRTHDAY | ALIVE |      DEATH |         CHILD | SPOUSE
+
+        US05_1 |    Graveyard Groom |      M |   23 | 1965-06-01 | False | 1989-05-01 |           N/A | {'US05_F1'}
+        US03_3 |        Short Lived |      F |    0 | 1989-05-01 | False | 1989-05-01 |           N/A |
+        US09_8 |       Zombie Birth |      F |   31 | 1967-08-03 | False | 1999-05-01 |           N/A | {'US09_F3'}
+        US03_2 |        Valid Birth |      M |    0 | 1989-05-01 | False | 1989-05-02 |           N/A |
+        US06_4 |          Dead Wife |      F |   31 | 1967-08-03 | False | 1999-05-01 |           N/A | {'US06_F2'}
+           I07 |  Concetta Iacovino |      F |   83 | 1924-05-18 | False | 2008-04-13 |           N/A | {'F2'}
+        US03_4 |        Abe Bortion |      M |   -1 | 1989-09-10 | False | 1989-01-20 |           N/A |
+        US09_1 |       Thomas Wayne |      M |   33 | 1965-06-01 | False | 1999-05-01 |           N/A | {'US09_F1'}
+        US01_1 |      Future future |      M | 1996 | 2020-05-01 | False | 4017-03-06 |           N/A |
+        US03_1 |      Miss Carriage |      F |   -1 | 1989-05-01 | False | 1989-01-13 |           N/A |
+        US05_4 |         Ghost Girl |      F |   21 | 1967-08-03 | False | 1989-05-01 |           N/A | {'US05_F2'}
+        US06_1 |           Death Do |      M |   33 | 1965-06-01 | False | 1999-05-01 |           N/A | {'US06_F1'}
+        US05_5 |    Graveyard Smash |      M |   21 | 1967-08-03 | False | 1989-05-01 |           N/A |
+        US05_6 |       Monster Mash |      F |   21 | 1967-08-03 | False | 1989-05-01 |           N/A |
+        US09_4 |  Creampie Then Die |      M |   33 | 1965-06-01 | False | 1999-05-01 |           N/A | {'US09_F2'}
+        US09_2 |       Martha Wayne |      F |   31 | 1967-08-03 | False | 1999-05-01 |           N/A | {'US09_F1'}
+
+LIST OF ALL KNOWN ERRORS:
+ERROR: INDIVIDUAL: US07: 136: Wife Person is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US22: 144: I-22-01: ID already exists. May effect later results
+ERROR: FAMILY:     US22: 159: F-22-01: ID already exists. May effect later results
+ERROR: INDIVIDUAL: US01: 344: date 2020-05-01 is after today's date 2019-11-11
+ERROR: INDIVIDUAL: US01: 346: date 4017-03-06 is after today's date 2019-11-11
+ERROR: FAMILY:     US01: 367: date 2030-04-22 is after today's date 2019-11-11
+ERROR: FAMILY:     US01: 369: date 2038-06-30 is after today's date 2019-11-11
+ERROR: INDIVIDUAL: US03: 378 and 380: Miss Carriage's death date is before their birth date
+ERROR: INDIVIDUAL: US03: 405 and 407: Abe Bortion's death date is before their birth date
+ERROR: FAMILY:     US02: 430: Marry date is before someone's birthday
+ERROR: FAMILY:     US02: 472: Marry date is before someone's birthday
+ERROR: FAMILY:     US05: 497: Marry date is after someone died
+ERROR: FAMILY:     US05: 520: Marry date is after someone died
+ERROR: FAMILY:     US05: 543: Marry date is after someone died
+ERROR: FAMILY:     US06: 570: Divorce date is after someone died
+ERROR: FAMILY:     US06: 595: Divorce date is after someone died
+ERROR: FAMILY:     US04: 618 and 620: Divorce date is before marriage date
+ERROR: INDIVIDUAL: US07: 661: Not Scandalous is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US07: 691: Custody Prize is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US07: 729: Belated Birthday is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US07: 761: Daddy Issues is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US07: 802: I Born is married before 14 years of age, which is illegal in the US.
+ERROR: INDIVIDUAL: US10: 809: One Fitty is listed as being older than 150 years old, which today is highly improbable.
+ERROR: INDIVIDUAL: US42: 988: February can't have the day number specified according to the Gregorian calendar.
+ERROR: INDIVIDUAL: US42: 995: February can't have the day number specified according to the Gregorian calendar.
+ERROR: INDIVIDUAL: US42: 1000: There is an illegal day according to the Gregorian calendar.
+ERROR: INDIVIDUAL: US12: 855: The child is born when the mother is older than 60 years old.
+ERROR: FAMILY:     US18: 974: Mark Kuskovich is married to his sister.
+ERROR: FAMILY:     US19: 978: Viktor Zachaev is married to his cousin.
+ERROR: FAMILY:     US17: 1042 and 1043: A parent married his/her child.
+ERROR: FAMILY:     US13: 1065 and 1072: Two non-twin siblings are born too close to each other
+ERROR: INDIVIDUAL: US08: 645: Bastard Child born before parents married
+ERROR: INDIVIDUAL: US08: 19: One Person born before parents married
+ERROR: INDIVIDUAL: US08: 684: Custody Prize born over 9 months after parents divorced
+ERROR: INDIVIDUAL: US09: 722: Belated Birthday born after mother died
+ERROR: INDIVIDUAL: US09: 786: How Was born after mother died
+ERROR: INDIVIDUAL: US09: 794: I Born born after mother died
+ERROR: FAMILY:     US21: 975: MATERNAL: Wife is a male
+ERROR: FAMILY:     US21: 160: F-22-01: Husband is a female
+ERROR: FAMILY:     US21: 161: F-22-01: Wife is a male
+ERROR: FAMILY:     US16: 952: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 749: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 640: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 648: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 942: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 932: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 164: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 717: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 679: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 781: Child's last name does not match male parent
+ERROR: FAMILY:     US16: 789: Child's last name does not match male parent
+ERROR: FAMILY:     US15: 104: More than 14 kids in family F15

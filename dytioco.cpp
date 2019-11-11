@@ -110,6 +110,11 @@ bool notOlderThan150(individual person, int birthline){
     return true;
 }
 
+
+
+// ================================ Sprint 2 ================================
+
+
 // https://en.wikipedia.org/wiki/Leap_year#Algorithm for leap year algorithm
 bool legalDate(string sdate, int dateline){
 	// Feb has 28 days
@@ -208,6 +213,13 @@ bool parentsNotTooOld(unordered_map<string, individual> indis, unordered_map<str
 	return true;
 }
 
+
+
+
+
+
+// ================================ Sprint 3 ================================
+
 // Siblings don't marry each other
 // US 18
 bool siblingsNotMarried(unordered_map<string, individual> indis, unordered_map<string, family> fams){
@@ -224,16 +236,13 @@ bool siblingsNotMarried(unordered_map<string, individual> indis, unordered_map<s
 			
 			if(husbandCID.compare("N/A") == 0 || wifeCID.compare("N/A") == 0)
 				;
-			if (husbandCID.compare(wifeCID) == 0){ // spouses have the same parents >:(
+			else if (husbandCID.compare(wifeCID) == 0){ // spouses have the same parents >:(
 				errorStatements.push_back("ERROR: FAMILY:     US18: " + to_string(itr->second.lineNumbers[2]) + ": " + indis.at(itr->second.husbandID).name + " is married to his sister.");
 				return false;
 			}
 		}
 	}
-	
-	
-	
-	
+
 	return true;
 }
 
@@ -301,3 +310,166 @@ bool cousinsNotMarried(unordered_map<string, individual> indis, unordered_map<st
 	}
 	return true;
 }
+
+
+// ================================ Sprint 4 ================================
+int monthsBetweenDates(struct tm date1, struct tm date2){
+	int deltaDay, deltaMonth, deltaYear, result;
+	
+	deltaDay = date2.tm_mday - date1.tm_mday;
+	deltaMonth = date2.tm_mon - date1.tm_mon;
+	deltaYear = date2.tm_year - date1.tm_year;
+	
+	if (deltaDay < 0)
+		deltaMonth--;
+	if (deltaMonth < 0){
+		deltaYear--;
+		deltaMonth = 0;
+	}
+	
+	result = abs(deltaYear*12 + deltaMonth);
+	
+	return result;
+}
+
+int deltaDayofMonth(struct tm date1, struct tm date2){
+	return date2.tm_mday - date1.tm_mday;
+}
+
+// US 13
+// Birth dates of siblings should be more than 8 months apart or less than 2 days apart
+// (twins may be born one day apart, e.g. 11:59 PM and 12:02 AM the following calendar day)
+// looking at second to last thing using iterator: https://stackoverflow.com/questions/6430960/iterator-for-second-to-last-element-in-a-list
+bool correctSiblingBirthdaySpacing(unordered_map<string, individual> indis, unordered_map<string, family> fams){
+	unordered_map<string, family>:: iterator curFamItr;
+	list<string>:: iterator childItr, stepItr, endList, penultimateList;
+	string strBirthday1, strBirthday2;
+	struct tm birthday1, birthday2;
+	int count, dm1, dm2, dd;
+	bool skipCompare = false;
+	
+	for(curFamItr = fams.begin(); curFamItr != fams.end(); curFamItr++){
+		if (curFamItr->second.children.size() == 0 || curFamItr->second.children.size() == 1)
+			continue; // breaks one iteration. ie, curFam moves on to the next fam.
+		
+		count = 0;
+		childItr = curFamItr->second.children.begin();
+		endList = curFamItr->second.children.end();
+		penultimateList = endList;
+		--penultimateList; // helps in pointing to the second-to-last thing.
+		
+		for (; childItr != penultimateList; childItr++, count++){
+			stepItr = childItr;
+			stepItr++;
+			for(; stepItr != endList; stepItr++){
+			
+				// now: multiple kids. start recording deltas.
+				strBirthday1 = indis.at(*childItr).birthday;
+				strBirthday2 = indis.at(*stepItr).birthday;
+				
+				
+				if (strBirthday1.compare("N/A") == 0 || strBirthday2.compare("N/A") == 0)
+					continue;
+				
+				
+				birthday1 = String2Date(strBirthday1);
+				birthday2 = String2Date(strBirthday2);
+				
+				// time to do the math. call a modified yearsBetweenDates function.
+				// if the months are negative, call the function but swap the parameters.
+				dm1 = monthsBetweenDates(birthday1, birthday2);
+				dm2 = monthsBetweenDates(birthday2, birthday1);
+				
+				
+				if ((dm1 == 0 && dm2 != 0) || (dm1 != 0 && dm2 == 0)){ // result is something like: 0 or 9. so, isolate the 9.
+					if (dm2 >= 9)
+						; // passes: do nothing
+					else if (dm2 == 0 && abs(deltaDayofMonth(birthday2, birthday1) <= 2)){
+							; // passes: do nothing
+					}
+					else{
+						errorStatements.push_back("ERROR: FAMILY:     US13: " + to_string(indis.at(*childItr).lineNumbers[2]) + " and " + to_string(indis.at(*stepItr).lineNumbers[2])+ ": Two non-twin siblings are born too close to each other");
+						return false;
+					}
+					if (dm1 >= 9)
+						;
+					else if (dm1 == 0 && abs(deltaDayofMonth(birthday1, birthday2) <= 2)){
+							;
+					}
+					else{
+						errorStatements.push_back("ERROR: FAMILY:     US13: " + to_string(indis.at(*childItr).lineNumbers[2]) + " and " + to_string(indis.at(*stepItr).lineNumbers[2])+ ": Two non-twin siblings are born too close to each other");
+						return false;
+					}
+					
+				}
+			}
+		}
+	}
+	return true; // if you didn't catch anything in the whole scan of the map, then this is true
+}
+
+
+
+
+
+
+
+// US 17
+// Parents should not marry any of their children
+
+//	in a given fam:
+//		- if parent_A's CID matches any name in parent_B's SID
+//		or
+//		- if parentB's CID matches any name in parent_A's SID
+//	then, call the cops
+bool parentsDidntMarryChildren(unordered_map<string, individual> indis, unordered_map<string, family> fams){
+	unordered_map<string, family>:: iterator curFamItr;
+	list<string>:: iterator sidItr;
+	string husbCID, wifeCID;
+	string husbCurSID, wifeCurSID;
+	
+	bool incest = false;
+	
+	for(curFamItr = fams.begin(); curFamItr != fams.end(); curFamItr++){
+		
+		husbCID = indis.at(curFamItr->second.husbandID).CID;
+		wifeCID = indis.at(curFamItr->second.wifeID).CID;
+		if (husbCID.compare("N/A") == 0 && wifeCID.compare("N/A") == 0)
+			continue;
+		
+		// check husband's CID to wife's SID list
+		for (sidItr = indis.at(curFamItr->second.wifeID).SID.begin(); sidItr != indis.at(curFamItr->second.wifeID).SID.end(); sidItr++){
+			wifeCurSID = *sidItr;
+			if (wifeCurSID.compare(husbCID) == 0)
+				incest = true;
+		}
+		
+		// check wife's CID to husband's SID list
+		for (sidItr = indis.at(curFamItr->second.husbandID).SID.begin(); sidItr != indis.at(curFamItr->second.husbandID).SID.end(); sidItr++){
+			husbCurSID = *sidItr;
+			if (husbCurSID.compare(wifeCID) == 0)
+				incest = true;
+		}
+		
+		if (incest){
+			errorStatements.push_back("ERROR: FAMILY:     US17: " + to_string(curFamItr->second.lineNumbers[2]) + " and " + to_string(curFamItr->second.lineNumbers[3])+ ": A parent married his/her child.");
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
