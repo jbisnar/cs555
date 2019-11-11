@@ -371,7 +371,7 @@ bool parentsDidntMarryChildren(unordered_map<string, individual> indis, unordere
 		}
 		
 		if (incest){
-			errorStatements.push_back("ERROR: FAMILY:     US17: " + to_string(curFamItr->second.lineNumbers[2]) + ", " + to_string(curFamItr->second.lineNumbers[3])+ ": A parent married his/her child.");
+			errorStatements.push_back("ERROR: FAMILY:     US17: " + to_string(curFamItr->second.lineNumbers[2]) + " and " + to_string(curFamItr->second.lineNumbers[3])+ ": A parent married his/her child.");
 			return false;
 		}
 	}
