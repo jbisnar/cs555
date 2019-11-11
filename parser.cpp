@@ -269,6 +269,7 @@ void finalStore(){
     parentsNotTooOld(indiMap, famMap);
 	siblingsNotMarried(indiMap, famMap);
 	cousinsNotMarried(indiMap, famMap);
+	parentsDidntMarryChildren(indiMap, famMap);
 	BirthB4ParentsMarriage();
 	BirthB4ParentsDeath();
     return;
@@ -344,13 +345,13 @@ void store(string level, string tag, string args){
             curIndi.birthday = improveDate(args.c_str());
             curIndi.lineNumbers[2] = lineNumber;
             DatesB4Today(curIndi.birthday, "", lineNumber,0);
-			notOlderThan150(curIndi, birthline);
-			legalDate(curIndi.birthday, birthline);
+			notOlderThan150(curIndi, lineNumber);
+			legalDate(curIndi.birthday, lineNumber);
         }else if(strcmp(curTag.c_str(), "DEAT") == 0){
             curIndi.death = improveDate(args.c_str());
             curIndi.lineNumbers[4] = lineNumber;
             DatesB4Today(curIndi.death, "", lineNumber,0);
-			legalDate(curIndi.death, deathline);
+			legalDate(curIndi.death, lineNumber);
         }else if(strcmp(curTag.c_str(), "DIV") == 0){
             curFam.lineNumbers[1] = lineNumber;
             curFam.divorced = improveDate(args.c_str());
@@ -362,7 +363,7 @@ void store(string level, string tag, string args){
             curFam.lineNumbers[0] = lineNumber;
             curFam.married = improveDate(args.c_str());
             DatesB4Today(curFam.married, "", lineNumber,1);
-			marriageAfter14(curIndi, curFam, marryline);
+			marriageAfter14(curIndi, curFam, lineNumber);
 			legalDate(curFam.married, lineNumber);
         }
     }
