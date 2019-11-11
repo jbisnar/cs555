@@ -164,7 +164,7 @@ void US2902() {
 }
 
 void US2701(){
-    printf("Starting Test US27-02: ");
+    printf("Starting Test US27-01: ");
     if(strcmp(getAge("1998-10-13", "2019-11-5").c_str(), "21") != 0){
         failed++;
         printf("FAILED\n");
